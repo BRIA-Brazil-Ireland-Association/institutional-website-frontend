@@ -92,7 +92,6 @@ export default function RootLayout({
 				<UIProvider>
 					<Navbar />
 					<QueryProvider>{children}</QueryProvider>
-					<EmbassyBanner />
 					<Footer />
 				</UIProvider>
 			</body>
