@@ -34,12 +34,19 @@
 	--color-aux-teal-500: #00a4bb;
 	--color-aux-teal-300: #628a90;
 	--color-aux-gray: #ebe9e9;
+
+	/* Animations */
+	--animate-float: float 2.4s ease-in-out infinite;
+}
+
+@keyframes float {
+	0%, 100% { transform: translateY(0px); }
+	50%       { transform: translateY(-7px); }
 }
 
 html {
 	scroll-behavior: smooth;
-	scroll-padding-top: 64px;
-	/* offset for fixed navbar height */
+	scroll-padding-top: 64px; /* offset for fixed navbar height */
 }
 
 body {

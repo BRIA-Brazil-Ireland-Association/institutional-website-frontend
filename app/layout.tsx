@@ -3,6 +3,8 @@ import { Montserrat, Roboto } from 'next/font/google';
 import { QueryProvider } from '@/components/providers/QueryProvider';
 import { UIProvider } from '@/components/providers/UIContext';
 import Navbar from '@/components/ui/Navbar';
+import EmbassyBanner from '@/components/sections/EmbassyBanner';
+import Footer from '@/components/ui/Footer';
 import './globals.css';
 
 const montserrat = Montserrat({
@@ -58,7 +60,11 @@ export const metadata: Metadata = {
 	icons: {
 		icon: [
 			{ url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
-			{ url: '/favicon-192x192.png', sizes: '192x192', type: 'image/png' },
+			{
+				url: '/favicon-192x192.png',
+				sizes: '192x192',
+				type: 'image/png',
+			},
 		],
 		apple: [{ url: '/apple-touch-icon.png', sizes: '180x180' }],
 		other: [
@@ -86,6 +92,8 @@ export default function RootLayout({
 				<UIProvider>
 					<Navbar />
 					<QueryProvider>{children}</QueryProvider>
+					<EmbassyBanner />
+					<Footer />
 				</UIProvider>
 			</body>
 		</html>

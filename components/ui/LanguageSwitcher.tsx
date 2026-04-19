@@ -15,7 +15,9 @@ export default function LanguageSwitcher() {
 			{LANGUAGES.map((l, i) => (
 				<div key={l.value} className="flex items-center">
 					{i > 0 && (
-						<span className="text-gray-300 text-xs select-none mx-0.5">|</span>
+						<span className="text-gray-300 text-xs select-none mx-0.5">
+							|
+						</span>
 					)}
 					<button
 						onClick={() => setLanguage(l.value)}

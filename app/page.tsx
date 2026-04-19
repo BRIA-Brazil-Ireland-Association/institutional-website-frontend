@@ -1,7 +1,17 @@
+import Hero from '@/components/sections/Hero';
+import InformationHub from '@/components/sections/InformationHub';
+import About from '@/components/sections/About';
+import Team from '@/components/sections/Team';
+import Events from '@/components/sections/Events';
+
 export default function HomePage() {
 	return (
-		<main className="flex min-h-screen flex-col items-center justify-center">
-			<h1 className="text-4xl font-bold">Institutional Website</h1>
+		<main>
+			<Hero />
+			<InformationHub />
+			<About />
+			<Team />
+			<Events />
 		</main>
 	);
 }
