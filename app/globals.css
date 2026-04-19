@@ -1,3 +1,56 @@
 @import 'tailwindcss';
 
 @custom-variant dark (&:is(.dark *));
+
+@theme {
+	/* Typography */
+	--font-display: 'Montserrat', sans-serif;
+	--font-body: 'Roboto', sans-serif;
+
+	/* Blue/Cyan palette */
+	--color-blue-900: #31287c;
+	--color-blue-700: #007ab2;
+	--color-blue-500: #00b5d3;
+	--color-blue-300: #8be1ed;
+	--color-blue-100: #c8f1f7;
+
+	/* Green palette */
+	--color-green-900: #084727;
+	--color-green-700: #009a54;
+	--color-green-500: #3eb763;
+	--color-green-300: #65df48;
+	--color-green-100: #70f1af;
+
+	/* Orange/Yellow palette */
+	--color-orange-700: #ff5224;
+	--color-orange-500: #ff832f;
+	--color-orange-300: #ffbb40;
+	--color-orange-200: #fbc564;
+	--color-orange-100: #fcfcb8;
+
+	/* Auxiliary palette */
+	--color-aux-black: #000000;
+	--color-aux-teal-700: #2e6971;
+	--color-aux-teal-500: #00a4bb;
+	--color-aux-teal-300: #628a90;
+	--color-aux-gray: #ebe9e9;
+}
+
+html {
+	scroll-behavior: smooth;
+	scroll-padding-top: 64px;
+	/* offset for fixed navbar height */
+}
+
+body {
+	font-family: var(--font-body);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: var(--font-display);
+}
