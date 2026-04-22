@@ -3,7 +3,6 @@ import { Montserrat, Roboto } from 'next/font/google';
 import { QueryProvider } from '@/components/providers/QueryProvider';
 import { UIProvider } from '@/components/providers/UIContext';
 import Navbar from '@/components/ui/Navbar';
-import EmbassyBanner from '@/components/sections/EmbassyBanner';
 import Footer from '@/components/ui/Footer';
 import './globals.css';
 
