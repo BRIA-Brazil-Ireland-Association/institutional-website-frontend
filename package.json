@@ -1,11 +1,12 @@
 {
-  "name": "tanstack_start_ts",
+  "name": "bria_site",
   "private": true,
   "sideEffects": false,
   "type": "module",
   "scripts": {
     "dev": "vite dev",
     "build": "vite build",
+    "start": "wrangler dev --config dist/server/wrangler.json",
     "build:dev": "vite build --mode development",
     "preview": "vite preview",
     "lint": "eslint .",

@@ -1,11 +1,11 @@
+import InformationHub from "@/components/home/about-event";
+import AboutEvent from "@/components/home/event-hub";
+import Hero from "@/components/home/hero";
+import JoinApp from "@/components/home/join-app";
+import Newsletter from "@/components/home/newsletter";
+import Partners from "@/components/home/partners";
+import StatsStrip from "@/components/home/stats-strip";
 import { createFileRoute } from "@tanstack/react-router";
-import Hero from "./fragments/hero";
-import InformationHub from "./fragments/about-event";
-import AboutEvent from "./fragments/event-hub";
-import StatsStrip from "./fragments/stats-strip";
-import Partners from "./fragments/partners";
-import JoinApp from "./fragments/join-app";
-import Newsletter from "./fragments/newsletter";
 
 export const Route = createFileRoute("/")({
   component: Index,
