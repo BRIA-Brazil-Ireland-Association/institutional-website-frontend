@@ -64,7 +64,7 @@ export default function Partners() {
 
   return (
     <section className="mx-auto max-w-[1440px] px-6 pb-16 flex gap-10 items-center">
-      <div className="w-full md:w-1/3">
+      <div className="w-full md:w-4/12">
         <p className="text-brand-green text-xs font-bold tracking-[0.2em] uppercase mb-3">
           Our Partners
         </p>
@@ -83,7 +83,7 @@ export default function Partners() {
           </span>
         </a>
       </div>
-      <div className="relative flex items-center gap-4 w-full  md:w-2/3">
+      <div className="relative hidden md:flex items-center gap-4 w-full  md:w-8/12">
         <button
           onClick={prev}
           disabled={safeIndex === 0}

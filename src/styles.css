@@ -4,6 +4,7 @@
 
 @custom-variant dark (&:is(.dark *));
 
+
 @theme inline {
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-script: "Caveat", "Brush Script MT", cursive;
@@ -56,7 +57,8 @@
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.18 0.05 260);
 
-  --primary: oklch(0.7 0.18 145); /* green */
+  --primary: oklch(0.7 0.18 145);
+  /* green */
   --primary-foreground: oklch(1 0 0);
   --secondary: oklch(0.96 0.01 250);
   --secondary-foreground: oklch(0.18 0.05 260);
@@ -114,6 +116,7 @@
 
   html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
   }
 
   body {
@@ -126,14 +129,43 @@
 }
 
 @layer utilities {
-  .text-brand-green { color: var(--brand-green); }
-  .text-brand-navy { color: var(--brand-navy); }
-  .text-brand-yellow { color: var(--brand-yellow); }
-  .bg-brand-green { background-color: var(--brand-green); }
-  .bg-brand-navy { background-color: var(--brand-navy); }
-  .bg-brand-navy-deep { background-color: var(--brand-navy-deep); }
-  .bg-gradient-stats { background-image: var(--gradient-stats); }
-  .shadow-soft { box-shadow: var(--shadow-soft); }
-  .shadow-card { box-shadow: var(--shadow-card); }
-  .font-script { font-family: var(--font-script); }
+  .text-brand-green {
+    color: var(--brand-green);
+  }
+
+  .text-brand-navy {
+    color: var(--brand-navy);
+  }
+
+  .text-brand-yellow {
+    color: var(--brand-yellow);
+  }
+
+  .bg-brand-green {
+    background-color: var(--brand-green);
+  }
+
+  .bg-brand-navy {
+    background-color: var(--brand-navy);
+  }
+
+  .bg-brand-navy-deep {
+    background-color: var(--brand-navy-deep);
+  }
+
+  .bg-gradient-stats {
+    background-image: var(--gradient-stats);
+  }
+
+  .shadow-soft {
+    box-shadow: var(--shadow-soft);
+  }
+
+  .shadow-card {
+    box-shadow: var(--shadow-card);
+  }
+
+  .font-script {
+    font-family: var(--font-script);
+  }
 }
