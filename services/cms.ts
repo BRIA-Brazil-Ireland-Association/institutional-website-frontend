@@ -1,3 +1,5 @@
+import { cache } from "react";
+
 type CmsProxyParams = {
   path: string[];
   searchParams: URLSearchParams;
@@ -178,32 +180,50 @@ export async function proxyCmsGet(params: CmsProxyParams) {
   });
 }
 
+const fetchCMSContent = cache(
+  async (
+    pathKey: string,
+    searchParamsKey: string,
+    locale?: string,
+  ): Promise<CmsData> => {
+    try {
+      const response = await proxyCmsGet({
+        path: JSON.parse(pathKey) as string[],
+        searchParams: new URLSearchParams(searchParamsKey),
+      });
+
+      if (!response.ok) {
+        return null;
+      }
+
+      return localizeCmsData(unwrapCmsData(await response.json()), locale);
+    } catch {
+      return null;
+    }
+  },
+);
+
 export async function getCMSContent({
   locale,
   path,
   populate,
   searchParams = new URLSearchParams(),
 }: GetCMSContentParams): Promise<CmsData> {
-  try {
-    if (populate) {
-      searchParams.set("populate", populate);
-    }
+  const cmsSearchParams = new URLSearchParams(searchParams);
 
-    if (locale) {
-      searchParams.set("locale", locale);
-    }
-
-    const response = await proxyCmsGet({
-      path,
-      searchParams,
-    });
-
-    if (!response.ok) {
-      return null;
-    }
-
-    return localizeCmsData(unwrapCmsData(await response.json()), locale);
-  } catch {
-    return null;
+  if (populate) {
+    cmsSearchParams.set("populate", populate);
   }
+
+  if (locale) {
+    cmsSearchParams.set("locale", locale);
+  }
+
+  cmsSearchParams.sort();
+
+  return fetchCMSContent(
+    JSON.stringify(path),
+    cmsSearchParams.toString(),
+    locale,
+  );
 }

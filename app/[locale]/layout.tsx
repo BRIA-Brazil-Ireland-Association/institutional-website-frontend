@@ -13,40 +13,33 @@ import {
 import type { Metadata } from "next";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { notFound } from "next/navigation";
+import { cache } from "react";
 import "../globals.css";
 
 export const dynamic = "force-dynamic";
-
-const fallbackTitle = "Institutional Website";
-const fallbackDescription = "Institutional website boilerplate";
 
 type LocaleLayoutProps = Readonly<{
   children: React.ReactNode;
   params: Promise<{ locale: string }>;
 }>;
 
+const getGlobalContent = cache(async (locale: string) =>
+  getSingleContent(
+    await getCMSContent({
+      locale,
+      path: ["global"],
+      populate: "*",
+    }),
+  ),
+);
+
 function buildMetadataFromGlobal(global: CmsEntry | null): Metadata {
-  const seo =
-    getObject(global, "defaultSeo") ??
-    getObject(global, "seo") ??
-    getObject(global, "metadata");
-  const title =
-    getText(seo, "metaTitle", "title") ??
-    getText(global, "metaTitle", "title", "siteName") ??
-    fallbackTitle;
-  const description =
-    getText(seo, "metaDescription", "description") ??
-    getText(global, "metaDescription", "description", "siteDescription") ??
-    fallbackDescription;
-  const image =
-    getObject(seo, "shareImage") ??
-    getObject(seo, "image") ??
-    getObject(global, "shareImage") ??
-    getObject(global, "image") ??
-    getObject(global, "favicon");
-  const imageUrl = getMediaUrl(image);
-  const imageAlt = getText(image, "alternativeText") ?? title;
-  const faviconUrl = getMediaUrl(getObject(global, "favicon"));
+  const title = getText(global, "siteName");
+  const description = getText(global, "siteDescription");
+  const locale = getText(global, "locale")?.replace("-", "_");
+  const favicon = getObject(global, "favicon");
+  const faviconUrl = getMediaUrl(favicon);
+  const faviconAlt = getText(favicon, "alternativeText") ?? title;
 
   return {
     title,
@@ -61,22 +54,22 @@ function buildMetadataFromGlobal(global: CmsEntry | null): Metadata {
     openGraph: {
       title,
       description,
-      images: imageUrl
+      images: faviconUrl
         ? [
             {
-              url: imageUrl,
-              alt: imageAlt,
+              url: faviconUrl,
+              ...(faviconAlt ? { alt: faviconAlt } : {}),
             },
           ]
         : undefined,
-      locale: getText(global, "locale")?.replace("-", "_"),
-      siteName: getText(global, "siteName"),
+      locale,
+      siteName: title,
     },
     twitter: {
-      card: imageUrl ? "summary_large_image" : "summary",
+      card: faviconUrl ? "summary_large_image" : "summary",
       title,
       description,
-      images: imageUrl ? [imageUrl] : undefined,
+      images: faviconUrl ? [faviconUrl] : undefined,
     },
   };
 }
@@ -90,13 +83,7 @@ export async function generateMetadata({
     return {};
   }
 
-  const globalContent = await getCMSContent({
-    locale,
-    path: ["global"],
-    populate: "*",
-  });
-
-  return buildMetadataFromGlobal(getSingleContent(globalContent));
+  return buildMetadataFromGlobal(await getGlobalContent(locale));
 }
 
 export default async function LocaleLayout({
@@ -109,11 +96,13 @@ export default async function LocaleLayout({
     notFound();
   }
 
+  const globalContent = await getGlobalContent(locale);
+
   return (
     <html lang={locale} className="h-full antialiased">
       <body className="flex min-h-full flex-col">
         <NextIntlClientProvider>
-          <Navbar />
+          <Navbar globalContent={globalContent} />
           <AppProviders>{children}</AppProviders>
           <Footer />
         </NextIntlClientProvider>
