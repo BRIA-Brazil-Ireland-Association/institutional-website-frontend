@@ -1,0 +1,209 @@
+type CmsProxyParams = {
+  path: string[];
+  searchParams: URLSearchParams;
+};
+
+type GetCMSContentParams = {
+  locale?: string;
+  path: string[];
+  populate?: string;
+  searchParams?: URLSearchParams;
+};
+
+export type CmsEntry = Record<string, unknown> & {
+  attributes?: CmsEntry;
+  formats?: Record<string, { url?: string } | undefined>;
+  locale?: string;
+  localizations?: CmsEntry[];
+  url?: string;
+};
+
+export type CmsData = CmsEntry | CmsEntry[] | null;
+
+function getStrapiCmsUrl() {
+  const strapiCmsUrl = process.env.STRAPI_CMS_URL?.trim();
+
+  if (!strapiCmsUrl) {
+    throw new Error("STRAPI_CMS_URL is not configured.");
+  }
+
+  return strapiCmsUrl;
+}
+
+function buildStrapiUrl({ path, searchParams }: CmsProxyParams) {
+  const strapiUrl = new URL(getStrapiCmsUrl());
+  const basePath = strapiUrl.pathname.replace(/\/$/, "");
+  const hasApiPrefix = basePath === "/api" || basePath.endsWith("/api");
+  const cmsPath = path.map((segment) => encodeURIComponent(segment)).join("/");
+
+  strapiUrl.pathname = `${basePath}${hasApiPrefix ? "" : "/api"}/${cmsPath}`;
+  strapiUrl.search = searchParams.toString();
+
+  return strapiUrl;
+}
+
+function isObject(value: unknown): value is Record<string, unknown> {
+  return Boolean(value) && typeof value === "object" && !Array.isArray(value);
+}
+
+function normalizeEntry(value: unknown): CmsEntry | null {
+  if (!isObject(value)) {
+    return null;
+  }
+
+  return (value.attributes ?? value) as CmsEntry;
+}
+
+function unwrapCmsData(payload: unknown): CmsData {
+  if (!isObject(payload)) {
+    return null;
+  }
+
+  const firstData = payload.data;
+
+  if (Array.isArray(firstData)) {
+    return firstData.filter(isObject).map((item) => item as CmsEntry);
+  }
+
+  if (!isObject(firstData)) {
+    return normalizeEntry(payload);
+  }
+
+  const nestedData = firstData.data;
+
+  if (Array.isArray(nestedData)) {
+    return nestedData.filter(isObject).map((item) => item as CmsEntry);
+  }
+
+  if (isObject(nestedData)) {
+    return normalizeEntry(nestedData);
+  }
+
+  return normalizeEntry(firstData);
+}
+
+function localizeEntry(entry: CmsEntry, locale: string) {
+  const content = normalizeEntry(entry);
+
+  if (!content || content.locale === locale) {
+    return content;
+  }
+
+  const localization = content.localizations?.find(
+    (item) => item.locale === locale,
+  );
+
+  if (!localization) {
+    return content;
+  }
+
+  return {
+    ...content,
+    ...localization,
+    localizations: content.localizations,
+  };
+}
+
+function localizeCmsData(content: CmsData, locale?: string): CmsData {
+  if (!locale || !content) {
+    return content;
+  }
+
+  if (Array.isArray(content)) {
+    return content
+      .map((entry) => localizeEntry(entry, locale))
+      .filter((entry): entry is CmsEntry => Boolean(entry));
+  }
+
+  return localizeEntry(content, locale);
+}
+
+export function getSingleContent(content: CmsData) {
+  return Array.isArray(content) ? (content[0] ?? null) : content;
+}
+
+export function getText(
+  content: CmsEntry | null | undefined,
+  ...keys: string[]
+) {
+  for (const key of keys) {
+    const value = content?.[key];
+
+    if (typeof value === "string" && value.trim()) {
+      return value.trim();
+    }
+  }
+
+  return undefined;
+}
+
+export function getObject(content: CmsEntry | null | undefined, key: string) {
+  return normalizeEntry(content?.[key]);
+}
+
+export function getMediaUrl(media: CmsEntry | null | undefined) {
+  const url =
+    getText(media, "url") ??
+    media?.formats?.large?.url ??
+    media?.formats?.medium?.url ??
+    media?.formats?.small?.url ??
+    media?.formats?.thumbnail?.url;
+
+  if (!url) {
+    return undefined;
+  }
+
+  if (url.startsWith("http://") || url.startsWith("https://")) {
+    return url;
+  }
+
+  return new URL(url, getStrapiCmsUrl()).toString();
+}
+
+export async function proxyCmsGet(params: CmsProxyParams) {
+  const strapiUrl = buildStrapiUrl(params);
+  const headers = new Headers({
+    Accept: "application/json",
+  });
+  const strapiToken = process.env.STRAPI_CMS_TOKEN?.trim();
+
+  if (strapiToken) {
+    headers.set("Authorization", `Bearer ${strapiToken}`);
+  }
+
+  return fetch(strapiUrl, {
+    cache: "no-store",
+    headers,
+    method: "GET",
+  });
+}
+
+export async function getCMSContent({
+  locale,
+  path,
+  populate,
+  searchParams = new URLSearchParams(),
+}: GetCMSContentParams): Promise<CmsData> {
+  try {
+    if (populate) {
+      searchParams.set("populate", populate);
+    }
+
+    if (locale) {
+      searchParams.set("locale", locale);
+    }
+
+    const response = await proxyCmsGet({
+      path,
+      searchParams,
+    });
+
+    if (!response.ok) {
+      return null;
+    }
+
+    return localizeCmsData(unwrapCmsData(await response.json()), locale);
+  } catch {
+    return null;
+  }
+}

@@ -5,10 +5,16 @@ import { HeroBanner } from "@/components/sections/home/hero-banner";
 import { PartnersBanner } from "@/components/sections/home/partners-banner";
 import { TeamBanner } from "@/components/sections/home/team-banner";
 
-export default function Home() {
+type HomeProps = {
+  params: Promise<{ locale: string }>;
+};
+
+export default async function Home({ params }: HomeProps) {
+  const { locale } = await params;
+
   return (
     <DefaultContainer>
-      <HeroBanner />
+      <HeroBanner locale={locale} />
       <AboutBanner />
       <TeamBanner />
       <EventsBanner />
