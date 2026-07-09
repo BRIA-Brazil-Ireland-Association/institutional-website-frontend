@@ -1,7 +1,7 @@
+.next
+out
+build
+coverage
 node_modules
-dist
-.output
-.vinxi
-pnpm-lock.yaml
+next-env.d.ts
 package-lock.json
-routeTree.gen.ts
