@@ -16,6 +16,9 @@ const nextConfig: NextConfig = {
     dangerouslyAllowLocalIP: isLocalStrapi,
     remotePatterns: strapiUploadsPattern ? [strapiUploadsPattern] : [],
   },
+  env: {
+    NEXT_PUBLIC_STRAPI_CMS_URL: strapiCmsUrl,
+  },
 };
 
 const withNextIntl = createNextIntlPlugin();

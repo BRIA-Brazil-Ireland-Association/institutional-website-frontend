@@ -23,10 +23,10 @@ export type CmsEntry = Record<string, unknown> & {
 export type CmsData = CmsEntry | CmsEntry[] | null;
 
 function getStrapiCmsUrl() {
-  const strapiCmsUrl = process.env.STRAPI_CMS_URL?.trim();
+  const strapiCmsUrl = process.env.NEXT_PUBLIC_STRAPI_CMS_URL?.trim();
 
   if (!strapiCmsUrl) {
-    throw new Error("STRAPI_CMS_URL is not configured.");
+    throw new Error("NEXT_PUBLIC_STRAPI_CMS_URL is not configured.");
   }
 
   return strapiCmsUrl;

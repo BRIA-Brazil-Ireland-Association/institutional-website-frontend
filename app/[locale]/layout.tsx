@@ -1,5 +1,4 @@
 import { Footer } from "@/components/layout/footer";
-import { Navbar } from "@/components/layout/navbar";
 import { routing } from "@/i18n/routing";
 import { AppProviders } from "@/providers/app-providers";
 import {
@@ -102,9 +101,10 @@ export default async function LocaleLayout({
     <html lang={locale} className="h-full antialiased">
       <body className="flex min-h-full flex-col">
         <NextIntlClientProvider>
-          <Navbar globalContent={globalContent} />
-          <AppProviders>{children}</AppProviders>
-          <Footer />
+          <AppProviders globalContent={globalContent}>
+            {children}
+            <Footer />
+          </AppProviders>
         </NextIntlClientProvider>
       </body>
     </html>
