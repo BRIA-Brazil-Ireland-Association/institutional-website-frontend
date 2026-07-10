@@ -15,7 +15,7 @@ export const AboutCards = ({ content }: any) => {
   return (
     <div className="bg-[#efecef] text-black">
       <SectionReveal>
-        <div className="mx-auto grid w-full max-w-7xl grid-cols-1 gap-6 px-4 py-10 sm:px-6 md:grid-cols-3 lg:px-8">
+        <div className="mx-auto grid w-full max-w-7xl grid-cols-1 gap-6 px-4 pb-10 sm:px-6 md:grid-cols-3 lg:px-8">
           {cards.map((card, cardIndex) => {
             const cardTitle = getText(card, "title");
             const cardDescription = getText(card, "description");

@@ -16,7 +16,7 @@ export const AboutHeroBanner = ({ content }: any) => {
   const imageHeight = typeof image?.height === "number" ? image.height : 816;
 
   return (
-    <div className="relative overflow-hidden bg-[#efecef] text-black">
+    <div className="relative overflow-hidden bg-[#efecef] pb-10 text-black">
       <div
         aria-hidden="true"
         className="absolute top-24 right-0 bottom-24 hidden w-1/4 bg-[#0b461b] lg:block"
@@ -72,6 +72,13 @@ export const AboutHeroBanner = ({ content }: any) => {
         size="200px"
         borderSize="35px"
         color="#fb8500"
+      />
+      <Circle
+        className="absolute bottom-[-30%] left-[30%] hidden lg:block"
+        size="220px"
+        borderSize="45px"
+        color="#FF9606"
+        immediate
       />
     </div>
   );
