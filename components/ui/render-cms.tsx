@@ -26,7 +26,7 @@ const getPageContent = (
   });
 };
 
-export async function CmsPage({
+export async function RenderCms({
   locale,
   cmsPath,
   fallback = <Loading />,

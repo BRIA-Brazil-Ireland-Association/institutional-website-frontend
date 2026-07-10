@@ -32,7 +32,7 @@ export function AboutBanner({ content }: any) {
           {imageUrl && (
             <Image
               alt={imageAlt}
-              className="h-auto w-full rounded-lg object-cover shadow-[0_18px_40px_rgba(0,0,0,0.18)]"
+              className="order-1 h-auto w-full rounded-lg object-cover shadow-[0_18px_40px_rgba(0,0,0,0.18)] md:order-0"
               height={imageHeight}
               sizes="(min-width: 1024px) 50vw, 100vw"
               src={imageUrl}
@@ -40,7 +40,7 @@ export function AboutBanner({ content }: any) {
             />
           )}
 
-          <div className="max-w-xl">
+          <div className="order-0 max-w-xl md:order-1">
             {title && (
               <p className="text-lg font-bold tracking-wide text-[#1e3a8a] uppercase">
                 {title}
