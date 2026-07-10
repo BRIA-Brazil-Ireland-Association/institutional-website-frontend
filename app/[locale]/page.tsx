@@ -5,45 +5,36 @@ import { EventsBanner } from "@/components/sections/home/events-banner";
 import { HeroBanner } from "@/components/sections/home/hero-banner";
 import { PartnersBanner } from "@/components/sections/home/partners-banner";
 import { TeamBanner } from "@/components/sections/home/team-banner";
-import { Loading } from "@/components/ui/loading";
-import { CmsData, getCMSContent } from "@/services/cms";
-import { Suspense, use } from "react";
+import { CmsPage } from "@/components/ui/cms-page";
 
 type HomeProps = {
   params: Promise<{ locale: string }>;
 };
 
-const getHomePageContent = (locale: string) => {
-  return getCMSContent({
-    locale,
-    path: ["home-page"],
-    populate: "*",
-  });
-};
+const homePagePopulate = new URLSearchParams([
+  ["populate[menuItems]", "true"],
+  ["populate[heroBanner][populate][image]", "true"],
+  ["populate[heroBanner][populate][kpis][populate]", "*"],
+]);
 
 export default async function Home({ params }: HomeProps) {
   const { locale } = await params;
-  const cmsPromise = getHomePageContent(locale);
 
   return (
-    <Suspense fallback={<Loading />}>
-      <HomePageContent cmsPromise={cmsPromise} />
-    </Suspense>
+    <CmsPage
+      locale={locale}
+      cmsPath="home-page"
+      populate={homePagePopulate}
+      render={({ content }) => (
+        <DefaultContainer>
+          <Navbar menuItems={content?.menuItems ?? []} />
+          <HeroBanner content={content?.heroBanner} />
+          <AboutBanner />
+          <TeamBanner />
+          <EventsBanner />
+          <PartnersBanner />
+        </DefaultContainer>
+      )}
+    />
   );
 }
-
-const HomePageContent = ({ cmsPromise }: { cmsPromise: Promise<CmsData> }) => {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const heroContent: any = use(cmsPromise);
-
-  return (
-    <DefaultContainer>
-      <Navbar menuItems={heroContent?.menuItems ?? []} />
-      <HeroBanner />
-      <AboutBanner />
-      <TeamBanner />
-      <EventsBanner />
-      <PartnersBanner />
-    </DefaultContainer>
-  );
-};

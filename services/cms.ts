@@ -5,10 +5,12 @@ type CmsProxyParams = {
   searchParams: URLSearchParams;
 };
 
+export type CmsPopulate = string | URLSearchParams;
+
 type GetCMSContentParams = {
   locale?: string;
   path: string[];
-  populate?: string;
+  populate?: CmsPopulate;
   searchParams?: URLSearchParams;
 };
 
@@ -211,8 +213,12 @@ export async function getCMSContent({
 }: GetCMSContentParams): Promise<CmsData> {
   const cmsSearchParams = new URLSearchParams(searchParams);
 
-  if (populate) {
+  if (typeof populate === "string") {
     cmsSearchParams.set("populate", populate);
+  } else if (populate) {
+    populate.forEach((value, key) => {
+      cmsSearchParams.append(key, value);
+    });
   }
 
   if (locale) {
