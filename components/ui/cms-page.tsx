@@ -7,6 +7,7 @@ type PageProps = {
   cmsPath: string;
   fallback?: ReactNode;
   populate?: CmsPopulate;
+  revalidate?: number;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   render: ({ content }: { content: any }) => ReactNode;
 };
@@ -15,11 +16,13 @@ const getPageContent = (
   locale: string,
   path: string,
   populate: CmsPopulate,
+  revalidate: number,
 ) => {
   return getCMSContent({
     locale,
     path: [path],
     populate,
+    revalidate,
   });
 };
 
@@ -28,9 +31,10 @@ export async function CmsPage({
   cmsPath,
   fallback = <Loading />,
   populate = "*",
+  revalidate = 60,
   render,
 }: PageProps) {
-  const cmsPromise = getPageContent(locale, cmsPath, populate);
+  const cmsPromise = getPageContent(locale, cmsPath, populate, revalidate);
 
   return (
     <Suspense fallback={fallback}>

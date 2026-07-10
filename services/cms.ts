@@ -2,6 +2,7 @@ import { cache } from "react";
 
 type CmsProxyParams = {
   path: string[];
+  revalidate?: number;
   searchParams: URLSearchParams;
 };
 
@@ -11,6 +12,7 @@ type GetCMSContentParams = {
   locale?: string;
   path: string[];
   populate?: CmsPopulate;
+  revalidate?: number;
   searchParams?: URLSearchParams;
 };
 
@@ -164,8 +166,12 @@ export function getMediaUrl(media: CmsEntry | null | undefined) {
   return new URL(url, getStrapiCmsUrl()).toString();
 }
 
-export async function proxyCmsGet(params: CmsProxyParams) {
-  const strapiUrl = buildStrapiUrl(params);
+export async function proxyCmsGet({
+  path,
+  revalidate,
+  searchParams,
+}: CmsProxyParams) {
+  const strapiUrl = buildStrapiUrl({ path, searchParams });
   const headers = new Headers({
     Accept: "application/json",
   });
@@ -176,7 +182,9 @@ export async function proxyCmsGet(params: CmsProxyParams) {
   }
 
   return fetch(strapiUrl, {
-    cache: "no-store",
+    ...(revalidate === undefined
+      ? { cache: "no-store" as const }
+      : { next: { revalidate } }),
     headers,
     method: "GET",
   });
@@ -187,10 +195,12 @@ const fetchCMSContent = cache(
     pathKey: string,
     searchParamsKey: string,
     locale?: string,
+    revalidate?: number,
   ): Promise<CmsData> => {
     try {
       const response = await proxyCmsGet({
         path: JSON.parse(pathKey) as string[],
+        revalidate,
         searchParams: new URLSearchParams(searchParamsKey),
       });
 
@@ -209,6 +219,7 @@ export async function getCMSContent({
   locale,
   path,
   populate,
+  revalidate,
   searchParams = new URLSearchParams(),
 }: GetCMSContentParams): Promise<CmsData> {
   const cmsSearchParams = new URLSearchParams(searchParams);
@@ -231,5 +242,6 @@ export async function getCMSContent({
     JSON.stringify(path),
     cmsSearchParams.toString(),
     locale,
+    revalidate,
   );
 }

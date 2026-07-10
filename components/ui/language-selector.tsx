@@ -4,35 +4,12 @@ import { Link, usePathname } from "@/i18n/navigation";
 import { cn } from "@/libs/utils";
 import { useLocale } from "next-intl";
 import { useEffect, useRef, useState } from "react";
+import { BrazilFlag } from "../ui/brazil-flag";
+import { IrelandFlag } from "../ui/ireland-flag";
 
 type LanguageSelectorProps = {
   compact?: boolean;
 };
-
-function IrelandFlag() {
-  return (
-    <span
-      aria-hidden="true"
-      className="grid h-4 w-5 shrink-0 grid-cols-3 overflow-hidden rounded-[1px] ring-1 ring-black/10"
-    >
-      <span className="bg-[#169b62]" />
-      <span className="bg-white" />
-      <span className="bg-[#ff883e]" />
-    </span>
-  );
-}
-
-function BrazilFlag() {
-  return (
-    <span
-      aria-hidden="true"
-      className="relative h-4 w-5 shrink-0 overflow-hidden rounded-[1px] bg-[#009b3a] ring-1 ring-black/10"
-    >
-      <span className="absolute top-1/2 left-1/2 h-2.5 w-2.5 -translate-x-1/2 -translate-y-1/2 rotate-45 bg-[#ffdf00]" />
-      <span className="absolute top-1/2 left-1/2 h-1.5 w-1.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#002776]" />
-    </span>
-  );
-}
 
 export function LanguageSelector({ compact = false }: LanguageSelectorProps) {
   const locale = useLocale();

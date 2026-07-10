@@ -1,4 +1,4 @@
-import { Footer } from "@/components/layout/footer";
+import { Footer } from "@/components/ui/footer";
 import { routing } from "@/i18n/routing";
 import { AppProviders } from "@/providers/app-providers";
 import {
@@ -11,9 +11,17 @@ import {
 } from "@/services/cms";
 import type { Metadata } from "next";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
+import { Poppins } from "next/font/google";
 import { notFound } from "next/navigation";
 import { cache } from "react";
 import "../globals.css";
+
+const poppins = Poppins({
+  display: "swap",
+  subsets: ["latin"],
+  variable: "--font-poppins",
+  weight: ["400", "500", "600", "700", "800"],
+});
 
 export const dynamic = "force-dynamic";
 
@@ -28,6 +36,7 @@ const getGlobalContent = cache(async (locale: string) =>
       locale,
       path: ["global"],
       populate: "*",
+      revalidate: 300,
     }),
   ),
 );
@@ -98,7 +107,7 @@ export default async function LocaleLayout({
   const globalContent = await getGlobalContent(locale);
 
   return (
-    <html lang={locale} className="h-full antialiased">
+    <html lang={locale} className={`${poppins.variable} h-full antialiased`}>
       <body className="flex min-h-full flex-col">
         <NextIntlClientProvider>
           <AppProviders globalContent={globalContent}>
