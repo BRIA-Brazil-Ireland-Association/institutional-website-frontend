@@ -16,6 +16,7 @@ const homePagePopulate = new URLSearchParams([
   ["populate[heroBanner][populate][kpis][populate]", "*"],
   ["populate[partnersBanner][populate][partners][populate][image]", "true"],
   ["populate[aboutBanner][populate]", "*"],
+  ["populate[teamBanner][populate][banner][populate]", "*"],
 ]);
 
 export default async function Home({ params }: HomeProps) {
@@ -31,7 +32,7 @@ export default async function Home({ params }: HomeProps) {
           <Navbar menuItems={content?.menuItems ?? []} />
           <HeroBanner content={content?.heroBanner ?? {}} />
           <AboutBanner content={content?.aboutBanner ?? {}} />
-          <TeamBanner />
+          <TeamBanner content={content?.teamBanner ?? {}} />
           <EventsBanner />
           <PartnersBanner content={content?.partnersBanner ?? {}} />
         </>
