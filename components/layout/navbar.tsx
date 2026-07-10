@@ -34,7 +34,9 @@ export function Navbar({ menuItems = [] }: NavbarProps) {
       return pathname === "/";
     }
 
-    return pathname === normalizedUrl || pathname.startsWith(`${normalizedUrl}/`);
+    return (
+      pathname === normalizedUrl || pathname.startsWith(`${normalizedUrl}/`)
+    );
   };
 
   useEffect(() => {
@@ -83,7 +85,7 @@ export function Navbar({ menuItems = [] }: NavbarProps) {
             onClick={() => setIsOpen(false)}
           >
             <BriaLogo
-              className="h-auto w-32 sm:w-40"
+              className="h-auto w-40 sm:w-40"
               height={64}
               priority
               width={160}
