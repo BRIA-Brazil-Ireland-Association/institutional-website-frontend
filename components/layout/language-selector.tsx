@@ -28,8 +28,8 @@ function BrazilFlag() {
       aria-hidden="true"
       className="relative h-4 w-5 shrink-0 overflow-hidden rounded-[1px] bg-[#009b3a] ring-1 ring-black/10"
     >
-      <span className="absolute left-1/2 top-1/2 h-2.5 w-2.5 -translate-x-1/2 -translate-y-1/2 rotate-45 bg-[#ffdf00]" />
-      <span className="absolute left-1/2 top-1/2 h-1.5 w-1.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#002776]" />
+      <span className="absolute top-1/2 left-1/2 h-2.5 w-2.5 -translate-x-1/2 -translate-y-1/2 rotate-45 bg-[#ffdf00]" />
+      <span className="absolute top-1/2 left-1/2 h-1.5 w-1.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#002776]" />
     </span>
   );
 }
@@ -93,16 +93,16 @@ export function LanguageSelector({ compact = false }: LanguageSelectorProps) {
       <button
         aria-expanded={isOpen}
         aria-haspopup="menu"
-        className="flex min-h-9 items-center gap-1.5 whitespace-nowrap rounded-sm px-2 text-black transition-colors hover:bg-black/5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#169b62]"
+        className="flex min-h-9 items-center gap-1.5 rounded-sm px-2 whitespace-nowrap text-black transition-colors hover:bg-black/5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#169b62]"
         onClick={() => setIsOpen((currentIsOpen) => !currentIsOpen)}
         type="button"
       >
-        <span>{selectedLanguage.code}</span>
         <SelectedFlag />
+        <span className="font-semibold">{selectedLanguage.code}</span>
         <span
           aria-hidden="true"
           className={cn(
-            "h-1.5 w-1.5 rotate-45 border-b border-r border-current transition-transform",
+            "h-1.5 w-1.5 rotate-45 border-r border-b border-current transition-transform",
             isOpen && "rotate-[225deg]",
           )}
         />
@@ -110,30 +110,32 @@ export function LanguageSelector({ compact = false }: LanguageSelectorProps) {
 
       {isOpen ? (
         <div
-          className="absolute right-0 top-full z-50 mt-2 min-w-28 overflow-hidden rounded-sm border border-black/10 bg-white py-1 shadow-[0_10px_24px_rgba(0,0,0,0.16)]"
+          className="absolute top-full right-0 z-50 mt-2 min-w-28 overflow-hidden rounded-sm border border-black/10 bg-white py-1 shadow-[0_10px_24px_rgba(0,0,0,0.16)]"
           role="menu"
         >
-          {languages.map(({ Flag, ariaLabel, code, locale: languageLocale }) => {
-            const isActive = locale === languageLocale;
+          {languages.map(
+            ({ Flag, ariaLabel, code, locale: languageLocale }) => {
+              const isActive = locale === languageLocale;
 
-            return (
-              <Link
-                aria-label={ariaLabel}
-                className={cn(
-                  "flex items-center justify-between gap-3 px-3 py-2 text-left transition-colors hover:bg-black/5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-[#169b62]",
-                  isActive ? "text-black" : "text-black/55",
-                )}
-                href={pathname}
-                key={languageLocale}
-                locale={languageLocale}
-                onClick={() => setIsOpen(false)}
-                role="menuitem"
-              >
-                <span>{code}</span>
-                <Flag />
-              </Link>
-            );
-          })}
+              return (
+                <Link
+                  aria-label={ariaLabel}
+                  className={cn(
+                    "flex items-center gap-2 px-3 py-2 text-left transition-colors hover:bg-black/5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-[#169b62]",
+                    isActive ? "text-black" : "text-black/55",
+                  )}
+                  href={pathname}
+                  key={languageLocale}
+                  locale={languageLocale}
+                  onClick={() => setIsOpen(false)}
+                  role="menuitem"
+                >
+                  <Flag />
+                  <span>{code}</span>
+                </Link>
+              );
+            },
+          )}
         </div>
       ) : null}
     </div>

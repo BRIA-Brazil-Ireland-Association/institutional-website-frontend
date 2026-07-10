@@ -1,6 +1,6 @@
 "use client";
 
-import { Link } from "@/i18n/navigation";
+import { Link, usePathname } from "@/i18n/navigation";
 import { cn } from "@/libs/utils";
 import { useEffect, useMemo, useState } from "react";
 import { BriaLogo } from "../ui/bria-logo";
@@ -18,8 +18,24 @@ type NavbarProps = {
 };
 
 export function Navbar({ menuItems = [] }: NavbarProps) {
+  const pathname = usePathname() || "/";
   const [isPinned, setIsPinned] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+
+  const isItemActive = (url: string) => {
+    if (!url || url === "#") {
+      return false;
+    }
+
+    const normalizedUrl =
+      url !== "/" && url.endsWith("/") ? url.slice(0, -1) : url;
+
+    if (normalizedUrl === "/") {
+      return pathname === "/";
+    }
+
+    return pathname === normalizedUrl || pathname.startsWith(`${normalizedUrl}/`);
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -76,17 +92,31 @@ export function Navbar({ menuItems = [] }: NavbarProps) {
 
           <div className="hidden items-center gap-7 lg:flex">
             {hasMenuItems ? (
-              <ul className="flex items-center text-sm font-medium">
-                {translatedMenuItems.map((item) => (
-                  <li className="flex items-center" key={item.id}>
-                    <Link
-                      className="px-5 py-3 whitespace-nowrap transition-colors hover:text-[#169b62] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#169b62]"
-                      href={item.url}
-                    >
-                      {item.label}
-                    </Link>
-                  </li>
-                ))}
+              <ul className="flex items-center text-[15px] font-semibold text-[#1a1a1a]">
+                {translatedMenuItems.map((item) => {
+                  const isActive = isItemActive(item.url);
+
+                  return (
+                    <li className="flex items-center" key={item.id}>
+                      <Link
+                        aria-current={isActive ? "page" : undefined}
+                        className={cn(
+                          "relative px-5 py-3 whitespace-nowrap transition-colors hover:text-[#169b62] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#169b62]",
+                          isActive && "text-[#169b62]",
+                        )}
+                        href={item.url}
+                      >
+                        {item.label}
+                        {isActive ? (
+                          <span
+                            aria-hidden="true"
+                            className="absolute inset-x-5 -bottom-1 h-0.5 rounded-full bg-[#169b62]"
+                          />
+                        ) : null}
+                      </Link>
+                    </li>
+                  );
+                })}
               </ul>
             ) : null}
 
@@ -115,18 +145,26 @@ export function Navbar({ menuItems = [] }: NavbarProps) {
 
         {isOpen && hasMenuItems ? (
           <div className="border-t border-black/10 bg-white px-4 py-3 shadow-[0_12px_24px_rgba(0,0,0,0.12)] lg:hidden">
-            <ul className="mx-auto flex max-w-7xl flex-col divide-y divide-black/10 text-base font-medium">
-              {translatedMenuItems.map((item) => (
-                <li key={item.id}>
-                  <Link
-                    className="block py-4 transition-colors hover:text-[#169b62] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#169b62]"
-                    href={item.url}
-                    onClick={() => setIsOpen(false)}
-                  >
-                    {item.label}
-                  </Link>
-                </li>
-              ))}
+            <ul className="mx-auto flex max-w-7xl flex-col divide-y divide-black/10 text-base font-semibold text-[#1a1a1a]">
+              {translatedMenuItems.map((item) => {
+                const isActive = isItemActive(item.url);
+
+                return (
+                  <li key={item.id}>
+                    <Link
+                      aria-current={isActive ? "page" : undefined}
+                      className={cn(
+                        "block py-4 transition-colors hover:text-[#169b62] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#169b62]",
+                        isActive && "text-[#169b62]",
+                      )}
+                      href={item.url}
+                      onClick={() => setIsOpen(false)}
+                    >
+                      {item.label}
+                    </Link>
+                  </li>
+                );
+              })}
             </ul>
           </div>
         ) : null}
