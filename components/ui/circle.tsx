@@ -20,25 +20,20 @@ export function Circle({
   return (
     <motion.div
       className={cn(
-        "z-10 size-(--size) min-h-(--size) max-w-(--size) min-w-(--size)",
+        "z-10 size-(--size) min-h-(--size) max-w-(--size) min-w-(--size) rounded-full",
         className,
       )}
-      style={{ "--size": size } as CSSProperties}
+      style={
+        {
+          "--size": size,
+          borderWidth: borderSize,
+          borderColor: color,
+        } as CSSProperties
+      }
       initial={shouldReduceMotion ? false : { opacity: 0, scale: 0.3 }}
       whileInView={{ opacity: 1, scale: 1 }}
       viewport={{ amount: 0.2, once: true }}
       transition={{ type: "spring", stiffness: 120, damping: 13, mass: 1 }}
-    >
-      <motion.div
-        className="size-full rounded-full"
-        style={{ borderWidth: borderSize, borderColor: color }}
-        animate={
-          shouldReduceMotion
-            ? undefined
-            : { y: [0, -16, 0], x: [0, 8, 0], scale: [1, 1.05, 1] }
-        }
-        transition={{ duration: 6, ease: "easeInOut", repeat: Infinity }}
-      />
-    </motion.div>
+    />
   );
 }

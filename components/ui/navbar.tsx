@@ -116,6 +116,10 @@ export function Navbar({ menuItems = [] }: NavbarProps) {
                           />
                         )}
                       </Link>
+                      <span
+                        aria-hidden="true"
+                        className="h-4 w-px bg-black/60"
+                      />
                     </li>
                   );
                 })}

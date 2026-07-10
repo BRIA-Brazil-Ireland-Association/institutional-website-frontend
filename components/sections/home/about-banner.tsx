@@ -11,13 +11,13 @@ export function AboutBanner() {
         <h2 className="text-center text-xl font-semibold tracking-widest text-[#104722] uppercase">
           About
         </h2>
-        <Circle
-          className="absolute -bottom-35 left-[20%] hidden lg:block"
-          size="250px"
-          borderSize="40px"
-          color="#fb8500"
-        />
       </SectionReveal>
+      <Circle
+        className="absolute -bottom-35 left-[20%] hidden lg:block"
+        size="250px"
+        borderSize="40px"
+        color="#fb8500"
+      />
     </div>
   );
 }
