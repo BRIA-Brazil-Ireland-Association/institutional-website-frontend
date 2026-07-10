@@ -9,11 +9,13 @@ export function Circle({
   borderSize = "25px",
   color = "black",
   className = "",
+  immediate = false,
 }: {
   size?: string;
   color?: string;
   borderSize?: string;
   className?: string;
+  immediate?: boolean;
 }) {
   const shouldReduceMotion = useReducedMotion();
 
@@ -31,8 +33,12 @@ export function Circle({
         } as CSSProperties
       }
       initial={shouldReduceMotion ? false : { opacity: 0, scale: 0.3 }}
-      whileInView={{ opacity: 1, scale: 1 }}
-      viewport={{ amount: 0.2, once: true }}
+      {...(immediate
+        ? { animate: { opacity: 1, scale: 1 } }
+        : {
+            whileInView: { opacity: 1, scale: 1 },
+            viewport: { amount: 0.2, once: true },
+          })}
       transition={{ type: "spring", stiffness: 120, damping: 13, mass: 1 }}
     />
   );
