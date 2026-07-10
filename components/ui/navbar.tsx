@@ -93,7 +93,7 @@ export function Navbar({ menuItems = [] }: NavbarProps) {
           </Link>
 
           <div className="hidden items-center gap-7 lg:flex">
-            {hasMenuItems ? (
+            {hasMenuItems && (
               <ul className="flex items-center text-[15px] font-semibold text-[#1a1a1a]">
                 {translatedMenuItems.map((item) => {
                   const isActive = isItemActive(item.url);
@@ -109,25 +109,25 @@ export function Navbar({ menuItems = [] }: NavbarProps) {
                         href={item.url}
                       >
                         {item.label}
-                        {isActive ? (
+                        {isActive && (
                           <span
                             aria-hidden="true"
                             className="absolute inset-x-5 -bottom-1 h-0.5 rounded-full bg-[#169b62]"
                           />
-                        ) : null}
+                        )}
                       </Link>
                     </li>
                   );
                 })}
               </ul>
-            ) : null}
+            )}
 
             <LanguageSelector />
           </div>
 
           <div className="flex items-center gap-4 lg:hidden">
             <LanguageSelector compact />
-            {hasMenuItems ? (
+            {hasMenuItems && (
               <button
                 aria-expanded={isOpen}
                 aria-label={
@@ -141,11 +141,11 @@ export function Navbar({ menuItems = [] }: NavbarProps) {
                 <span className="h-0.5 w-5 bg-current" />
                 <span className="h-0.5 w-5 bg-current" />
               </button>
-            ) : null}
+            )}
           </div>
         </div>
 
-        {isOpen && hasMenuItems ? (
+        {isOpen && hasMenuItems && (
           <div className="border-t border-black/10 bg-white px-4 py-3 shadow-[0_12px_24px_rgba(0,0,0,0.12)] lg:hidden">
             <ul className="mx-auto flex max-w-7xl flex-col divide-y divide-black/10 text-base font-semibold text-[#1a1a1a]">
               {translatedMenuItems.map((item) => {
@@ -169,7 +169,7 @@ export function Navbar({ menuItems = [] }: NavbarProps) {
               })}
             </ul>
           </div>
-        ) : null}
+        )}
       </nav>
     </div>
   );

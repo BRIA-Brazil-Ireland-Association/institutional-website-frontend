@@ -4,7 +4,6 @@ import { HeroBanner } from "@/components/sections/home/hero-banner";
 import { PartnersBanner } from "@/components/sections/home/partners-banner";
 import { TeamBanner } from "@/components/sections/home/team-banner";
 import { CmsPage } from "@/components/ui/cms-page";
-import { DefaultContainer } from "@/components/ui/default-container";
 import { Navbar } from "@/components/ui/navbar";
 
 type HomeProps = {
@@ -15,6 +14,7 @@ const homePagePopulate = new URLSearchParams([
   ["populate[menuItems]", "true"],
   ["populate[heroBanner][populate][image]", "true"],
   ["populate[heroBanner][populate][kpis][populate]", "*"],
+  ["populate[partnersBanner][populate][partners][populate][image]", "true"],
 ]);
 
 export default async function Home({ params }: HomeProps) {
@@ -26,14 +26,14 @@ export default async function Home({ params }: HomeProps) {
       cmsPath="home-page"
       populate={homePagePopulate}
       render={({ content }) => (
-        <DefaultContainer>
+        <>
           <Navbar menuItems={content?.menuItems ?? []} />
           <HeroBanner content={content?.heroBanner ?? {}} />
           <AboutBanner />
           <TeamBanner />
           <EventsBanner />
-          <PartnersBanner />
-        </DefaultContainer>
+          <PartnersBanner content={content?.partnersBanner ?? {}} />
+        </>
       )}
     />
   );

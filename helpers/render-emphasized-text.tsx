@@ -23,7 +23,7 @@ export const renderEmphasizedText = (
 
         return <Fragment key={segmentIndex}>{segment}</Fragment>;
       })}
-      {lineIndex < lines.length - 1 ? <br /> : null}
+      {lineIndex < lines.length - 1 && <br />}
     </Fragment>
   ));
 };

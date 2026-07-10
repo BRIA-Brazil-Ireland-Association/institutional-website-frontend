@@ -126,6 +126,12 @@ This project uses React 19 with React Compiler, which handles memoization automa
 - Only the default export may use `export default function`
 - Example: `const MyHelper = ({ prop }: IMyHelper) => { ... }` — never `function MyHelper(...) { ... }`
 
+## Conditional Rendering (JSX)
+
+- Never use a ternary without a real else branch: `condition ? <Component /> : null` is forbidden
+- Always use short-circuit rendering instead: `condition && <Component />`
+- Only use a ternary when both branches render something
+
 ## Package Manager
 
 - Always use `yarn` instead of `npm` for any Node-related commands (install, run, add, etc.)

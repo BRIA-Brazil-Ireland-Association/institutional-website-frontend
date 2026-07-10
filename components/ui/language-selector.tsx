@@ -85,7 +85,7 @@ export function LanguageSelector({ compact = false }: LanguageSelectorProps) {
         />
       </button>
 
-      {isOpen ? (
+      {isOpen && (
         <div
           className="absolute top-full right-0 z-50 mt-2 min-w-28 overflow-hidden rounded-sm border border-black/10 bg-white py-1 shadow-[0_10px_24px_rgba(0,0,0,0.16)]"
           role="menu"
@@ -114,7 +114,7 @@ export function LanguageSelector({ compact = false }: LanguageSelectorProps) {
             },
           )}
         </div>
-      ) : null}
+      )}
     </div>
   );
 }

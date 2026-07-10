@@ -4,11 +4,13 @@ import { getMediaUrl, getObject, getText } from "@/services/cms";
 import Image from "next/image";
 
 export function BriaLogo({
+  type = "default",
   className = "",
   width = 16,
   height = 16,
   priority = false,
 }: {
+  type?: "default" | "white";
   className?: string;
   width?: number;
   height?: number;
@@ -16,9 +18,11 @@ export function BriaLogo({
 }) {
   const { globalContent } = useGlobalContext();
   const siteName = getText(globalContent, "siteName") ?? "";
-  const logo = getObject(globalContent, "Logo");
+  const logo = getObject(
+    globalContent,
+    type === "default" ? "Logo" : "logoWhite",
+  );
   const logoUrl = getMediaUrl(logo);
-
   return (
     <>
       {logoUrl && (
