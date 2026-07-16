@@ -2,6 +2,7 @@
 
 import { Link, usePathname } from "@/i18n/navigation";
 import { cn } from "@/libs/utils";
+import { useGlobalContext } from "@/providers/global-context";
 import { useEffect, useMemo, useState } from "react";
 import { BriaLogo } from "../ui/bria-logo";
 import { LanguageSelector } from "./language-selector";
@@ -13,12 +14,13 @@ type MenuItem = {
   href?: string;
 };
 
-type NavbarProps = {
-  menuItems?: MenuItem[];
-};
+export function Navbar() {
+  const { globalContent } = useGlobalContext();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const menuItems: MenuItem[] = (globalContent?.menus ?? []) as MenuItem[];
 
-export function Navbar({ menuItems = [] }: NavbarProps) {
   const pathname = usePathname() || "/";
+  const isHome = pathname === "/";
   const [isPinned, setIsPinned] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
 
@@ -96,7 +98,8 @@ export function Navbar({ menuItems = [] }: NavbarProps) {
             {hasMenuItems && (
               <ul className="flex items-center text-[15px] font-semibold text-[#1a1a1a]">
                 {translatedMenuItems.map((item) => {
-                  const isActive = isItemActive(item.url);
+                  const itemUrl = isHome ? `#${item.url}` : `/${item.url}`;
+                  const isActive = isItemActive(itemUrl);
 
                   return (
                     <li className="flex items-center" key={item.id}>
@@ -106,7 +109,7 @@ export function Navbar({ menuItems = [] }: NavbarProps) {
                           "relative px-5 py-3 whitespace-nowrap transition-colors hover:text-[#169b62] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#169b62]",
                           isActive && "text-[#169b62]",
                         )}
-                        href={item.url}
+                        href={itemUrl}
                       >
                         {item.label}
                         {isActive && (

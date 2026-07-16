@@ -1,4 +1,5 @@
 import { Footer } from "@/components/ui/footer";
+import { Navbar } from "@/components/ui/navbar";
 import { routing } from "@/i18n/routing";
 import { AppProviders } from "@/providers/app-providers";
 import {
@@ -108,9 +109,10 @@ export default async function LocaleLayout({
 
   return (
     <html lang={locale} className={`${poppins.variable} h-full antialiased`}>
-      <body className="flex min-h-full flex-col">
+      <body className="flex min-h-full flex-col" suppressHydrationWarning>
         <NextIntlClientProvider>
           <AppProviders globalContent={globalContent}>
+            <Navbar />
             {children}
             <Footer />
           </AppProviders>

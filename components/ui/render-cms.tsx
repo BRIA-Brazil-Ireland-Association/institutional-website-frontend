@@ -1,6 +1,5 @@
 import { CmsData, CmsPopulate, getCMSContent } from "@/services/cms";
 import { ReactNode, Suspense, use } from "react";
-import { Loading } from "./loading";
 
 type PageProps = {
   locale: string;
@@ -29,7 +28,7 @@ const getPageContent = (
 export async function RenderCms({
   locale,
   cmsPath,
-  fallback = <Loading />,
+  fallback = <></>,
   populate = "*",
   revalidate = 60,
   render,
