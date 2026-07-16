@@ -38,8 +38,10 @@ export function HeroBanner({ locale }: { locale: string }) {
                   <Image
                     alt={imageAlt}
                     className="object-cover"
+                    fetchPriority="high"
                     fill
                     priority
+                    quality={65}
                     sizes="(min-width: 1024px) 50vw, 100vw"
                     src={imageUrl}
                   />

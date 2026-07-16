@@ -7,6 +7,7 @@ import {
   getMediaUrl,
   getObject,
   getSingleContent,
+  getStrapiCmsOrigin,
   getText,
   type CmsEntry,
 } from "@/services/cms";
@@ -122,6 +123,7 @@ export default async function LocaleLayout({
   return (
     <html lang={locale} className={`${poppins.variable} h-full antialiased`}>
       <body className="flex min-h-full flex-col" suppressHydrationWarning>
+        <link rel="preconnect" href={getStrapiCmsOrigin()} />
         <NextIntlClientProvider>
           <AppProviders globalContent={globalContent}>
             <Navbar />

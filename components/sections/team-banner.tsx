@@ -83,8 +83,13 @@ export function TeamBanner({
                               return null;
                             }
 
+                            const ctaAccessibleLabel = sectionTitle
+                              ? `${ctaLabel} - ${sectionTitle}`
+                              : ctaLabel;
+
                             return (
                               <Link
+                                aria-label={ctaAccessibleLabel}
                                 className="rounded-full bg-[#fb8500] px-5 py-2 text-sm font-semibold text-white transition-colors hover:bg-[#e07600]"
                                 href={ctaHref}
                                 key={cta?.id ?? ctaIndex}

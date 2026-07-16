@@ -87,8 +87,13 @@ export function PartnersBanner({
                             return null;
                           }
 
+                          const ctaAccessibleLabel = title
+                            ? `${ctaLabel} - ${title}`
+                            : ctaLabel;
+
                           return (
                             <Link
+                              aria-label={ctaAccessibleLabel}
                               className="rounded-full bg-[#9c9c9c] px-5 py-2 text-sm font-semibold text-white transition-colors hover:bg-[#0b461b]"
                               href={ctaHref}
                               key={cta?.id ?? ctaIndex}

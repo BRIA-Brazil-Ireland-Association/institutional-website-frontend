@@ -14,6 +14,7 @@ const isLocalStrapi =
 const nextConfig: NextConfig = {
   images: {
     dangerouslyAllowLocalIP: isLocalStrapi,
+    qualities: [65, 75],
     remotePatterns: strapiUploadsPattern ? [strapiUploadsPattern] : [],
   },
   env: {

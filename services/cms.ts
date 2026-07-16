@@ -36,6 +36,10 @@ function getStrapiCmsUrl() {
   return strapiCmsUrl;
 }
 
+export function getStrapiCmsOrigin() {
+  return new URL(getStrapiCmsUrl()).origin;
+}
+
 function buildStrapiUrl({ path, searchParams }: CmsProxyParams) {
   const strapiUrl = new URL(getStrapiCmsUrl());
   const basePath = strapiUrl.pathname.replace(/\/$/, "");
