@@ -31,12 +31,24 @@ type LocaleLayoutProps = Readonly<{
   params: Promise<{ locale: string }>;
 }>;
 
+const globalPopulate = new URLSearchParams([
+  ["populate[Logo]", "true"],
+  ["populate[favicon]", "true"],
+  ["populate[logoWhite]", "true"],
+  ["populate[defaultSeo]", "true"],
+  ["populate[menus]", "true"],
+  ["populate[localizations]", "true"],
+  ["populate[footer][populate][navigationLinks]", "true"],
+  ["populate[footer][populate][informationLinks]", "true"],
+  ["populate[footer][populate][communityLinks]", "true"],
+]);
+
 const getGlobalContent = cache(async (locale: string) =>
   getSingleContent(
     await getCMSContent({
       locale,
       path: ["global"],
-      populate: "*",
+      populate: globalPopulate,
       revalidate: 300,
     }),
   ),

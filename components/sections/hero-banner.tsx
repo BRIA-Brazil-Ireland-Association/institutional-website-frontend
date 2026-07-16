@@ -19,7 +19,7 @@ export function HeroBanner({ locale }: { locale: string }) {
       locale={locale}
       populate={populate}
       cmsPath="hero"
-      fallback={<Skeleton className="min-h-20" />}
+      fallback={<Skeleton className="min-h-100" />}
       render={({ content }) => {
         const label = getText(content, "label");
         const title = getText(content, "title");

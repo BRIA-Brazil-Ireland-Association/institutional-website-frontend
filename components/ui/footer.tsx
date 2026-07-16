@@ -13,24 +13,16 @@ type FooterLink = {
   url: string;
 };
 
-const NAVIGATION_LINKS: FooterLink[] = [
-  { label: "Home", url: "/" },
-  { label: "About BRIA", url: "#about" },
-  { label: "Contact us", url: "#contact" },
-];
+const processFooterLinks = (links: unknown): FooterLink[] => {
+  if (!Array.isArray(links)) {
+    return [];
+  }
 
-const INFORMATION_LINKS: FooterLink[] = [
-  { label: "Who we are", url: "#about" },
-  { label: "What we do", url: "#about" },
-  { label: "Meet the team", url: "#team" },
-  { label: "Partners", url: "#partners" },
-];
-
-const COMMUNITY_LINKS: FooterLink[] = [
-  { label: "Events", url: "#events" },
-  { label: "Gallery", url: "#gallery" },
-  { label: "News", url: "#news" },
-];
+  return links.map((link) => ({
+    label: getText(link, "label") ?? "",
+    url: getText(link, "href", "url") ?? "",
+  }));
+};
 
 const FooterLinkGroup = ({
   title,
@@ -68,6 +60,9 @@ export function Footer() {
   const communityTitle = getText(footerContent, "communityTitle");
   const contactTitle = getText(footerContent, "contactTitle");
   const socialMediaTitle = getText(footerContent, "socialMediaTitle");
+  const navigationLinks = processFooterLinks(footerContent?.navigationLinks);
+  const informationLinks = processFooterLinks(footerContent?.informationLinks);
+  const communityLinks = processFooterLinks(footerContent?.communityLinks);
   const siteName = getText(globalContent, "siteName");
   const contactEmail = getText(globalContent, "contactEmail");
   const instagramUrl = getText(globalContent, "instagramUrl");
@@ -78,10 +73,8 @@ export function Footer() {
     <footer id="contact" className="scroll-mt-20 bg-black text-white">
       <div className="mx-auto w-full max-w-7xl px-4 pt-6 sm:px-6 md:pt-14 lg:px-8">
         <div className="grid grid-cols-1 gap-x-8 gap-y-12 pb-14 text-center sm:grid-cols-2 md:text-left lg:grid-cols-3">
-          <FooterLinkGroup links={NAVIGATION_LINKS} title={navigationTitle} />
-
-          <FooterLinkGroup links={INFORMATION_LINKS} title={informationTitle} />
-
+          <FooterLinkGroup links={navigationLinks} title={navigationTitle} />
+          <FooterLinkGroup links={informationLinks} title={informationTitle} />
           <div>
             {contactTitle && (
               <h3 className="text-[15px] font-semibold text-white">
@@ -134,7 +127,7 @@ export function Footer() {
             </div>
           </div>
 
-          <FooterLinkGroup links={COMMUNITY_LINKS} title={communityTitle} />
+          <FooterLinkGroup links={communityLinks} title={communityTitle} />
 
           <div className="flex items-center justify-center md:justify-start">
             <BriaLogo

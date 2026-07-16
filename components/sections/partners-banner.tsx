@@ -22,7 +22,7 @@ export function PartnersBanner({
       locale={locale}
       populate={populate}
       cmsPath="partner"
-      fallback={<Skeleton className="min-h-20" />}
+      fallback={<Skeleton className="min-h-100" />}
       render={({ content }) => {
         const title = getText(content, "title");
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
