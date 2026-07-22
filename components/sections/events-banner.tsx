@@ -3,10 +3,25 @@ import { Circle } from "@/components/ui/circle";
 import { RenderCms } from "@/components/ui/render-cms";
 import { renderEmphasizedText } from "@/helpers/render-emphasized-text";
 import { Link } from "@/i18n/navigation";
+import { cn } from "@/libs/utils";
 import { getMediaUrl, getObject, getText } from "@/services/cms";
 import Image from "next/image";
 import { SectionReveal } from "../ui/section-reveal";
 import Skeleton from "../ui/skeleton";
+
+const parseEventDate = (dateText: string | undefined) => {
+  if (!dateText) {
+    return undefined;
+  }
+
+  const [year, month, day] = dateText.split("-").map(Number);
+
+  if (!year || !month || !day) {
+    return undefined;
+  }
+
+  return new Date(Date.UTC(year, month - 1, day));
+};
 
 const formatEventDate = (dateText: string | undefined, locale: string) => {
   if (!dateText) {
@@ -28,6 +43,46 @@ const formatEventDate = (dateText: string | undefined, locale: string) => {
     .replace(/\./g, "");
 
   return { day: String(day), month: monthLabel };
+};
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const processEvents = (eventItems: any[], compact: boolean) => {
+  const now = new Date();
+  const todayUtc = Date.UTC(
+    now.getUTCFullYear(),
+    now.getUTCMonth(),
+    now.getUTCDate(),
+  );
+
+  const withDates = eventItems.map((event) => ({
+    event,
+    date: parseEventDate(getText(event, "date")),
+  }));
+
+  const sorted = [...withDates].sort((a, b) => {
+    if (!a.date && !b.date) {
+      return 0;
+    }
+
+    if (!a.date) {
+      return 1;
+    }
+
+    if (!b.date) {
+      return -1;
+    }
+
+    return a.date.getTime() - b.date.getTime();
+  });
+
+  const filtered = compact
+    ? sorted.filter(({ date }) => !date || date.getTime() >= todayUtc)
+    : sorted;
+
+  return filtered.map(({ event, date }) => ({
+    event,
+    isPast: Boolean(date && date.getTime() < todayUtc),
+  }));
 };
 
 const populate = new URLSearchParams([
@@ -77,6 +132,7 @@ export function EventsBanner({
               render={({ content: events }) => {
                 // eslint-disable-next-line @typescript-eslint/no-explicit-any
                 const eventItems: any[] = Array.isArray(events) ? events : [];
+                const processedEvents = processEvents(eventItems, compact);
 
                 return (
                   <SectionReveal>
@@ -114,61 +170,68 @@ export function EventsBanner({
                           </p>
                         )}
 
-                        {eventItems.length > 0 && (
+                        {processedEvents.length > 0 && (
                           <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2">
-                            {eventItems.map((event, eventIndex) => {
-                              const eventTitle = getText(event, "title");
-                              const eventDescription = getText(
-                                event,
-                                "description",
-                              );
-                              const eventUrl = getText(event, "url");
-                              const eventDate = formatEventDate(
-                                getText(event, "date"),
-                                locale,
-                              );
+                            {processedEvents.map(
+                              ({ event, isPast }, eventIndex) => {
+                                const eventTitle = getText(event, "title");
+                                const eventDescription = getText(
+                                  event,
+                                  "description",
+                                );
+                                const eventUrl = getText(event, "url");
+                                const eventDate = formatEventDate(
+                                  getText(event, "date"),
+                                  locale,
+                                );
 
-                              return (
-                                <Link
-                                  className="relative flex overflow-hidden rounded-md bg-white shadow-[0_10px_24px_rgba(0,0,0,0.08)] transition-shadow hover:shadow-[0_14px_28px_rgba(0,0,0,0.16)]"
-                                  href={eventUrl ?? "#"}
-                                  key={
-                                    event?.documentId ?? event?.id ?? eventIndex
-                                  }
-                                >
-                                  {eventDate && (
-                                    <span className="flex w-16 shrink-0 flex-col items-center justify-center bg-[#104722] px-2 py-3 text-white">
-                                      <span className="text-3xl leading-none font-bold">
-                                        {eventDate.day}
-                                      </span>
-                                      <span className="mt-1 text-sm leading-none font-semibold uppercase">
-                                        {eventDate.month}
-                                      </span>
-                                    </span>
-                                  )}
-
-                                  <span className="flex-1 p-3 pb-5">
-                                    {eventTitle && (
-                                      <span className="block border-b border-[#1a1a1a]/60 pb-1 text-sm font-bold text-[#1a1a1a]">
-                                        {eventTitle}
-                                      </span>
+                                return (
+                                  <Link
+                                    className={cn(
+                                      "relative flex overflow-hidden rounded-md bg-white shadow-[0_10px_24px_rgba(0,0,0,0.08)] transition-shadow hover:shadow-[0_14px_28px_rgba(0,0,0,0.16)]",
+                                      isPast && "opacity-50 grayscale",
                                     )}
-                                    {eventDescription && (
-                                      <span className="mt-1.5 block text-xs leading-snug text-[#3d3d3d]">
-                                        {eventDescription}
-                                      </span>
-                                    )}
-                                  </span>
-
-                                  <span
-                                    aria-hidden="true"
-                                    className="absolute right-0 bottom-0 flex h-5 w-6 items-center justify-center bg-[#104722] text-white"
+                                    href={eventUrl ?? "#"}
+                                    key={
+                                      event?.documentId ??
+                                      event?.id ??
+                                      eventIndex
+                                    }
                                   >
-                                    <ChevronRightIcon className="size-3" />
-                                  </span>
-                                </Link>
-                              );
-                            })}
+                                    {eventDate && (
+                                      <span className="flex w-16 shrink-0 flex-col items-center justify-center bg-[#104722] px-2 py-3 text-white">
+                                        <span className="text-3xl leading-none font-bold">
+                                          {eventDate.day}
+                                        </span>
+                                        <span className="mt-1 text-sm leading-none font-semibold uppercase">
+                                          {eventDate.month}
+                                        </span>
+                                      </span>
+                                    )}
+
+                                    <span className="flex-1 p-3 pb-5">
+                                      {eventTitle && (
+                                        <span className="block border-b border-[#1a1a1a]/60 pb-1 text-sm font-bold text-[#1a1a1a]">
+                                          {eventTitle}
+                                        </span>
+                                      )}
+                                      {eventDescription && (
+                                        <span className="mt-1.5 block text-xs leading-snug text-[#3d3d3d]">
+                                          {eventDescription}
+                                        </span>
+                                      )}
+                                    </span>
+
+                                    <span
+                                      aria-hidden="true"
+                                      className="absolute right-0 bottom-0 flex h-5 w-6 items-center justify-center bg-[#104722] text-white"
+                                    >
+                                      <ChevronRightIcon className="size-3" />
+                                    </span>
+                                  </Link>
+                                );
+                              },
+                            )}
                           </div>
                         )}
 

@@ -53,7 +53,7 @@ export function PartnersBanner({
 
                       return (
                         <a
-                          className="flex h-44 items-center justify-center bg-[#f1f1f1] transition-opacity hover:opacity-80 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#169b62]"
+                          className="flex h-44 items-center justify-center rounded-xl border border-gray-100 shadow-xl transition-opacity hover:opacity-80 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#169b62]"
                           href={partnerUrl ?? "#"}
                           key={partner?.id ?? partnerIndex}
                           rel="noopener noreferrer"
