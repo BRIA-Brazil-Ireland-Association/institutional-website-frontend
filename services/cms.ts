@@ -26,6 +26,8 @@ export type CmsEntry = Record<string, unknown> & {
 
 export type CmsData = CmsEntry | CmsEntry[] | null;
 
+export const CMS_CACHE_TAG = "cms-content";
+
 function getStrapiCmsUrl() {
   const strapiCmsUrl = process.env.NEXT_PUBLIC_STRAPI_CMS_URL?.trim();
 
@@ -188,7 +190,7 @@ export async function proxyCmsGet({
   return fetch(strapiUrl, {
     ...(revalidate === undefined
       ? { cache: "no-store" as const }
-      : { next: { revalidate } }),
+      : { next: { revalidate: false as const, tags: [CMS_CACHE_TAG] } }),
     headers,
     method: "GET",
   });
