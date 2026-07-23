@@ -190,7 +190,10 @@ export async function proxyCmsGet({
   return fetch(strapiUrl, {
     ...(revalidate === undefined
       ? { cache: "no-store" as const }
-      : { next: { revalidate: false as const, tags: [CMS_CACHE_TAG] } }),
+      : {
+          cache: "force-cache" as const,
+          next: { revalidate: false as const, tags: [CMS_CACHE_TAG] },
+        }),
     headers,
     method: "GET",
   });
