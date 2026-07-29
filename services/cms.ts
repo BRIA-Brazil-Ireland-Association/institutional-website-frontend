@@ -172,11 +172,7 @@ export function getMediaUrl(media: CmsEntry | null | undefined) {
   return new URL(url, getStrapiCmsUrl()).toString();
 }
 
-export async function proxyCmsGet({
-  path,
-  revalidate,
-  searchParams,
-}: CmsProxyParams) {
+export async function proxyCmsGet({ path, searchParams }: CmsProxyParams) {
   const strapiUrl = buildStrapiUrl({ path, searchParams });
   const headers = new Headers({
     Accept: "application/json",
@@ -188,12 +184,8 @@ export async function proxyCmsGet({
   }
 
   return fetch(strapiUrl, {
-    ...(revalidate === undefined
-      ? { cache: "no-store" as const }
-      : {
-          cache: "force-cache" as const,
-          next: { revalidate: false as const, tags: [CMS_CACHE_TAG] },
-        }),
+    cache: "force-cache" as const,
+    next: { revalidate: false as const, tags: [CMS_CACHE_TAG] },
     headers,
     method: "GET",
   });
