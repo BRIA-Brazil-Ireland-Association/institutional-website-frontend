@@ -13,6 +13,7 @@ import {
 } from "@/services/cms";
 import type { Metadata } from "next";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
+import { setRequestLocale } from "next-intl/server";
 import { Poppins } from "next/font/google";
 import { notFound } from "next/navigation";
 import { cache } from "react";
@@ -24,8 +25,6 @@ const poppins = Poppins({
   variable: "--font-poppins",
   weight: ["400", "500", "600", "700", "800"],
 });
-
-export const dynamic = "force-dynamic";
 
 type LocaleLayoutProps = Readonly<{
   children: React.ReactNode;
@@ -50,7 +49,6 @@ const getGlobalContent = cache(async (locale: string) =>
       locale,
       path: ["global"],
       populate: globalPopulate,
-      revalidate: 300,
     }),
   ),
 );
@@ -96,6 +94,10 @@ function buildMetadataFromGlobal(global: CmsEntry | null): Metadata {
   };
 }
 
+export function generateStaticParams() {
+  return routing.locales.map((locale) => ({ locale }));
+}
+
 export async function generateMetadata({
   params,
 }: Pick<LocaleLayoutProps, "params">): Promise<Metadata> {
@@ -104,6 +106,8 @@ export async function generateMetadata({
   if (!hasLocale(routing.locales, locale)) {
     return {};
   }
+
+  setRequestLocale(locale);
 
   return buildMetadataFromGlobal(await getGlobalContent(locale));
 }
@@ -117,6 +121,8 @@ export default async function LocaleLayout({
   if (!hasLocale(routing.locales, locale)) {
     notFound();
   }
+
+  setRequestLocale(locale);
 
   const globalContent = await getGlobalContent(locale);
 

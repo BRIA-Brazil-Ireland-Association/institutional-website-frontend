@@ -2,7 +2,6 @@ import { cache } from "react";
 
 type CmsProxyParams = {
   path: string[];
-  revalidate?: number;
   searchParams: URLSearchParams;
 };
 
@@ -12,7 +11,6 @@ type GetCMSContentParams = {
   locale?: string;
   path: string[];
   populate?: CmsPopulate;
-  revalidate?: number;
   searchParams?: URLSearchParams;
 };
 
@@ -196,23 +194,23 @@ const fetchCMSContent = cache(
     pathKey: string,
     searchParamsKey: string,
     locale?: string,
-    revalidate?: number,
   ): Promise<CmsData> => {
-    try {
-      const response = await proxyCmsGet({
-        path: JSON.parse(pathKey) as string[],
-        revalidate,
-        searchParams: new URLSearchParams(searchParamsKey),
-      });
+    const response = await proxyCmsGet({
+      path: JSON.parse(pathKey) as string[],
+      searchParams: new URLSearchParams(searchParamsKey),
+    });
 
-      if (!response.ok) {
-        return null;
-      }
-
-      return localizeCmsData(unwrapCmsData(await response.json()), locale);
-    } catch {
+    if (response.status === 404) {
       return null;
     }
+
+    if (!response.ok) {
+      throw new Error(
+        `CMS request to "${pathKey}" failed with status ${response.status}.`,
+      );
+    }
+
+    return localizeCmsData(unwrapCmsData(await response.json()), locale);
   },
 );
 
@@ -220,7 +218,6 @@ export async function getCMSContent({
   locale,
   path,
   populate,
-  revalidate,
   searchParams = new URLSearchParams(),
 }: GetCMSContentParams): Promise<CmsData> {
   const cmsSearchParams = new URLSearchParams(searchParams);
@@ -243,6 +240,5 @@ export async function getCMSContent({
     JSON.stringify(path),
     cmsSearchParams.toString(),
     locale,
-    revalidate,
   );
 }
