@@ -1,3 +1,4 @@
+import { renderEmphasizedText } from "@/helpers/render-emphasized-text";
 import { Link } from "@/i18n/navigation";
 import { getMediaUrl, getObject, getText } from "@/services/cms";
 import Image from "next/image";
@@ -24,10 +25,9 @@ export function PartnersBanner({
       cmsPath="partner"
       fallback={<Skeleton className="min-h-100" />}
       render={({ content }) => {
-        console.log(content);
         const title = getText(content, "title");
-
         const label = getText(content, "label");
+        const description = getText(content, "description");
 
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         const partners: any[] = Array.isArray(content?.partners)
@@ -48,9 +48,18 @@ export function PartnersBanner({
                 )}
 
                 {label && (
-                  <h2 className="mt-1 text-4xl font-medium text-[#1a1a1a] sm:text-5xl">
+                  <h2 className="mt-1 text-center text-4xl font-medium text-[#1a1a1a] sm:text-5xl">
                     {label}
                   </h2>
+                )}
+
+                {description && (
+                  <p className="mt-5 text-center text-base leading-relaxed text-[#3d3d3d] sm:text-lg">
+                    {renderEmphasizedText(
+                      description,
+                      "font-semibold text-[#1a1a1a]",
+                    )}
+                  </p>
                 )}
 
                 {partners.length > 0 && (
