@@ -1,5 +1,5 @@
-import type { NextRequest } from "next/server";
 import { proxyCmsGet } from "@/services/cms";
+import type { NextRequest } from "next/server";
 
 export const dynamic = "force-dynamic";
 

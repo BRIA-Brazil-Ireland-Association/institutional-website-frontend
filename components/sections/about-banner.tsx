@@ -2,6 +2,7 @@ import { Circle } from "@/components/ui/circle";
 import { RenderCms } from "@/components/ui/render-cms";
 import { renderEmphasizedText } from "@/helpers/render-emphasized-text";
 import { Link } from "@/i18n/navigation";
+import { cn } from "@/libs/utils";
 import { getMediaUrl, getObject, getText } from "@/services/cms";
 import Image from "next/image";
 import { SectionReveal } from "../ui/section-reveal";
@@ -15,15 +16,21 @@ const populate = new URLSearchParams([
 export function AboutBanner({
   locale,
   compact,
+  cmsPath = "about",
+  overPopulate = null,
+  className = "",
 }: {
+  overPopulate?: null | URLSearchParams;
   compact: boolean;
   locale: string;
+  cmsPath?: string;
+  className?: string;
 }) {
   return (
     <RenderCms
       locale={locale}
-      populate={populate}
-      cmsPath="about"
+      populate={overPopulate ?? populate}
+      cmsPath={cmsPath}
       fallback={<Skeleton className="min-h-100" />}
       render={({ content }) => {
         const title = getText(content, "title");
@@ -48,7 +55,12 @@ export function AboutBanner({
               className="absolute inset-y-0 left-0 hidden w-1/4 bg-[#0b461b] lg:block"
             />
             <SectionReveal>
-              <div className="relative mx-auto grid w-full max-w-7xl grid-cols-1 items-center gap-10 px-4 py-10 sm:px-6 lg:grid-cols-2 lg:gap-16 lg:px-8">
+              <div
+                className={cn(
+                  "relative mx-auto grid w-full max-w-7xl grid-cols-1 items-center gap-10 px-4 py-10 sm:px-6 lg:grid-cols-2 lg:gap-16 lg:px-8",
+                  className,
+                )}
+              >
                 {imageUrl && (
                   <Image
                     alt={imageAlt}
