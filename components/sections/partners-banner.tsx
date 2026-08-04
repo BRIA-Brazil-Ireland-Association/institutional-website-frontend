@@ -24,7 +24,11 @@ export function PartnersBanner({
       cmsPath="partner"
       fallback={<Skeleton className="min-h-100" />}
       render={({ content }) => {
+        console.log(content);
         const title = getText(content, "title");
+
+        const label = getText(content, "label");
+
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         const partners: any[] = Array.isArray(content?.partners)
           ? content.partners
@@ -40,6 +44,12 @@ export function PartnersBanner({
                 {title && (
                   <h2 className="text-center text-xl font-semibold tracking-widest text-[#104722] uppercase">
                     {title}
+                  </h2>
+                )}
+
+                {label && (
+                  <h2 className="mt-1 text-4xl font-medium text-[#1a1a1a] sm:text-5xl">
+                    {label}
                   </h2>
                 )}
 
