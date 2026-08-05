@@ -161,10 +161,10 @@ export function EventsBanner({
                           </h2>
                         )}
 
-                        {description && (
+                        {Boolean(description && !compact) && (
                           <p className="mt-5 text-base leading-relaxed text-[#3d3d3d] sm:text-lg">
                             {renderEmphasizedText(
-                              description,
+                              description!,
                               "font-semibold text-[#1a1a1a]",
                             )}
                           </p>

@@ -181,11 +181,15 @@ export async function proxyCmsGet({ path, searchParams }: CmsProxyParams) {
     headers.set("Authorization", `Bearer ${strapiToken}`);
   }
 
-  console.log(strapiUrl);
+  const isProduction = process.env.NODE_ENV === "production";
 
   return fetch(strapiUrl, {
-    cache: "force-cache" as const,
-    next: { revalidate: false as const, tags: [CMS_CACHE_TAG] },
+    ...(isProduction
+      ? {
+          cache: "force-cache" as const,
+          next: { revalidate: false as const, tags: [CMS_CACHE_TAG] },
+        }
+      : { cache: "no-store" as const }),
     headers,
     method: "GET",
   });

@@ -8,34 +8,34 @@ import Image from "next/image";
 import { SectionReveal } from "../ui/section-reveal";
 import Skeleton from "../ui/skeleton";
 
-const populate = new URLSearchParams([
-  ["populate[image]", "true"],
-  ["populate[cta][populate]", "*"],
-]);
-
 export function AboutBanner({
   locale,
   compact,
-  cmsPath = "about",
-  overPopulate = null,
-  className = "",
 }: {
-  overPopulate?: null | URLSearchParams;
   compact: boolean;
   locale: string;
-  cmsPath?: string;
-  className?: string;
 }) {
   return (
     <RenderCms
       locale={locale}
-      populate={overPopulate ?? populate}
-      cmsPath={cmsPath}
+      populate={
+        new URLSearchParams(
+          compact
+            ? [
+                ["populate[image]", "true"],
+                ["populate[cta][populate]", "*"],
+              ]
+            : [["populate[image]", "true"]],
+        )
+      }
+      cmsPath={compact ? "about" : "about-page"}
       fallback={<Skeleton className="min-h-100" />}
       render={({ content }) => {
+        const manifestTitle = getText(content, "manifestTitle");
         const title = getText(content, "title");
         const sectionTitle = getText(content, "sectionTitle");
         const description = getText(content, "description");
+        const manifestDescription = getText(content, "manifestDescription");
         const image = getObject(content, "image");
         const imageUrl = getMediaUrl(image);
         const imageAlt = getText(image, "alternativeText") ?? "";
@@ -45,6 +45,7 @@ export function AboutBanner({
           typeof image?.height === "number" ? image.height : 698;
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         const ctas: any[] = Array.isArray(content?.cta) ? content.cta : [];
+
         return (
           <div
             id="about"
@@ -57,22 +58,30 @@ export function AboutBanner({
             <SectionReveal>
               <div
                 className={cn(
-                  "relative mx-auto grid w-full max-w-7xl grid-cols-1 items-center gap-10 px-4 py-10 sm:px-6 lg:grid-cols-2 lg:gap-16 lg:px-8",
-                  className,
+                  "relative mx-auto grid w-full max-w-7xl grid-cols-1 items-center gap-10 px-4 py-10 sm:px-6 lg:gap-16 lg:px-8",
+                  {
+                    "lg:grid-cols-2": compact,
+                    "items-start": !compact,
+                  },
                 )}
               >
-                {imageUrl && (
+                {Boolean(imageUrl && compact) && (
                   <Image
                     alt={imageAlt}
                     className="order-1 h-auto w-full rounded-lg object-cover shadow-[0_18px_40px_rgba(0,0,0,0.18)] md:order-0"
                     height={imageHeight}
                     sizes="(min-width: 1024px) 50vw, 100vw"
-                    src={imageUrl}
+                    src={imageUrl!}
                     width={imageWidth}
                   />
                 )}
 
-                <div className="order-0 max-w-xl md:order-1">
+                <div
+                  className={cn("order-0 md:order-1", {
+                    "max-w-xl": compact,
+                    "z-1 rounded-xl bg-white p-4": !compact,
+                  })}
+                >
                   {title && (
                     <p className="text-lg font-bold tracking-wide text-[#1e3a8a] uppercase">
                       {title}
@@ -92,6 +101,32 @@ export function AboutBanner({
                         "font-semibold text-[#1a1a1a]",
                       )}
                     </p>
+                  )}
+
+                  {manifestTitle && (
+                    <h2 className="mt-5 text-4xl font-medium text-[#1a1a1a] sm:text-5xl">
+                      {manifestTitle}
+                    </h2>
+                  )}
+
+                  {manifestDescription && (
+                    <p className="mt-5 text-base leading-relaxed text-[#3d3d3d] sm:text-lg">
+                      {renderEmphasizedText(
+                        manifestDescription,
+                        "font-semibold text-[#1a1a1a]",
+                      )}
+                    </p>
+                  )}
+
+                  {Boolean(imageUrl && !compact) && (
+                    <Image
+                      alt={imageAlt}
+                      className="order-1 mt-4 h-auto w-full rounded-lg object-cover shadow-[0_18px_40px_rgba(0,0,0,0.18)] md:order-0"
+                      height={imageHeight}
+                      sizes="(min-width: 1024px) 50vw, 100vw"
+                      src={imageUrl!}
+                      width={imageWidth}
+                    />
                   )}
 
                   {compact && (

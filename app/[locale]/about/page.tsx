@@ -4,13 +4,5 @@ import { AboutBanner } from "@/components/sections/about-banner";
 export default async function About({ params }: any) {
   const { locale } = await params;
 
-  return (
-    <AboutBanner
-      locale={locale}
-      compact={false}
-      cmsPath="about-page"
-      className="items-start"
-      overPopulate={new URLSearchParams([["populate[image]", "true"]])}
-    />
-  );
+  return <AboutBanner locale={locale} compact={false} />;
 }

@@ -6,11 +6,6 @@ import { RenderCms } from "../ui/render-cms";
 import { SectionReveal } from "../ui/section-reveal";
 import Skeleton from "../ui/skeleton";
 
-const populate = new URLSearchParams([
-  ["populate[cta]", "true"],
-  ["populate[image]", "true"],
-]);
-
 export function TeamBanner({
   locale,
   compact,
@@ -21,8 +16,17 @@ export function TeamBanner({
   return (
     <RenderCms
       locale={locale}
-      populate={populate}
-      cmsPath="team"
+      populate={
+        new URLSearchParams(
+          compact
+            ? [
+                ["populate[cta]", "true"],
+                ["populate[image]", "true"],
+              ]
+            : [["populate[image]", "true"]],
+        )
+      }
+      cmsPath={compact ? "team" : "team-page"}
       fallback={<Skeleton className="min-h-100" />}
       render={({ content }) => {
         const title = getText(content, "title");

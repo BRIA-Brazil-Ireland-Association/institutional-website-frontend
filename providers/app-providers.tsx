@@ -1,5 +1,6 @@
 "use client";
 
+import { ScrollToTop } from "@/components/ui/scroll-to-top";
 import { GlobalContextProvider } from "@/providers/global-context";
 import type { CmsEntry } from "@/services/cms";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
@@ -26,6 +27,7 @@ export function AppProviders({ children, globalContent }: AppProvidersProps) {
   return (
     <QueryClientProvider client={queryClient}>
       <GlobalContextProvider globalContent={globalContent}>
+        <ScrollToTop />
         {children}
       </GlobalContextProvider>
     </QueryClientProvider>
