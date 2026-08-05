@@ -7,6 +7,7 @@ import { getMediaUrl, getObject, getText } from "@/services/cms";
 import Image from "next/image";
 import { SectionReveal } from "../ui/section-reveal";
 import Skeleton from "../ui/skeleton";
+import GalleryBanner from "./gallery-banner";
 
 export function AboutBanner({
   locale,
@@ -160,6 +161,8 @@ export function AboutBanner({
                       )}
                     </>
                   )}
+
+                  {!compact && <GalleryBanner compact={true} locale={locale} />}
                 </div>
               </div>
             </SectionReveal>
