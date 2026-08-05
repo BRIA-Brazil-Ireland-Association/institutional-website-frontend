@@ -53,7 +53,7 @@ export default function GalleryBanner({
                   {!compact && (
                     <div
                       aria-hidden="true"
-                      className="absolute inset-y-0 left-0 hidden w-1/4 bg-[#0b461b] lg:block"
+                      className="absolute inset-y-0 right-0 hidden w-1/4 bg-[#0b461b] lg:block"
                     />
                   )}
                   <SectionReveal>
