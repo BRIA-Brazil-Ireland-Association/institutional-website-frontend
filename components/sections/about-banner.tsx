@@ -96,7 +96,7 @@ export function AboutBanner({
                   )}
 
                   {description && (
-                    <p className="mt-5 text-base leading-relaxed text-[#3d3d3d] sm:text-lg">
+                    <p className="mt-5 text-base leading-relaxed text-[#3d3d3d]">
                       {renderEmphasizedText(
                         description,
                         "font-semibold text-[#1a1a1a]",
@@ -111,7 +111,7 @@ export function AboutBanner({
                   )}
 
                   {manifestDescription && (
-                    <p className="mt-5 text-base leading-relaxed text-[#3d3d3d] sm:text-lg">
+                    <p className="mt-5 text-base leading-relaxed text-[#3d3d3d]">
                       {renderEmphasizedText(
                         manifestDescription,
                         "font-semibold text-[#1a1a1a]",

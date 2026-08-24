@@ -79,10 +79,12 @@ const processEvents = (eventItems: any[], compact: boolean) => {
     ? sorted.filter(({ date }) => !date || date.getTime() >= todayUtc)
     : sorted;
 
-  return filtered.map(({ event, date }) => ({
+  const result = filtered.map(({ event, date }) => ({
     event,
     isPast: Boolean(date && date.getTime() < todayUtc),
   }));
+
+  return compact ? result.slice(0, 3) : result;
 };
 
 const populate = new URLSearchParams([
@@ -171,7 +173,7 @@ export function EventsBanner({
                         )}
 
                         {processedEvents.length > 0 && (
-                          <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2">
+                          <div className="mt-8 grid grid-cols-1 gap-4">
                             {processedEvents.map(
                               ({ event, isPast }, eventIndex) => {
                                 const eventTitle = getText(event, "title");
