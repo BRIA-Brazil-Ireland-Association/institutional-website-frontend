@@ -44,10 +44,8 @@ export const TeamLeadershipGrid = ({
         <button
           aria-selected={activeArea === null}
           className={cn(
-            "rounded-full px-4 py-2 text-sm font-semibold transition-colors",
-            activeArea === null
-              ? "border border-gray-200 bg-white text-[#1a1a1a] shadow-[0_2px_8px_rgba(0,0,0,0.08)]"
-              : "border border-transparent text-[#6b6b6b] hover:text-[#1a1a1a]",
+            "cursor-pointer rounded-full border border-gray-200 bg-white px-4 py-2 text-sm font-semibold text-[#1a1a1a] shadow-lg",
+            { "shadow-none": activeArea !== null },
           )}
           onClick={() => setActiveArea(null)}
           role="tab"
@@ -60,10 +58,8 @@ export const TeamLeadershipGrid = ({
           <button
             aria-selected={activeArea === area}
             className={cn(
-              "rounded-full px-4 py-2 text-sm font-semibold transition-colors",
-              activeArea === area
-                ? "border border-gray-200 bg-white text-[#1a1a1a] shadow-[0_2px_8px_rgba(0,0,0,0.08)]"
-                : "border border-transparent text-[#6b6b6b] hover:text-[#1a1a1a]",
+              "cursor-pointer rounded-full border border-gray-200 bg-white px-4 py-2 text-sm font-semibold text-[#1a1a1a]",
+              { "shadow-lg": activeArea === area },
             )}
             key={area}
             onClick={() => setActiveArea(area)}
