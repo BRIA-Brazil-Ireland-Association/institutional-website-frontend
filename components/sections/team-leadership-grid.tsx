@@ -78,13 +78,13 @@ export const TeamLeadershipGrid = ({
       <div className="mt-8 flex flex-wrap justify-center gap-4 sm:gap-5">
         {visibleMembers.map((member) => (
           <div
-            className="group relative aspect-[3/4] w-[calc((100%-1rem)/2)] overflow-hidden rounded-2xl border border-gray-100 bg-[#eef0ef] shadow-[0_4px_16px_rgba(0,0,0,0.06)] transition-shadow hover:shadow-[0_8px_24px_rgba(0,0,0,0.12)] sm:w-[calc((100%-2.5rem)/3)] lg:w-[calc((100%-3.75rem)/4)]"
+            className="group relative aspect-[3/4] w-[calc((100%-1rem)/2)] overflow-hidden border border-gray-100 bg-[#eef0ef] shadow-[0_4px_16px_rgba(0,0,0,0.06)] transition-shadow hover:shadow-[0_8px_24px_rgba(0,0,0,0.12)] sm:w-[calc((100%-2.5rem)/4)] lg:w-[calc((100%-3.75rem)/6)]"
             key={member.id}
           >
             {member.avatarUrl ? (
               <Image
                 alt={member.avatarAlt}
-                className="rounded-2xl object-cover transition-transform duration-300 group-hover:scale-105"
+                className="object-cover transition-transform duration-300 group-hover:scale-105"
                 fill
                 sizes="(min-width: 1024px) 22vw, (min-width: 640px) 30vw, 45vw"
                 src={member.avatarUrl}
