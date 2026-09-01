@@ -73,31 +73,29 @@ export const TeamLeadershipGrid = ({
 
       <div className="mt-8 flex flex-wrap justify-center gap-4 sm:gap-5">
         {visibleMembers.map((member) => (
-          <div
-            className="group relative aspect-[3/4] w-[calc((100%-1rem)/2)] overflow-hidden border border-gray-100 bg-[#eef0ef] shadow-[0_4px_16px_rgba(0,0,0,0.06)] transition-shadow hover:shadow-[0_8px_24px_rgba(0,0,0,0.12)] sm:w-[calc((100%-2.5rem)/4)] lg:w-[calc((100%-3.75rem)/6)]"
-            key={member.id}
-          >
-            {member.avatarUrl ? (
-              <Image
-                alt={member.avatarAlt}
-                className="object-cover transition-transform duration-300 group-hover:scale-105"
-                fill
-                sizes="(min-width: 1024px) 22vw, (min-width: 640px) 30vw, 45vw"
-                src={member.avatarUrl}
-              />
-            ) : (
-              <div className="flex size-full items-center justify-center text-[#b5b8b7]">
-                <AvatarPlaceholderIcon className="size-16" />
-              </div>
-            )}
-
-            <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-white via-white/85 to-transparent px-3.5 pt-10 pb-3.5">
-              <p className="truncate text-sm font-bold text-[#1a1a1a] sm:text-base">
-                {member.name}
-              </p>
-              <p className="truncate text-xs text-[#6b6b6b] sm:text-sm">
-                {member.area}
-              </p>
+          <div className="w-52 flex-none pl-4 sm:w-64 md:w-72" key={member.id}>
+            <div className="relative aspect-square overflow-hidden rounded-2xl shadow-md">
+              {member.avatarUrl ? (
+                <Image
+                  alt={member.avatarAlt}
+                  className="object-cover"
+                  fill
+                  sizes="(min-width: 768px) 18rem, 13rem"
+                  src={member.avatarUrl}
+                />
+              ) : (
+                <div className="flex size-full items-center justify-center text-[#b5b8b7]">
+                  <AvatarPlaceholderIcon className="size-16" />
+                </div>
+              )}
+              {(member.name || member.area) && (
+                <div className="absolute inset-0 flex items-end bg-linear-to-t from-black/60 to-transparent p-4 transition-opacity duration-300">
+                  <span className="text-sm font-medium text-white">
+                    <h4>{member.name}</h4>
+                    {member.area}
+                  </span>
+                </div>
+              )}
             </div>
           </div>
         ))}
