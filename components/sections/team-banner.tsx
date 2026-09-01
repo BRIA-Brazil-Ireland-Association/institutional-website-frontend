@@ -160,14 +160,12 @@ export function TeamBanner({
             </SectionReveal>
 
             {!compact && leadershipMembers.length > 0 && (
-              <SectionReveal>
-                <div className="relative mx-auto w-full max-w-7xl px-4 pb-10 sm:px-6 lg:px-8">
-                  <TeamLeadershipGrid
-                    locale={locale}
-                    members={leadershipMembers}
-                  />
-                </div>
-              </SectionReveal>
+              <div className="relative mx-auto w-full max-w-7xl px-4 pb-10 sm:px-6 lg:px-8">
+                <TeamLeadershipGrid
+                  locale={locale}
+                  members={leadershipMembers}
+                />
+              </div>
             )}
           </div>
         );

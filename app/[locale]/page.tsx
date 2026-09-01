@@ -17,10 +17,10 @@ export default async function Home({ params }: any) {
       <AboutBanner locale={locale} compact={true} />
       <TeamBanner locale={locale} compact={true} />
       <EventsBanner locale={locale} compact={true} />
-      <NewsBanner locale={locale} />
       <GalleryBanner locale={locale} compact={false} />
       <PartnersBanner locale={locale} compact={true} />
       <ContactBanner locale={locale} compact={true} />
+      <NewsBanner locale={locale} />
     </>
   );
 }

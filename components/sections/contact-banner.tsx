@@ -94,7 +94,7 @@ export function ContactBanner({
                 className="absolute inset-y-0 right-0 hidden w-1/4 bg-[#fb8500] lg:block"
               />
               <SectionReveal>
-                <div className="mx-auto w-full max-w-5xl px-4 py-10 text-center sm:px-6 lg:px-8">
+                <div className="relative z-10 mx-auto w-full max-w-5xl px-4 py-10 text-center sm:px-6 lg:px-0">
                   {title && (
                     <p className="text-lg font-bold tracking-wide text-[#1e3a8a] uppercase">
                       {title}
@@ -159,40 +159,42 @@ export function ContactBanner({
             id="contact"
             className="relative scroll-mt-20 bg-white text-black"
           >
-            <SectionReveal>
-              <div className="mx-auto grid w-full max-w-7xl grid-cols-1 gap-10 px-4 py-10 sm:px-6 lg:grid-cols-2 lg:gap-16 lg:px-8">
-                <div>
-                  {title && (
-                    <p className="text-lg font-bold tracking-wide text-[#1e3a8a] uppercase">
-                      {title}
-                    </p>
-                  )}
+            <div
+              aria-hidden="true"
+              className="absolute inset-y-0 right-0 hidden w-1/4 bg-[#fb8500] lg:block"
+            />
+            <div className="mx-auto grid w-full max-w-7xl grid-cols-1 gap-10 px-4 py-10 sm:px-6 lg:grid-cols-2 lg:gap-16 lg:px-8">
+              <div>
+                {title && (
+                  <p className="text-lg font-bold tracking-wide text-[#1e3a8a] uppercase">
+                    {title}
+                  </p>
+                )}
 
-                  {sectionTitle && (
-                    <h2 className="mt-1 text-4xl font-medium text-[#1a1a1a] sm:text-5xl">
-                      {sectionTitle}
-                    </h2>
-                  )}
+                {sectionTitle && (
+                  <h2 className="mt-1 text-4xl font-medium text-[#1a1a1a] sm:text-5xl">
+                    {sectionTitle}
+                  </h2>
+                )}
 
-                  {description && (
-                    <p className="mt-5 text-base leading-relaxed text-[#3d3d3d] sm:text-lg">
-                      {renderEmphasizedText(
-                        description,
-                        "font-semibold text-[#1a1a1a]",
-                      )}
-                    </p>
-                  )}
+                {description && (
+                  <p className="mt-5 text-base leading-relaxed text-[#3d3d3d] sm:text-lg">
+                    {renderEmphasizedText(
+                      description,
+                      "font-semibold text-[#1a1a1a]",
+                    )}
+                  </p>
+                )}
 
-                  {engagementOptions.length > 0 && (
-                    <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2">
-                      {engagementOptions.map(renderEngagementCard)}
-                    </div>
-                  )}
-                </div>
-
-                <ContactForm locale={locale} />
+                {engagementOptions.length > 0 && (
+                  <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2">
+                    {engagementOptions.map(renderEngagementCard)}
+                  </div>
+                )}
               </div>
-            </SectionReveal>
+
+              <ContactForm locale={locale} />
+            </div>
           </div>
         );
       }}

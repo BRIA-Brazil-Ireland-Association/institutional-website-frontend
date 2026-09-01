@@ -226,7 +226,7 @@ export function ContactForm({ locale }: { locale: string }) {
 
   if (isSubmitted) {
     return (
-      <DefaultCard className="flex flex-col items-center gap-2 py-12 text-center">
+      <DefaultCard className="z-10 flex flex-col items-center gap-2 py-12 text-center">
         <h3 className="text-2xl font-medium text-[#1a1a1a]">
           {text.successTitle}
         </h3>
@@ -246,7 +246,7 @@ export function ContactForm({ locale }: { locale: string }) {
   }
 
   return (
-    <DefaultCard>
+    <DefaultCard className="z-10">
       <form className="flex flex-col gap-5" noValidate onSubmit={handleSubmit}>
         <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
           <FormField
