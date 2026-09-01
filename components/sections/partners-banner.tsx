@@ -1,7 +1,8 @@
 import { renderEmphasizedText } from "@/helpers/render-emphasized-text";
-import { Link } from "@/i18n/navigation";
 import { getMediaUrl, getObject, getText } from "@/services/cms";
 import Image from "next/image";
+import { Button } from "../ui/button";
+import { DefaultCard } from "../ui/default-card";
 import { RenderCms } from "../ui/render-cms";
 import { SectionReveal } from "../ui/section-reveal";
 import Skeleton from "../ui/skeleton";
@@ -66,29 +67,49 @@ export function PartnersBanner({
                   <div className="mx-auto mt-8 grid max-w-5xl grid-cols-1 gap-6 sm:grid-cols-2">
                     {partners.map((partner, partnerIndex) => {
                       const partnerUrl = getText(partner, "url");
+                      const partnerName = getText(partner, "name");
+                      const partnerDescription = getText(
+                        partner,
+                        "description",
+                      );
                       const image = getObject(partner, "image");
                       const imageUrl = getMediaUrl(image);
-                      const imageAlt = getText(image, "alternativeText") ?? "";
+                      const imageAlt =
+                        getText(image, "alternativeText") ?? partnerName ?? "";
 
                       return (
                         <a
-                          className="flex h-44 items-center justify-center rounded-xl border border-gray-100 shadow-xl transition-opacity hover:opacity-80 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#169b62]"
+                          className="block rounded-xl transition-opacity hover:opacity-80 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#169b62]"
                           href={partnerUrl ?? "#"}
                           key={partner?.id ?? partnerIndex}
                           rel="noopener noreferrer"
                           target="_blank"
                         >
-                          {imageUrl && (
-                            <span className="relative block h-20 w-48 max-w-[70%]">
-                              <Image
-                                alt={imageAlt}
-                                className="object-contain"
-                                fill
-                                sizes="192px"
-                                src={imageUrl}
-                              />
-                            </span>
-                          )}
+                          <DefaultCard className="flex h-full flex-col items-center gap-3 text-center">
+                            {imageUrl && (
+                              <span className="relative block h-20 w-48 max-w-full">
+                                <Image
+                                  alt={imageAlt}
+                                  className="object-contain"
+                                  fill
+                                  sizes="192px"
+                                  src={imageUrl}
+                                />
+                              </span>
+                            )}
+
+                            {partnerName && (
+                              <h3 className="text-lg font-semibold text-[#1a1a1a]">
+                                {partnerName}
+                              </h3>
+                            )}
+
+                            {partnerDescription && (
+                              <p className="text-sm leading-relaxed text-[#3d3d3d]">
+                                {partnerDescription}
+                              </p>
+                            )}
+                          </DefaultCard>
                         </a>
                       );
                     })}
@@ -111,14 +132,13 @@ export function PartnersBanner({
                             : ctaLabel;
 
                           return (
-                            <Link
+                            <Button
                               aria-label={ctaAccessibleLabel}
-                              className="rounded-full bg-[#9c9c9c] px-5 py-2 text-sm font-semibold text-white transition-colors hover:bg-[#0b461b]"
                               href={ctaHref}
                               key={cta?.id ?? ctaIndex}
                             >
                               {ctaLabel}
-                            </Link>
+                            </Button>
                           );
                         })}
                       </div>

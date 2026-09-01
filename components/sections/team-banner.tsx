@@ -1,10 +1,41 @@
 import { renderEmphasizedText } from "@/helpers/render-emphasized-text";
-import { Link } from "@/i18n/navigation";
 import { getMediaUrl, getObject, getText } from "@/services/cms";
 import Image from "next/image";
+import { Button } from "../ui/button";
 import { RenderCms } from "../ui/render-cms";
 import { SectionReveal } from "../ui/section-reveal";
 import Skeleton from "../ui/skeleton";
+import {
+  TeamLeadershipGrid,
+  type LeadershipMember,
+} from "./team-leadership-grid";
+
+const processLeadershipMembers = (
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  leaders: any[],
+): LeadershipMember[] =>
+  leaders.reduce<LeadershipMember[]>((members, leader, leaderIndex) => {
+    const area = getText(leader, "area");
+    const name = getText(leader, "name");
+
+    if (!area || !name) {
+      return members;
+    }
+
+    const avatar = getObject(leader, "avatar");
+    const avatarUrl = getMediaUrl(avatar);
+    const avatarAlt = getText(avatar, "alternativeText") ?? name;
+
+    members.push({
+      area,
+      avatarAlt,
+      avatarUrl,
+      id: leader?.id ?? leaderIndex,
+      name,
+    });
+
+    return members;
+  }, []);
 
 export function TeamBanner({
   locale,
@@ -23,7 +54,10 @@ export function TeamBanner({
                 ["populate[cta]", "true"],
                 ["populate[image]", "true"],
               ]
-            : [["populate[image]", "true"]],
+            : [
+                ["populate[image]", "true"],
+                ["populate[leadershipTeam][populate][avatar]", "true"],
+              ],
         )
       }
       cmsPath={compact ? "team" : "team-page"}
@@ -41,6 +75,11 @@ export function TeamBanner({
           typeof image?.height === "number" ? image.height : 698;
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         const ctas: any[] = Array.isArray(content?.cta) ? content.cta : [];
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        const leadershipTeam: any[] = Array.isArray(content?.leadershipTeam)
+          ? content.leadershipTeam
+          : [];
+        const leadershipMembers = processLeadershipMembers(leadershipTeam);
 
         return (
           <div
@@ -92,14 +131,13 @@ export function TeamBanner({
                               : ctaLabel;
 
                             return (
-                              <Link
+                              <Button
                                 aria-label={ctaAccessibleLabel}
-                                className="rounded-full bg-[#fb8500] px-5 py-2 text-sm font-semibold text-white transition-colors hover:bg-[#e07600]"
                                 href={ctaHref}
                                 key={cta?.id ?? ctaIndex}
                               >
                                 {ctaLabel}
-                              </Link>
+                              </Button>
                             );
                           })}
                         </div>
@@ -120,6 +158,17 @@ export function TeamBanner({
                 )}
               </div>
             </SectionReveal>
+
+            {!compact && leadershipMembers.length > 0 && (
+              <SectionReveal>
+                <div className="relative mx-auto w-full max-w-7xl px-4 pb-10 sm:px-6 lg:px-8">
+                  <TeamLeadershipGrid
+                    locale={locale}
+                    members={leadershipMembers}
+                  />
+                </div>
+              </SectionReveal>
+            )}
           </div>
         );
       }}

@@ -195,6 +195,34 @@ export async function proxyCmsGet({ path, searchParams }: CmsProxyParams) {
   });
 }
 
+type CmsProxyPostParams = {
+  path: string[];
+  body: unknown;
+};
+
+export async function proxyCmsPost({ path, body }: CmsProxyPostParams) {
+  const strapiUrl = buildStrapiUrl({
+    path,
+    searchParams: new URLSearchParams(),
+  });
+  const headers = new Headers({
+    Accept: "application/json",
+    "Content-Type": "application/json",
+  });
+  const strapiToken = process.env.STRAPI_CMS_TOKEN?.trim();
+
+  if (strapiToken) {
+    headers.set("Authorization", `Bearer ${strapiToken}`);
+  }
+
+  return fetch(strapiUrl, {
+    body: JSON.stringify(body),
+    cache: "no-store",
+    headers,
+    method: "POST",
+  });
+}
+
 const fetchCMSContent = cache(
   async (
     pathKey: string,

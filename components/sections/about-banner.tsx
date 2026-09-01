@@ -1,7 +1,7 @@
+import { Button } from "@/components/ui/button";
 import { Circle } from "@/components/ui/circle";
 import { RenderCms } from "@/components/ui/render-cms";
 import { renderEmphasizedText } from "@/helpers/render-emphasized-text";
-import { Link } from "@/i18n/navigation";
 import { cn } from "@/libs/utils";
 import { getMediaUrl, getObject, getText } from "@/services/cms";
 import Image from "next/image";
@@ -147,14 +147,13 @@ export function AboutBanner({
                               : ctaLabel;
 
                             return (
-                              <Link
+                              <Button
                                 aria-label={ctaAccessibleLabel}
-                                className="rounded-full bg-[#104722] px-5 py-2 text-sm font-semibold text-white transition-colors hover:bg-[#0b461b]"
                                 href={ctaHref}
                                 key={cta?.id ?? ctaIndex}
                               >
                                 {ctaLabel}
-                              </Link>
+                              </Button>
                             );
                           })}
                         </div>
