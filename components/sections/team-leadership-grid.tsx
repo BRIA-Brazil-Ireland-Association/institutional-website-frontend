@@ -75,10 +75,10 @@ export const TeamLeadershipGrid = ({
         ))}
       </div>
 
-      <div className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-3 sm:gap-5 lg:grid-cols-4">
+      <div className="mt-8 flex flex-wrap justify-center gap-4 sm:gap-5">
         {visibleMembers.map((member) => (
           <div
-            className="group relative aspect-[3/4] overflow-hidden rounded-2xl border border-gray-100 bg-[#eef0ef] shadow-[0_4px_16px_rgba(0,0,0,0.06)] transition-shadow hover:shadow-[0_8px_24px_rgba(0,0,0,0.12)]"
+            className="group relative aspect-[3/4] w-[calc((100%-1rem)/2)] overflow-hidden rounded-2xl border border-gray-100 bg-[#eef0ef] shadow-[0_4px_16px_rgba(0,0,0,0.06)] transition-shadow hover:shadow-[0_8px_24px_rgba(0,0,0,0.12)] sm:w-[calc((100%-2.5rem)/3)] lg:w-[calc((100%-3.75rem)/4)]"
             key={member.id}
           >
             {member.avatarUrl ? (

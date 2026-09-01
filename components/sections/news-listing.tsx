@@ -18,8 +18,6 @@ const PAGE_SIZE = 9;
 const copy: Record<
   string,
   {
-    eyebrow: string;
-    title: string;
     empty: string;
     error: string;
     previous: string;
@@ -28,8 +26,6 @@ const copy: Record<
   }
 > = {
   en: {
-    eyebrow: "News",
-    title: "Latest News",
     empty: "No articles have been published yet. Check back soon.",
     error: "We couldn't load the news right now. Please try again later.",
     previous: "Previous",
@@ -37,8 +33,6 @@ const copy: Record<
     pageLabel: (page, pageCount) => `Page ${page} of ${pageCount}`,
   },
   "pt-BR": {
-    eyebrow: "Notícias",
-    title: "Últimas Notícias",
     empty: "Nenhum artigo foi publicado ainda. Volte em breve.",
     error:
       "Não foi possível carregar as notícias agora. Tente novamente mais tarde.",
@@ -143,7 +137,15 @@ const NewsPagination = ({
   );
 };
 
-export const NewsListing = ({ locale }: { locale: string }) => {
+export const NewsListing = ({
+  locale,
+  eyebrow,
+  title,
+}: {
+  locale: string;
+  eyebrow?: string;
+  title?: string;
+}) => {
   const [page, setPage] = useState(1);
   const { data, isPending, isError } = useArticles({
     locale,
@@ -162,12 +164,16 @@ export const NewsListing = ({ locale }: { locale: string }) => {
     >
       <SectionReveal>
         <div className="relative mx-auto w-full max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
-          <p className="text-lg font-bold tracking-wide text-[#1e3a8a] uppercase">
-            {t.eyebrow}
-          </p>
-          <h2 className="mt-1 text-4xl font-medium text-[#1a1a1a] sm:text-5xl">
-            {t.title}
-          </h2>
+          {eyebrow && (
+            <p className="text-lg font-bold tracking-wide text-[#1e3a8a] uppercase">
+              {eyebrow}
+            </p>
+          )}
+          {title && (
+            <h2 className="mt-1 text-4xl font-medium text-[#1a1a1a] sm:text-5xl">
+              {title}
+            </h2>
+          )}
 
           {isPending && (
             <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">

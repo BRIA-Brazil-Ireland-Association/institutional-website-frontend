@@ -4,5 +4,5 @@ import { ContactBanner } from "@/components/sections/contact-banner";
 export default async function Contact({ params }: any) {
   const { locale } = await params;
 
-  return <ContactBanner locale={locale} />;
+  return <ContactBanner locale={locale} compact={false} />;
 }

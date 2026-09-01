@@ -70,7 +70,7 @@ export function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer id="contact" className="scroll-mt-20 bg-black text-white">
+    <footer className="bg-black text-white">
       <div className="mx-auto w-full max-w-7xl px-4 pt-6 sm:px-6 md:pt-14 lg:px-8">
         <div className="grid grid-cols-1 gap-x-8 gap-y-12 pb-14 text-center sm:grid-cols-2 md:text-left lg:grid-cols-3">
           <FooterLinkGroup links={navigationLinks} title={navigationTitle} />
