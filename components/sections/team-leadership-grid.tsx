@@ -91,8 +91,8 @@ export const TeamLeadershipGrid = ({
               {(member.name || member.area) && (
                 <div className="absolute inset-0 flex items-end bg-linear-to-t from-black/60 to-transparent p-4 transition-opacity duration-300">
                   <span className="text-sm font-medium text-white">
-                    <h4>{member.name}</h4>
-                    {member.area}
+                    <h4 className="mb-2">{member.name}</h4>
+                    <div className="text-xs opacity-60">{member.area}</div>
                   </span>
                 </div>
               )}
