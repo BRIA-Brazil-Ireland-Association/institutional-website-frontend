@@ -24,11 +24,13 @@ const processLeadershipMembers = (
     const avatar = getObject(leader, "avatar");
     const avatarUrl = getMediaUrl(avatar);
     const avatarAlt = getText(avatar, "alternativeText") ?? name;
+    const linkedinUrl = getText(leader, "linkedin");
 
     members.push({
       area,
       avatarAlt,
       avatarUrl,
+      linkedinUrl,
       name,
     });
 

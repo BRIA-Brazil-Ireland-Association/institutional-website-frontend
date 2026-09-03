@@ -1,11 +1,13 @@
 import { Fragment } from "react";
 
-const segmentPattern = /(\[[^\]]+\]\([^)]+\)|\*\*[^*]+\*\*)/g;
+const segmentPattern = /(\[[^\]]+\]\([^)]+\)|\*\*[^*]+\*\*|https?:\/\/[^\s]+)/g;
 const linkPattern = /^\[([^\]]+)\]\(([^)]+)\)$/;
+const trailingPunctuationPattern = /[.,;:!?)]+$/;
 
 /**
  * Renders CMS text where `\n` becomes a line break, `**segment**` becomes a
- * span styled with `emphasisClassName`, and `[label](href)` becomes a link.
+ * span styled with `emphasisClassName`, `[label](href)` becomes a link, and
+ * a bare `https://...` URL becomes a clickable link too.
  */
 export const renderEmphasizedText = (
   text: string,
@@ -32,6 +34,28 @@ export const renderEmphasizedText = (
             >
               {label}
             </a>
+          );
+        }
+
+        if (/^https?:\/\//.test(segment)) {
+          const trailingMatch = segment.match(trailingPunctuationPattern);
+          const trailingPunctuation = trailingMatch?.[0] ?? "";
+          const href = trailingPunctuation
+            ? segment.slice(0, -trailingPunctuation.length)
+            : segment;
+
+          return (
+            <Fragment key={segmentIndex}>
+              <a
+                className="underline underline-offset-2 hover:no-underline"
+                href={href}
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                {href}
+              </a>
+              {trailingPunctuation}
+            </Fragment>
           );
         }
 

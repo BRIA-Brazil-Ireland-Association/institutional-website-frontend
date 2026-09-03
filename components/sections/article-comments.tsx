@@ -3,21 +3,18 @@
 import Skeleton from "@/components/ui/skeleton";
 import { formatArticleDate } from "@/helpers/format-article-date";
 import { useArticleComments } from "@/services/api/comments";
+import { CommentForm } from "./comment-form";
 
 const copy = {
   en: {
     heading: "Comments",
     empty: "Be the first to leave a comment.",
     error: "We couldn't load the comments right now.",
-    like: "Like",
-    dislike: "Dislike",
   },
   "pt-BR": {
     heading: "Comentários",
     empty: "Seja o primeiro a comentar.",
     error: "Não foi possível carregar os comentários agora.",
-    like: "Curtir",
-    dislike: "Não curtir",
   },
 } as const;
 
@@ -59,30 +56,18 @@ export const ArticleComments = ({
                   {comment.authorName}
                 </span>
                 <span className="text-xs text-[#3d3d3d]">
-                  {formatArticleDate(comment.createdAt, locale)}
+                  {formatArticleDate(comment.createdAt ?? undefined, locale)}
                 </span>
               </div>
               <p className="mt-2 text-sm leading-relaxed text-[#3d3d3d]">
                 {comment.content}
               </p>
-
-              {/* Like/dislike reactions are temporarily disabled: they
-                  require a live backend, which no longer exists after
-                  the Strapi decoupling. Counts are shown read-only. */}
-              <div className="mt-3 flex items-center gap-4 text-xs font-semibold text-[#3d3d3d]">
-                <span aria-label={t.like}>
-                  {t.like}: {comment.likes}
-                </span>
-                <span aria-label={t.dislike}>
-                  {t.dislike}: {comment.dislikes}
-                </span>
-              </div>
             </li>
           ))}
         </ul>
       )}
 
-      {/* CommentForm temporarily disabled, see comment-form.tsx */}
+      <CommentForm locale={locale} slug={slug} />
     </div>
   );
 };

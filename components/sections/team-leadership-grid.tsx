@@ -1,6 +1,7 @@
 "use client";
 
 import AvatarPlaceholderIcon from "@/components/Icons/AvatarPlaceholderIcon";
+import LinkedinIcon from "@/components/Icons/LinkedinIcon";
 import { cn } from "@/libs/utils";
 import Image from "next/image";
 import { useState } from "react";
@@ -10,6 +11,7 @@ export type LeadershipMember = {
   name: string;
   avatarUrl?: string;
   avatarAlt: string;
+  linkedinUrl?: string;
 };
 
 const copy = {
@@ -90,8 +92,20 @@ export const TeamLeadershipGrid = ({
                   <AvatarPlaceholderIcon className="size-16" />
                 </div>
               )}
-              {(member.name || member.area) && (
+
+              {(member.name || member.area || member.linkedinUrl) && (
                 <div className="absolute inset-0 flex items-end bg-linear-to-t from-black/60 to-transparent p-4 transition-opacity duration-300">
+                  {member.linkedinUrl && (
+                    <a
+                      aria-label={`${member.name} - LinkedIn`}
+                      className="absolute right-3 bottom-4 flex size-8 items-center justify-center rounded-full bg-white/90 text-[#0A66C2] shadow-md transition-colors hover:bg-white"
+                      href={member.linkedinUrl}
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      <LinkedinIcon className="size-4" />
+                    </a>
+                  )}
                   <span className="text-sm font-medium text-white">
                     <h4 className="mb-2">{member.name}</h4>
                     <div className="text-xs opacity-60">{member.area}</div>

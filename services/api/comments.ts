@@ -1,23 +1,27 @@
-import commentsBySlug from "@/content/comments.json";
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
 export type ArticleComment = {
   authorName: string;
-  authorEmail: string;
   content: string;
-  likes: number;
-  dislikes: number;
-  createdAt: string;
+  createdAt: string | null;
 };
-
-const COMMENTS_BY_SLUG: Record<string, ArticleComment[]> = commentsBySlug;
 
 const fetchArticleComments = async ({
   slug,
 }: {
   slug: string;
 }): Promise<ArticleComment[]> => {
-  return COMMENTS_BY_SLUG[slug] ?? [];
+  const response = await fetch(
+    `/api/comments?slug=${encodeURIComponent(slug)}`,
+  );
+
+  if (!response.ok) {
+    throw new Error(`Failed to fetch comments (status ${response.status}).`);
+  }
+
+  const payload = await response.json();
+
+  return Array.isArray(payload?.data) ? payload.data : [];
 };
 
 export const useArticleComments = ({ slug }: { slug: string }) => {
@@ -28,22 +32,45 @@ export const useArticleComments = ({ slug }: { slug: string }) => {
   });
 };
 
-// Submitting new comments and reacting to them (like/dislike) are
-// temporarily disabled: they require a live backend, which no longer
-// exists after the Strapi decoupling. See comment-form.tsx and
-// article-comments.tsx.
-//
-// export type SubmitCommentPayload = {
-//   authorName: string;
-//   authorEmail: string;
-//   content: string;
-// };
-//
-// export const useSubmitCommentMutation = (
-//   { articleDocumentId }: { articleDocumentId: string },
-//   onSuccess?: () => void,
-// ) => { ... };
-//
-// export type CommentReaction = "like" | "dislike";
-//
-// export const useReactToCommentMutation = ({ slug }: { slug: string }) => { ... };
+export type SubmitCommentPayload = {
+  authorName: string;
+  authorEmail: string;
+  content: string;
+};
+
+const submitComment = async ({
+  slug,
+  data,
+}: {
+  slug: string;
+  data: SubmitCommentPayload;
+}) => {
+  const response = await fetch("/api/comments", {
+    body: JSON.stringify({ slug, ...data }),
+    headers: {
+      "Content-Type": "application/json",
+    },
+    method: "POST",
+  });
+
+  if (!response.ok) {
+    throw new Error(`Failed to submit comment (status ${response.status}).`);
+  }
+
+  return response.json();
+};
+
+export const useSubmitCommentMutation = (
+  { slug }: { slug: string },
+  onSuccess?: () => void,
+) => {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: (data: SubmitCommentPayload) => submitComment({ slug, data }),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["article-comments", slug] });
+      onSuccess?.();
+    },
+  });
+};

@@ -12,6 +12,7 @@
     {
       "area": "Fundadora e CEO",
       "name": "Louise",
+      "linkedin": "https://www.linkedin.com/in/louisedomingues/",
       "avatar": {
         "alternativeText": null,
         "width": 800,
@@ -20,8 +21,31 @@
       }
     },
     {
+      "area": "PMO",
+      "name": "Simone Mendonca",
+      "linkedin": "https://www.linkedin.com/in/simone-mendonca-pmp/",
+      "avatar": {
+        "alternativeText": null,
+        "width": 945,
+        "height": 2048,
+        "url": "/assets/team-page/simone.jpeg"
+      }
+    },
+    {
+      "area": "RH",
+      "name": "Priscila Viana",
+      "linkedin": "https://www.linkedin.com/in/priscila-viana-/",
+      "avatar": {
+        "alternativeText": null,
+        "width": 945,
+        "height": 2048,
+        "url": "/assets/team-page/priscila.jpeg"
+      }
+    },
+    {
       "area": "Eventos",
       "name": "Carine Amaral",
+      "linkedin": "https://www.linkedin.com/in/carine-amaral/",
       "avatar": {
         "alternativeText": null,
         "width": 945,
@@ -30,8 +54,9 @@
       }
     },
     {
-      "area": "Professional Development",
+      "area": "Desenvolvimento Profissional",
       "name": "Mirelle Freitas",
+      "linkedin": "https://www.linkedin.com/in/mirelle-freitas/",
       "avatar": {
         "alternativeText": null,
         "width": 410,
@@ -40,18 +65,20 @@
       }
     },
     {
-      "area": "Tech, Analytics & AI",
+      "area": "Tecnologia, Analytics e IA",
       "name": "Jhonny Pinheiro",
+      "linkedin": "https://www.linkedin.com/in/jhonnygpinheiro/",
       "avatar": {
         "alternativeText": null,
         "width": 400,
         "height": 400,
-        "url": "/assets/team-page/Whats_App_Image_2026_09_03_at_11_02_13_08f23f9fc9.jpeg"
+        "url": "/assets/team-page/1662910690031.jpeg"
       }
     },
     {
       "area": "Marketing",
       "name": "Giovanna Paggiossi",
+      "linkedin": "https://www.linkedin.com/in/giohonorato/",
       "avatar": {
         "alternativeText": null,
         "width": 640,
@@ -62,6 +89,7 @@
     {
       "area": "Parcerias Estratégicas e Financiamento",
       "name": "Kennedy Dantas",
+      "linkedin": "https://www.linkedin.com/in/kennedydantas/",
       "avatar": {
         "alternativeText": null,
         "width": 640,
@@ -72,6 +100,7 @@
     {
       "area": "Administrativo",
       "name": "Thalia Salvador",
+      "linkedin": "https://www.linkedin.com/in/thaliasalvador/",
       "avatar": {
         "alternativeText": null,
         "width": 1200,
@@ -82,6 +111,7 @@
     {
       "area": "Marketing",
       "name": "Priscila Fenner",
+      "linkedin": "https://www.linkedin.com/in/priscila-fenner/",
       "avatar": {
         "alternativeText": null,
         "width": 1264,
@@ -92,11 +122,23 @@
     {
       "area": "Eventos",
       "name": "Arthemis Siqueira",
+      "linkedin": "#",
       "avatar": {
         "alternativeText": null,
         "width": 1135,
         "height": 1600,
         "url": "/assets/team-page/Whats_App_Image_2026_09_01_at_19_57_16_1_4c71a4eddf.jpeg"
+      }
+    },
+    {
+      "area": "Tecnologia, Analytics e IA",
+      "name": "Joao Ribeiro",
+      "linkedin": "https://www.linkedin.com/in/joaoribe/",
+      "avatar": {
+        "alternativeText": null,
+        "width": 400,
+        "height": 400,
+        "url": "/assets/team-page/Whats_App_Image_2026_09_03_at_11_02_13_08f23f9fc9.jpeg"
       }
     }
   ]

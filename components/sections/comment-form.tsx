@@ -1,7 +1,3 @@
-// This form is temporarily disabled: submitting a comment requires a
-// live backend, which no longer exists after the Strapi decoupling.
-// Not rendered anywhere (see article-comments.tsx).
-/*
 "use client";
 
 import { Button } from "@/components/ui/button";
@@ -23,8 +19,7 @@ const copy = {
     submitLabel: "Submit comment",
     validationError: "Please fill in a valid name, email and comment.",
     submitError: "We couldn't submit your comment. Please try again.",
-    pendingApproval:
-      "Thank you! Your comment has been submitted and is pending approval. It will appear once reviewed.",
+    submitted: "Thank you! Your comment has been posted.",
   },
   "pt-BR": {
     nameLabel: "Nome",
@@ -33,16 +28,15 @@ const copy = {
     submitLabel: "Enviar comentário",
     validationError: "Preencha um nome, e-mail e comentário válidos.",
     submitError: "Não foi possível enviar seu comentário. Tente novamente.",
-    pendingApproval:
-      "Obrigado! Seu comentário foi enviado e está aguardando aprovação. Ele aparecerá após ser revisado.",
+    submitted: "Obrigado! Seu comentário foi publicado.",
   },
 } as const;
 
 export const CommentForm = ({
-  articleDocumentId,
+  slug,
   locale,
 }: {
-  articleDocumentId: string;
+  slug: string;
   locale: string;
 }) => {
   const formRef = useRef<HTMLFormElement>(null);
@@ -51,7 +45,7 @@ export const CommentForm = ({
   const t = copy[locale as keyof typeof copy] ?? copy.en;
 
   const { mutate, isPending, isError } = useSubmitCommentMutation(
-    { articleDocumentId },
+    { slug },
     () => {
       setSubmitted(true);
       formRef.current?.reset();
@@ -76,7 +70,7 @@ export const CommentForm = ({
   if (submitted) {
     return (
       <p className="mt-6 rounded-lg bg-[#104722]/10 p-4 text-sm text-[#104722]">
-        {t.pendingApproval}
+        {t.submitted}
       </p>
     );
   }
@@ -147,4 +141,3 @@ export const CommentForm = ({
     </form>
   );
 };
-*/
