@@ -10,9 +10,7 @@ import { Button } from "../ui/button";
 import { DefaultCard } from "../ui/default-card";
 import { RenderCms } from "../ui/render-cms";
 import { SectionReveal } from "../ui/section-reveal";
-// ContactForm is temporarily disabled: it submits to a backend that no
-// longer exists after the Strapi decoupling. See contact-form.tsx.
-// import { ContactForm } from "./contact-form";
+import { ContactForm } from "./contact-form";
 
 const engagementIcons: Record<string, typeof SponsorsIcon> = {
   ambassadors: MegaphoneIcon,
@@ -62,10 +60,7 @@ export function ContactBanner({
           }
 
           return (
-            <DefaultCard
-              className="text-center"
-              key={optionIndex}
-            >
+            <DefaultCard className="text-center" key={optionIndex}>
               {Icon && <Icon className="mx-auto size-8 text-[#104722]" />}
               <h3 className="mt-3 text-base font-semibold text-[#1a1a1a]">
                 {optionTitle}
@@ -187,7 +182,7 @@ export function ContactBanner({
                 )}
               </div>
 
-              {/* ContactForm temporarily disabled, see import above */}
+              <ContactForm locale={locale} />
             </div>
           </div>
         );

@@ -1,9 +1,6 @@
-// This form is temporarily disabled: submitting a contact message
-// requires a live backend, which no longer exists after the Strapi
-// decoupling. Not rendered anywhere (see contact-banner.tsx).
-/*
 "use client";
 
+import CheckIcon from "@/components/Icons/CheckIcon";
 import { Button } from "@/components/ui/button";
 import { DefaultCard } from "@/components/ui/default-card";
 import { cn } from "@/libs/utils";
@@ -230,11 +227,14 @@ export function ContactForm({ locale }: { locale: string }) {
 
   if (isSubmitted) {
     return (
-      <DefaultCard className="z-10 flex flex-col items-center gap-2 py-12 text-center">
-        <h3 className="text-2xl font-medium text-[#1a1a1a]">
+      <DefaultCard className="z-10 flex flex-col items-center gap-3 py-14 text-center">
+        <span className="flex size-16 items-center justify-center rounded-full bg-[#104722]/10 text-[#104722]">
+          <CheckIcon className="size-8" />
+        </span>
+        <h3 className="mt-2 text-2xl font-medium text-[#1a1a1a]">
           {text.successTitle}
         </h3>
-        <p className="max-w-md text-base text-[#3d3d3d]">
+        <p className="max-w-md text-base leading-relaxed text-[#3d3d3d]">
           {text.successDescription}
         </p>
         <Button
@@ -368,4 +368,3 @@ export function ContactForm({ locale }: { locale: string }) {
     </DefaultCard>
   );
 }
-*/
