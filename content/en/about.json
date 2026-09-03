@@ -1,0 +1,17 @@
+{
+  "title": "BRIA",
+  "sectionTitle": "About Us",
+  "description": "**The Brazil-Ireland Association (BRIA) is a professional, institutionalized organization registered as a Company Limited by Guarantee (CLG), dedicated to strengthening the connection between Brazil and Ireland.**\n\nBRIA promotes the professional, social, and economic integration of the Brazilian community into Irish society by acting as a strategic institutional and knowledge and information hub.",
+  "image": {
+    "alternativeText": null,
+    "width": 1000,
+    "height": 470,
+    "url": "/assets/about/large_Screenshot_2026_06_22_at_15_22_15_997b767255_e8845f40a5.png"
+  },
+  "cta": [
+    {
+      "label": "Learn more",
+      "href": "/about"
+    }
+  ]
+}

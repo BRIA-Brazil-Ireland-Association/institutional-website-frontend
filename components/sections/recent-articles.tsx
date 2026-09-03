@@ -5,7 +5,7 @@ import Skeleton from "@/components/ui/skeleton";
 import { formatArticleDate } from "@/helpers/format-article-date";
 import { Link } from "@/i18n/navigation";
 import { useArticles } from "@/services/api/articles";
-import { getMediaUrl } from "@/services/cms";
+import { getMediaUrl } from "@/services/content";
 import Image from "next/image";
 
 export const RecentArticles = ({ locale }: { locale: string }) => {
@@ -31,7 +31,7 @@ export const RecentArticles = ({ locale }: { locale: string }) => {
 
   return (
     <div className="flex flex-wrap justify-center gap-5">
-      {data.articles.map((article) => {
+      {data.articles.map((article, articleIndex) => {
         const imageUrl = getMediaUrl(article.coverImage);
         const formattedDate = formatArticleDate(article.date, locale);
 
@@ -39,7 +39,7 @@ export const RecentArticles = ({ locale }: { locale: string }) => {
           <Link
             className="block w-full sm:w-[calc((100%-2.5rem)/3)]"
             href={`/news/${article.slug}`}
-            key={article.documentId}
+            key={articleIndex}
           >
             <DefaultCard hoverable>
               <div className="relative aspect-[16/10] w-full overflow-hidden rounded-lg bg-[#eef0ef]">

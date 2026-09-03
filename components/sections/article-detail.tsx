@@ -4,7 +4,7 @@ import Skeleton from "@/components/ui/skeleton";
 import { formatArticleDate } from "@/helpers/format-article-date";
 import { renderEmphasizedText } from "@/helpers/render-emphasized-text";
 import { useArticle } from "@/services/api/articles";
-import { getMediaUrl } from "@/services/cms";
+import { getMediaUrl } from "@/services/content";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { ArticleComments } from "./article-comments";
@@ -88,11 +88,7 @@ export const ArticleDetail = ({
           </div>
         )}
 
-        <ArticleComments
-          articleDocumentId={article.documentId}
-          locale={locale}
-          slug={slug}
-        />
+        <ArticleComments locale={locale} slug={slug} />
       </div>
     </div>
   );

@@ -1,0 +1,35 @@
+{
+  "title": "PROFESSIONAL",
+  "label": "Official Partners",
+  "description": "BRIA's work is only possible because of the institutions and companies that stand with our community.",
+  "cta": [
+    {
+      "label": "More info",
+      "href": "/partners"
+    }
+  ],
+  "partners": [
+    {
+      "url": "https://www.instagram.com/embassyofbrazil_dublin/",
+      "name": "Embassy of Brazil in Dublin",
+      "description": "The Embassy of Brazil in Dublin supports BRIA in strengthening institutional ties between Brazil and Ireland and in promoting our initiatives (Events and Educational Programs).\nLink: ",
+      "image": {
+        "alternativeText": null,
+        "width": 165,
+        "height": 80,
+        "url": "/assets/partner/Embassy_of_Brazil_1_removebg_preview_57b28fd9dd_d474dfb88c.png"
+      }
+    },
+    {
+      "url": "https://www.ondetem.co/",
+      "name": "Onde Tem?",
+      "description": "OndeTem connects the Brazilian community in Ireland to local businesses, events, and discounts. The partnership with BRIA expands our community's access to everyday services and opportunities.\n",
+      "image": {
+        "alternativeText": null,
+        "width": 143,
+        "height": 62,
+        "url": "/assets/partner/Layer_24_1_50f9909b5f_c30fb647e9.png"
+      }
+    }
+  ]
+}

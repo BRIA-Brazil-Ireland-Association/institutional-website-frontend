@@ -1,25 +1,17 @@
 import { Circle } from "@/components/ui/circle";
 import { RenderCms } from "@/components/ui/render-cms";
 import { renderEmphasizedText } from "@/helpers/render-emphasized-text";
-import { getMediaUrl, getObject, getText } from "@/services/cms";
+import { getMediaUrl, getObject, getText } from "@/services/content";
 import Image from "next/image";
 import { SectionReveal } from "../ui/section-reveal";
-import Skeleton from "../ui/skeleton";
 
 const KPI_VALUE_COLORS = ["text-[#0C4A17]", "text-[#312e81]", "text-[#F88600]"];
-
-const populate = new URLSearchParams([
-  ["populate[image]", "true"],
-  ["[populate][kpis][populate]", "*"],
-]);
 
 export function HeroBanner({ locale }: { locale: string }) {
   return (
     <RenderCms
       locale={locale}
-      populate={populate}
       cmsPath="hero"
-      fallback={<Skeleton className="min-h-100" />}
       render={({ content }) => {
         const label = getText(content, "label");
         const title = getText(content, "title");
@@ -97,7 +89,7 @@ export function HeroBanner({ locale }: { locale: string }) {
                       return (
                         <li
                           className="flex items-center gap-3"
-                          key={kpi?.id ?? kpiIndex}
+                          key={kpiIndex}
                         >
                           {kpiIconUrl && (
                             <Image

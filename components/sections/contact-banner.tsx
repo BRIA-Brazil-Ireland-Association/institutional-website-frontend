@@ -5,13 +5,14 @@ import PartnersHandshakeIcon from "@/components/Icons/PartnersHandshakeIcon";
 import SponsorsIcon from "@/components/Icons/SponsorsIcon";
 import VolunteersHandsIcon from "@/components/Icons/VolunteersHandsIcon";
 import { renderEmphasizedText } from "@/helpers/render-emphasized-text";
-import { getText } from "@/services/cms";
+import { getText } from "@/services/content";
 import { Button } from "../ui/button";
 import { DefaultCard } from "../ui/default-card";
 import { RenderCms } from "../ui/render-cms";
 import { SectionReveal } from "../ui/section-reveal";
-import Skeleton from "../ui/skeleton";
-import { ContactForm } from "./contact-form";
+// ContactForm is temporarily disabled: it submits to a backend that no
+// longer exists after the Strapi decoupling. See contact-form.tsx.
+// import { ContactForm } from "./contact-form";
 
 const engagementIcons: Record<string, typeof SponsorsIcon> = {
   ambassadors: MegaphoneIcon,
@@ -32,14 +33,7 @@ export function ContactBanner({
   return (
     <RenderCms
       locale={locale}
-      populate={
-        new URLSearchParams([
-          ["populate[engagementOptions]", "true"],
-          ["populate[cta]", "true"],
-        ])
-      }
       cmsPath="contact-page"
-      fallback={<Skeleton className="min-h-100" />}
       render={({ content }) => {
         const title = getText(content, "title");
         const sectionTitle = getText(content, "sectionTitle");
@@ -70,7 +64,7 @@ export function ContactBanner({
           return (
             <DefaultCard
               className="text-center"
-              key={option?.id ?? optionIndex}
+              key={optionIndex}
             >
               {Icon && <Icon className="mx-auto size-8 text-[#104722]" />}
               <h3 className="mt-3 text-base font-semibold text-[#1a1a1a]">
@@ -140,7 +134,7 @@ export function ContactBanner({
                           <Button
                             aria-label={ctaAccessibleLabel}
                             href={ctaHref}
-                            key={cta?.id ?? ctaIndex}
+                            key={ctaIndex}
                           >
                             {ctaLabel}
                           </Button>
@@ -193,7 +187,7 @@ export function ContactBanner({
                 )}
               </div>
 
-              <ContactForm locale={locale} />
+              {/* ContactForm temporarily disabled, see import above */}
             </div>
           </div>
         );

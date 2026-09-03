@@ -1,6 +1,6 @@
 "use client";
 
-import { getMediaUrl, getObject, getText } from "@/services/cms";
+import { getMediaUrl, getObject, getText } from "@/services/content";
 import Autoplay from "embla-carousel-autoplay";
 import useEmblaCarousel from "embla-carousel-react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
@@ -39,7 +39,7 @@ export const GalleryCarousel = ({
             return (
               <div
                 className="w-52 flex-none pl-4 sm:w-64 md:w-72"
-                key={`${photo?.id ?? photoIndex}-${photoIndex}`}
+                key={photoIndex}
               >
                 <div className="relative aspect-square overflow-hidden rounded-2xl shadow-md">
                   <Image

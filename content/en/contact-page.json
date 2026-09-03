@@ -1,0 +1,43 @@
+{
+  "title": null,
+  "sectionTitle": null,
+  "description": null,
+  "engagementOptions": [
+    {
+      "icon": "sponsors",
+      "title": "Sponsors",
+      "description": "Provide financial support for impactful programs"
+    },
+    {
+      "icon": "partners",
+      "title": "Partners",
+      "description": "Offer expertise and services like recruitment and legal support."
+    },
+    {
+      "icon": "ambassadors",
+      "title": "Ambassadors",
+      "description": "Influencers help spread our mission and grow our reach."
+    },
+    {
+      "icon": "volunteers",
+      "title": "Volunteers",
+      "description": "Contribute time and skills to drive our initiatives forward."
+    },
+    {
+      "icon": "members",
+      "title": "Members",
+      "description": "Enjoy exclusive benefits and opportunities within our community."
+    },
+    {
+      "icon": "communities",
+      "title": "Communities",
+      "description": "We're partnering with diverse communities, especially our Irish friends who have welcomed us."
+    }
+  ],
+  "cta": [
+    {
+      "label": "Get in touch",
+      "href": "contact"
+    }
+  ]
+}

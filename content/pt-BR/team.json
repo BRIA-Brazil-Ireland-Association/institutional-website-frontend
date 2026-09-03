@@ -1,0 +1,17 @@
+{
+  "title": "EQUIPE",
+  "sectionTitle": "Conheça o time. Faça parte.",
+  "description": "A BRIA é construída por voluntários que dedicam tempo e talento à nossa comunidade, profissionais que dedicam seu tempo e conhecimento para apoiar brasileiros que constroem seu futuro na Irlanda, ao mesmo tempo em que impulsiona a economia irlandesa. \n\n**Conheça as oportunidades de voluntariado e ajude a fortalecer essa rede.**",
+  "cta": [
+    {
+      "label": "Saiba Mais",
+      "href": "/team"
+    }
+  ],
+  "image": {
+    "alternativeText": null,
+    "width": 1000,
+    "height": 667,
+    "url": "/assets/team/large_Layer_0_976d59d7e8_4080946adc.png"
+  }
+}

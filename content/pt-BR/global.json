@@ -1,0 +1,101 @@
+{
+  "siteName": "Brazil-Ireland Association",
+  "siteDescription": "BEM-VINDO À BRIABrazil-Ireland Association Sobre nósNosso principal objetivo é auxiliar profissionais brasileiros na Irlanda a superar os desafios enfrentados na busca por emprego, progressão de carreira e integração no mercado de trabalho irlandês.Nossa iniciativa visa fornecer uma rede de apoio, recursos e oportunidades de desenvolvimento profissional para a comunidade brasileira, promovendo a integração e o fortalecimento do perfil profissional.",
+  "contactEmail": "contact@brazilirelandassociation.org",
+  "instagramUrl": "https://www.instagram.com/brazil.ireland.association",
+  "linkedinUrl": "https://www.linkedin.com/company/bria-brazil-ireland-association/",
+  "Logo": {
+    "alternativeText": null,
+    "width": 768,
+    "height": 293,
+    "url": "/assets/global/logo_a575d2c210_0088728a10.png"
+  },
+  "favicon": {
+    "alternativeText": null,
+    "width": 156,
+    "height": 156,
+    "url": "/assets/global/thumbnail_favicon_bbf50162d7_178e7c867b.png"
+  },
+  "logoWhite": {
+    "alternativeText": null,
+    "width": 750,
+    "height": 227,
+    "url": "/assets/global/medium_Layer_1_1_d8aa3b79b8_c99be773e0.png"
+  },
+  "menus": [
+    {
+      "label": "Sobre a BRIA",
+      "href": "about"
+    },
+    {
+      "label": "Time",
+      "href": "team"
+    },
+    {
+      "label": "Eventos e Midia",
+      "href": "events"
+    },
+    {
+      "label": "Parceiros",
+      "href": "partners"
+    },
+    {
+      "label": "Contato",
+      "href": "contact"
+    },
+    {
+      "label": "Notícias",
+      "href": "news"
+    }
+  ],
+  "footer": {
+    "navigationTitle": "Navegação:",
+    "informationTitle": "Informações:",
+    "communityTitle": "Participação da Comunidade:",
+    "contactTitle": "Fale conosco:",
+    "socialMediaTitle": "Siga-nos:",
+    "navigationLinks": [
+      {
+        "label": "Início",
+        "href": "/"
+      },
+      {
+        "label": "Sobre a BRIA",
+        "href": "#about"
+      },
+      {
+        "label": "Entre em contato",
+        "href": "mailto:bria@email.com"
+      }
+    ],
+    "informationLinks": [
+      {
+        "label": "Quem somos",
+        "href": "#"
+      },
+      {
+        "label": "Conheça a equipe",
+        "href": "#"
+      },
+      {
+        "label": "Parceiros",
+        "href": "#partners"
+      }
+    ],
+    "communityLinks": [
+      {
+        "label": "Eventos",
+        "href": "#partners"
+      },
+      {
+        "label": "Galeria",
+        "href": "#"
+      },
+      {
+        "label": "Notícias",
+        "href": "#"
+      }
+    ]
+  },
+  "locale": "pt-BR"
+}

@@ -1,0 +1,11 @@
+{
+  "title": "News",
+  "sectionTitle": "Stories from our community",
+  "description": "From community milestones to partnership announcements, catch up on what is new at BRIA.",
+  "cta": [
+    {
+      "label": "Read all news",
+      "href": "news"
+    }
+  ]
+}

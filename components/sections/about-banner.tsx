@@ -3,10 +3,9 @@ import { Circle } from "@/components/ui/circle";
 import { RenderCms } from "@/components/ui/render-cms";
 import { renderEmphasizedText } from "@/helpers/render-emphasized-text";
 import { cn } from "@/libs/utils";
-import { getMediaUrl, getObject, getText } from "@/services/cms";
+import { getMediaUrl, getObject, getText } from "@/services/content";
 import Image from "next/image";
 import { SectionReveal } from "../ui/section-reveal";
-import Skeleton from "../ui/skeleton";
 import GalleryBanner from "./gallery-banner";
 
 export function AboutBanner({
@@ -19,18 +18,7 @@ export function AboutBanner({
   return (
     <RenderCms
       locale={locale}
-      populate={
-        new URLSearchParams(
-          compact
-            ? [
-                ["populate[image]", "true"],
-                ["populate[cta][populate]", "*"],
-              ]
-            : [["populate[image]", "true"]],
-        )
-      }
       cmsPath={compact ? "about" : "about-page"}
-      fallback={<Skeleton className="min-h-100" />}
       render={({ content }) => {
         const manifestTitle = getText(content, "manifestTitle");
         const title = getText(content, "title");
@@ -150,7 +138,7 @@ export function AboutBanner({
                               <Button
                                 aria-label={ctaAccessibleLabel}
                                 href={ctaHref}
-                                key={cta?.id ?? ctaIndex}
+                                key={ctaIndex}
                               >
                                 {ctaLabel}
                               </Button>

@@ -1,0 +1,17 @@
+{
+  "title": "TEAM",
+  "sectionTitle": "Meet the Team. Join Us.",
+  "description": "BRIA is built by volunteers who dedicate their time and talent to our community, professionals who share their time and knowledge to support Brazilians building their future in Ireland, while boosting the Irish economy. \n\n**Check out our volunteer opportunities and help strengthen this network.**",
+  "cta": [
+    {
+      "label": "Learn more",
+      "href": "/team"
+    }
+  ],
+  "image": {
+    "alternativeText": null,
+    "width": 1000,
+    "height": 667,
+    "url": "/assets/team/large_Layer_0_976d59d7e8_4080946adc.png"
+  }
+}

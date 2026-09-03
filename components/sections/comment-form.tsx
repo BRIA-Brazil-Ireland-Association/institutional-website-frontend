@@ -1,3 +1,7 @@
+// This form is temporarily disabled: submitting a comment requires a
+// live backend, which no longer exists after the Strapi decoupling.
+// Not rendered anywhere (see article-comments.tsx).
+/*
 "use client";
 
 import { Button } from "@/components/ui/button";
@@ -143,3 +147,4 @@ export const CommentForm = ({
     </form>
   );
 };
+*/

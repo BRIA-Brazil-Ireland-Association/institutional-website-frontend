@@ -1,12 +1,7 @@
 "use client";
 
-import type { CmsEntry } from "@/services/cms";
-import {
-  createContext,
-  useContext,
-  useMemo,
-  type ReactNode,
-} from "react";
+import type { CmsEntry } from "@/services/content";
+import { createContext, useContext, useMemo, type ReactNode } from "react";
 
 type GlobalContextValue = {
   globalContent: CmsEntry | null;

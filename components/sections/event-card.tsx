@@ -2,7 +2,7 @@ import ChevronRightIcon from "@/components/Icons/ChevronRightIcon";
 import { formatEventDate } from "@/helpers/format-event-date";
 import { Link } from "@/i18n/navigation";
 import { cn } from "@/libs/utils";
-import { getText } from "@/services/cms";
+import { getText } from "@/services/content";
 
 type EventCardProps = {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any

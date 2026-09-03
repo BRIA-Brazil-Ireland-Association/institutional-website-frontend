@@ -73,7 +73,7 @@ export const EventsExplorer = ({
             <EventCard
               event={event}
               isPast={isPast}
-              key={event?.documentId ?? event?.id ?? eventIndex}
+              key={eventIndex}
               locale={locale}
             />
           ))}

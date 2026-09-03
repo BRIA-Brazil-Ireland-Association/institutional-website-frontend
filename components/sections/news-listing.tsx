@@ -9,7 +9,7 @@ import { formatArticleDate } from "@/helpers/format-article-date";
 import { Link } from "@/i18n/navigation";
 import type { Article } from "@/services/api/articles";
 import { useArticles } from "@/services/api/articles";
-import { getMediaUrl } from "@/services/cms";
+import { getMediaUrl } from "@/services/content";
 import Image from "next/image";
 import { useState } from "react";
 
@@ -194,10 +194,10 @@ export const NewsListing = ({
           {!isPending && !isError && articles.length > 0 && (
             <>
               <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                {articles.map((article) => (
+                {articles.map((article, articleIndex) => (
                   <ArticleCard
                     article={article}
-                    key={article.documentId ?? article.id}
+                    key={articleIndex}
                     locale={locale}
                   />
                 ))}

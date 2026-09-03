@@ -1,6 +1,6 @@
 "use client";
 import { useGlobalContext } from "@/providers/global-context";
-import { getMediaUrl, getObject, getText } from "@/services/cms";
+import { getMediaUrl, getObject, getText } from "@/services/content";
 import Image from "next/image";
 
 export function BriaLogo({

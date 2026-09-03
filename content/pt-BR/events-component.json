@@ -1,0 +1,18 @@
+{
+  "title": "EVENTOS E NETWORKING",
+  "sectionTitle": "Próximos Eventos e Programas Educacionais",
+  "description": "**De workshops de preparação de carreira a eventos de networking,** as ações da BRIA conectam nossa comunidade a pessoas, conhecimento e oportunidades que impulsionam carreiras.\n",
+  "emptyStateMessage": null,
+  "image": {
+    "alternativeText": null,
+    "width": 701,
+    "height": 681,
+    "url": "/assets/about-page/medium_Screenshot_2026_06_22_at_15_32_26_2cf1911ad0_612c092c85.png"
+  },
+  "cta": [
+    {
+      "label": "Mais informações",
+      "href": "/events"
+    }
+  ]
+}

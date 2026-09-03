@@ -3,14 +3,13 @@ import { Navbar } from "@/components/ui/navbar";
 import { routing } from "@/i18n/routing";
 import { AppProviders } from "@/providers/app-providers";
 import {
-  getCMSContent,
+  getContent,
   getMediaUrl,
   getObject,
   getSingleContent,
-  getStrapiCmsOrigin,
   getText,
   type CmsEntry,
-} from "@/services/cms";
+} from "@/services/content";
 import type { Metadata } from "next";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
@@ -31,26 +30,8 @@ type LocaleLayoutProps = Readonly<{
   params: Promise<{ locale: string }>;
 }>;
 
-const globalPopulate = new URLSearchParams([
-  ["populate[Logo]", "true"],
-  ["populate[favicon]", "true"],
-  ["populate[logoWhite]", "true"],
-  ["populate[defaultSeo]", "true"],
-  ["populate[menus]", "true"],
-  ["populate[localizations]", "true"],
-  ["populate[footer][populate][navigationLinks]", "true"],
-  ["populate[footer][populate][informationLinks]", "true"],
-  ["populate[footer][populate][communityLinks]", "true"],
-]);
-
-const getGlobalContent = cache(async (locale: string) =>
-  getSingleContent(
-    await getCMSContent({
-      locale,
-      path: ["global"],
-      populate: globalPopulate,
-    }),
-  ),
+const getGlobalContent = cache((locale: string) =>
+  getSingleContent(getContent("global", locale)),
 );
 
 function buildMetadataFromGlobal(global: CmsEntry | null): Metadata {
@@ -129,7 +110,6 @@ export default async function LocaleLayout({
   return (
     <html lang={locale} className={`${poppins.variable} h-full antialiased`}>
       <body className="flex min-h-full flex-col" suppressHydrationWarning>
-        <link rel="preconnect" href={getStrapiCmsOrigin()} />
         <NextIntlClientProvider>
           <AppProviders globalContent={globalContent}>
             <Navbar />

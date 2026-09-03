@@ -1,16 +1,10 @@
 import { renderEmphasizedText } from "@/helpers/render-emphasized-text";
-import { getMediaUrl, getObject, getText } from "@/services/cms";
+import { getMediaUrl, getObject, getText } from "@/services/content";
 import Image from "next/image";
 import { Button } from "../ui/button";
 import { DefaultCard } from "../ui/default-card";
 import { RenderCms } from "../ui/render-cms";
 import { SectionReveal } from "../ui/section-reveal";
-import Skeleton from "../ui/skeleton";
-
-const populate = new URLSearchParams([
-  ["populate[partners][populate][image]", "true"],
-  ["populate[cta]", "true"],
-]);
 
 export function PartnersBanner({
   locale,
@@ -22,9 +16,7 @@ export function PartnersBanner({
   return (
     <RenderCms
       locale={locale}
-      populate={populate}
       cmsPath="partner"
-      fallback={<Skeleton className="min-h-100" />}
       render={({ content }) => {
         const title = getText(content, "title");
         const label = getText(content, "label");
@@ -81,7 +73,7 @@ export function PartnersBanner({
                         <a
                           className="block rounded-xl transition-opacity hover:opacity-80 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#169b62]"
                           href={partnerUrl ?? "#"}
-                          key={partner?.id ?? partnerIndex}
+                          key={partnerIndex}
                           rel="noopener noreferrer"
                           target="_blank"
                         >
@@ -135,7 +127,7 @@ export function PartnersBanner({
                             <Button
                               aria-label={ctaAccessibleLabel}
                               href={ctaHref}
-                              key={cta?.id ?? ctaIndex}
+                              key={ctaIndex}
                             >
                               {ctaLabel}
                             </Button>

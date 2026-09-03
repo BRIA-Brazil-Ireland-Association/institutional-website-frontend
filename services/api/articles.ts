@@ -1,9 +1,9 @@
-import type { CmsEntry } from "@/services/cms";
+import articlesEn from "@/content/en/articles.json";
+import articlesPt from "@/content/pt-BR/articles.json";
+import type { CmsEntry } from "@/services/content";
 import { keepPreviousData, useQuery } from "@tanstack/react-query";
 
 export type Article = {
-  id: number;
-  documentId: string;
   title: string;
   slug: string;
   excerpt?: string | null;
@@ -11,7 +11,6 @@ export type Article = {
   date?: string | null;
   author?: string | null;
   coverImage?: CmsEntry | null;
-  locale?: string;
 };
 
 export type ArticlesPagination = {
@@ -26,13 +25,10 @@ export type ArticlesPage = {
   pagination: ArticlesPagination;
 };
 
-function isArticle(value: unknown): value is Article {
-  return (
-    Boolean(value) &&
-    typeof value === "object" &&
-    typeof (value as Article).slug === "string"
-  );
-}
+const ARTICLES_BY_LOCALE: Record<string, Article[]> = {
+  en: articlesEn as Article[],
+  "pt-BR": articlesPt as Article[],
+};
 
 const fetchArticles = async ({
   locale,
@@ -43,30 +39,14 @@ const fetchArticles = async ({
   page: number;
   pageSize: number;
 }): Promise<ArticlesPage> => {
-  const searchParams = new URLSearchParams({
-    locale,
-    sort: "date:desc",
-    "pagination[page]": String(page),
-    "pagination[pageSize]": String(pageSize),
-    "populate[coverImage]": "true",
-  });
-
-  const response = await fetch(`/api/cms/articles?${searchParams.toString()}`);
-
-  if (!response.ok) {
-    throw new Error(`Failed to fetch articles (status ${response.status}).`);
-  }
-
-  const payload = await response.json();
-  const articles = Array.isArray(payload?.data)
-    ? payload.data.filter(isArticle)
-    : [];
-
-  const pagination: ArticlesPagination = payload?.meta?.pagination ?? {
+  const allArticles = ARTICLES_BY_LOCALE[locale] ?? [];
+  const start = (page - 1) * pageSize;
+  const articles = allArticles.slice(start, start + pageSize);
+  const pagination: ArticlesPagination = {
     page,
     pageSize,
-    pageCount: 1,
-    total: articles.length,
+    pageCount: Math.max(1, Math.ceil(allArticles.length / pageSize)),
+    total: allArticles.length,
   };
 
   return { articles, pagination };
@@ -95,24 +75,9 @@ const fetchArticleBySlug = async ({
   locale: string;
   slug: string;
 }): Promise<Article | null> => {
-  const searchParams = new URLSearchParams({
-    locale,
-    "filters[slug][$eq]": slug,
-    "populate[coverImage]": "true",
-  });
+  const allArticles = ARTICLES_BY_LOCALE[locale] ?? [];
 
-  const response = await fetch(`/api/cms/articles?${searchParams.toString()}`);
-
-  if (!response.ok) {
-    throw new Error(`Failed to fetch article (status ${response.status}).`);
-  }
-
-  const payload = await response.json();
-  const articles = Array.isArray(payload?.data)
-    ? payload.data.filter(isArticle)
-    : [];
-
-  return articles[0] ?? null;
+  return allArticles.find((article) => article.slug === slug) ?? null;
 };
 
 export const useArticle = ({

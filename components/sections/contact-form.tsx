@@ -1,3 +1,7 @@
+// This form is temporarily disabled: submitting a contact message
+// requires a live backend, which no longer exists after the Strapi
+// decoupling. Not rendered anywhere (see contact-banner.tsx).
+/*
 "use client";
 
 import { Button } from "@/components/ui/button";
@@ -364,3 +368,4 @@ export function ContactForm({ locale }: { locale: string }) {
     </DefaultCard>
   );
 }
+*/

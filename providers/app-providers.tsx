@@ -2,7 +2,7 @@
 
 import { ScrollToTop } from "@/components/ui/scroll-to-top";
 import { GlobalContextProvider } from "@/providers/global-context";
-import type { CmsEntry } from "@/services/cms";
+import type { CmsEntry } from "@/services/content";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { useState, type ReactNode } from "react";
 

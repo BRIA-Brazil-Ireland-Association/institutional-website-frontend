@@ -1,0 +1,43 @@
+{
+  "label": "WELCOME TO BRIA",
+  "title": "**BRIA:** The Bridge Between Brazilian Talent and the Irish Market. ",
+  "subtitle": "**We provide information** from official sources, educational workshops and strategic networking platforms, so you can be the protagonist of your own professional journey in Ireland.\n",
+  "image": {
+    "alternativeText": null,
+    "width": 6000,
+    "height": 4000,
+    "url": "/assets/hero/DSC_01945_ED_481cf14b91_0e97bb6c25.jpg"
+  },
+  "kpis": [
+    {
+      "label": "Active Members",
+      "value": "70+",
+      "icon": {
+        "alternativeText": null,
+        "width": 583,
+        "height": 428,
+        "url": "/assets/hero/Chat_GPT_Image_Aug_4_2026_08_04_55_PM_1_removebg_preview_a512a1adc1.png"
+      }
+    },
+    {
+      "label": "Events Per Year",
+      "value": "30+",
+      "icon": {
+        "alternativeText": null,
+        "width": 491,
+        "height": 508,
+        "url": "/assets/hero/Chat_GPT_Image_Aug_4_2026_08_03_00_PM_1_removebg_preview_1383b2e39b.png"
+      }
+    },
+    {
+      "label": "Strong Community",
+      "value": "1",
+      "icon": {
+        "alternativeText": null,
+        "width": 497,
+        "height": 502,
+        "url": "/assets/hero/Chat_GPT_Image_Aug_4_2026_08_05_56_PM_1_removebg_preview_102b866f68.png"
+      }
+    }
+  ]
+}

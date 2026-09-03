@@ -5,7 +5,7 @@ import InstagramIcon from "@/components/Icons/InstagramIcon";
 import LinkedinIcon from "@/components/Icons/LinkedinIcon";
 import { Link } from "@/i18n/navigation";
 import { useGlobalContext } from "@/providers/global-context";
-import { getObject, getText } from "@/services/cms";
+import { getObject, getText } from "@/services/content";
 import { BriaLogo } from "./bria-logo";
 
 type FooterLink = {

@@ -1,0 +1,11 @@
+{
+  "title": "Notícias",
+  "sectionTitle": "Leia todas as notícias",
+  "description": "De marcos da comunidade a anúncios de parcerias, fique por dentro das novidades da BRIA.",
+  "cta": [
+    {
+      "label": "Leia todas as notícias",
+      "href": "news"
+    }
+  ]
+}

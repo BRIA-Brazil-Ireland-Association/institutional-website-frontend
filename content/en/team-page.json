@@ -1,0 +1,103 @@
+{
+  "title": "TEAM",
+  "sectionTitle": "Join us and be  part of this team!",
+  "description": "**Want to make a difference in the Brazilian community in Ireland?**\nSend your CV to [rh@brazil-irelandassociation.org](mailto:rh@brazil-irelandassociation.org)",
+  "image": {
+    "alternativeText": null,
+    "width": 1000,
+    "height": 667,
+    "url": "/assets/team/large_Layer_0_976d59d7e8_4080946adc.png"
+  },
+  "leadershipTeam": [
+    {
+      "area": "Founder and CEO",
+      "name": "Louise",
+      "avatar": {
+        "alternativeText": null,
+        "width": 800,
+        "height": 800,
+        "url": "/assets/team-page/Louise_77235cc0cd.png"
+      }
+    },
+    {
+      "area": "Events",
+      "name": "Carine Amaral",
+      "avatar": {
+        "alternativeText": null,
+        "width": 945,
+        "height": 2048,
+        "url": "/assets/team-page/Whats_App_Image_2026_09_01_at_19_57_16_49bde7fb9b.jpeg"
+      }
+    },
+    {
+      "area": "Professional Development",
+      "name": "Mirelle Freitas",
+      "avatar": {
+        "alternativeText": null,
+        "width": 410,
+        "height": 425,
+        "url": "/assets/team-page/Whats_App_Image_2026_09_01_at_19_41_24_abae994082.jpeg"
+      }
+    },
+    {
+      "area": "Marketing",
+      "name": "Giovanna Paggiossi",
+      "avatar": {
+        "alternativeText": null,
+        "width": 640,
+        "height": 641,
+        "url": "/assets/team-page/0eb77754_45e3_4301_a60f_432fca3cc357_7778002bac.jpeg"
+      }
+    },
+    {
+      "area": "Strategic Partnerships and Funding",
+      "name": "Kennedy Dantas",
+      "avatar": {
+        "alternativeText": null,
+        "width": 640,
+        "height": 640,
+        "url": "/assets/team-page/fcea3445_16ad_4408_acd2_f6dc974a0e46_8eb1fa26d1.jpeg"
+      }
+    },
+    {
+      "area": "Administrative",
+      "name": "Thalia Salvador",
+      "avatar": {
+        "alternativeText": null,
+        "width": 1200,
+        "height": 1600,
+        "url": "/assets/team-page/Whats_App_Image_2026_09_01_at_16_42_04_c79fdef22a.jpeg"
+      }
+    },
+    {
+      "area": "Marketing",
+      "name": "Priscila Fenner",
+      "avatar": {
+        "alternativeText": null,
+        "width": 1264,
+        "height": 846,
+        "url": "/assets/team-page/Whats_App_Image_2026_09_01_at_15_10_35_c4ed50de1c.jpeg"
+      }
+    },
+    {
+      "area": "Tech, Analytics & AI",
+      "name": "Jhonny Pinheiro",
+      "avatar": {
+        "alternativeText": null,
+        "width": 400,
+        "height": 400,
+        "url": "/assets/team-page/Whats_App_Image_2026_09_03_at_11_02_13_08f23f9fc9.jpeg"
+      }
+    },
+    {
+      "area": "Events",
+      "name": "Arthemis Siqueira",
+      "avatar": {
+        "alternativeText": null,
+        "width": 1135,
+        "height": 1600,
+        "url": "/assets/team-page/Whats_App_Image_2026_09_01_at_19_57_16_1_4c71a4eddf.jpeg"
+      }
+    }
+  ]
+}

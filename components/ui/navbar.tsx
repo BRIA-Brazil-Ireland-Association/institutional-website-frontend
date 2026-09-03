@@ -8,7 +8,6 @@ import { BriaLogo } from "../ui/bria-logo";
 import { LanguageSelector } from "./language-selector";
 
 type MenuItem = {
-  id?: number;
   label: string;
   url?: string;
   href?: string;
@@ -59,7 +58,6 @@ export function Navbar() {
   const translatedMenuItems = useMemo(() => {
     return menuItems.map((item) => {
       return {
-        id: item.id ?? item.url ?? item.href ?? item.label,
         label: item.label,
         url: item.url ?? item.href ?? "#",
       };
@@ -97,12 +95,12 @@ export function Navbar() {
           <div className="hidden items-center gap-7 lg:flex">
             {hasMenuItems && (
               <ul className="flex items-center text-[15px] font-semibold text-[#1a1a1a]">
-                {translatedMenuItems.map((item) => {
+                {translatedMenuItems.map((item, itemIndex) => {
                   const itemUrl = isHome ? `#${item.url}` : `/${item.url}`;
                   const isActive = isItemActive(itemUrl);
 
                   return (
-                    <li className="flex items-center" key={item.id}>
+                    <li className="flex items-center" key={itemIndex}>
                       <Link
                         aria-current={isActive ? "page" : undefined}
                         className={cn(
@@ -155,11 +153,11 @@ export function Navbar() {
         {isOpen && hasMenuItems && (
           <div className="border-t border-black/10 bg-white px-4 py-3 shadow-[0_12px_24px_rgba(0,0,0,0.12)] lg:hidden">
             <ul className="mx-auto flex max-w-7xl flex-col divide-y divide-black/10 text-base font-semibold text-[#1a1a1a]">
-              {translatedMenuItems.map((item) => {
+              {translatedMenuItems.map((item, itemIndex) => {
                 const isActive = isItemActive(item.url);
 
                 return (
-                  <li key={item.id}>
+                  <li key={itemIndex}>
                     <Link
                       aria-current={isActive ? "page" : undefined}
                       className={cn(

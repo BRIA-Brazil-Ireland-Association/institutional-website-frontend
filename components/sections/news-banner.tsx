@@ -1,20 +1,15 @@
 import { renderEmphasizedText } from "@/helpers/render-emphasized-text";
-import { getText } from "@/services/cms";
+import { getText } from "@/services/content";
 import { Button } from "../ui/button";
 import { RenderCms } from "../ui/render-cms";
 import { SectionReveal } from "../ui/section-reveal";
-import Skeleton from "../ui/skeleton";
 import { RecentArticles } from "./recent-articles";
-
-const populate = new URLSearchParams([["populate[cta]", "true"]]);
 
 export function NewsBanner({ locale }: { locale: string }) {
   return (
     <RenderCms
       locale={locale}
-      populate={populate}
       cmsPath="news-component"
-      fallback={<Skeleton className="min-h-100" />}
       render={({ content }) => {
         const title = getText(content, "title");
         const sectionTitle = getText(content, "sectionTitle");
@@ -71,7 +66,7 @@ export function NewsBanner({ locale }: { locale: string }) {
                         <Button
                           aria-label={ctaAccessibleLabel}
                           href={ctaHref}
-                          key={cta?.id ?? ctaIndex}
+                          key={ctaIndex}
                         >
                           {ctaLabel}
                         </Button>

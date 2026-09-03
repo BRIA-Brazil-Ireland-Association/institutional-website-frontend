@@ -1,0 +1,18 @@
+{
+  "title": "EVENTS & NETWORKING",
+  "sectionTitle": "Upcoming Events and Educational Programs",
+  "description": "**From employability workshops to networking events,** BRIA's initiatives connect our community with the people, knowledge, and opportunities that move careers forward.\n",
+  "emptyStateMessage": null,
+  "image": {
+    "alternativeText": null,
+    "width": 701,
+    "height": 681,
+    "url": "/assets/about-page/medium_Screenshot_2026_06_22_at_15_32_26_2cf1911ad0_612c092c85.png"
+  },
+  "cta": [
+    {
+      "label": "More info",
+      "href": "/events"
+    }
+  ]
+}

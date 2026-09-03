@@ -274,7 +274,7 @@ export const EventsCalendar = ({ events, locale }: EventsCalendarProps) => {
               <EventCard
                 event={event}
                 isPast={isPast}
-                key={event?.documentId ?? event?.id ?? eventIndex}
+                key={eventIndex}
                 locale={locale}
               />
             ))}

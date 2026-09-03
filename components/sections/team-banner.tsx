@@ -1,10 +1,9 @@
 import { renderEmphasizedText } from "@/helpers/render-emphasized-text";
-import { getMediaUrl, getObject, getText } from "@/services/cms";
+import { getMediaUrl, getObject, getText } from "@/services/content";
 import Image from "next/image";
 import { Button } from "../ui/button";
 import { RenderCms } from "../ui/render-cms";
 import { SectionReveal } from "../ui/section-reveal";
-import Skeleton from "../ui/skeleton";
 import {
   TeamLeadershipGrid,
   type LeadershipMember,
@@ -14,7 +13,7 @@ const processLeadershipMembers = (
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   leaders: any[],
 ): LeadershipMember[] =>
-  leaders.reduce<LeadershipMember[]>((members, leader, leaderIndex) => {
+  leaders.reduce<LeadershipMember[]>((members, leader) => {
     const area = getText(leader, "area");
     const name = getText(leader, "name");
 
@@ -30,7 +29,6 @@ const processLeadershipMembers = (
       area,
       avatarAlt,
       avatarUrl,
-      id: leader?.id ?? leaderIndex,
       name,
     });
 
@@ -47,21 +45,7 @@ export function TeamBanner({
   return (
     <RenderCms
       locale={locale}
-      populate={
-        new URLSearchParams(
-          compact
-            ? [
-                ["populate[cta]", "true"],
-                ["populate[image]", "true"],
-              ]
-            : [
-                ["populate[image]", "true"],
-                ["populate[leadershipTeam][populate][avatar]", "true"],
-              ],
-        )
-      }
       cmsPath={compact ? "team" : "team-page"}
-      fallback={<Skeleton className="min-h-100" />}
       render={({ content }) => {
         const title = getText(content, "title");
         const sectionTitle = getText(content, "sectionTitle");
@@ -134,7 +118,7 @@ export function TeamBanner({
                               <Button
                                 aria-label={ctaAccessibleLabel}
                                 href={ctaHref}
-                                key={cta?.id ?? ctaIndex}
+                                key={ctaIndex}
                               >
                                 {ctaLabel}
                               </Button>

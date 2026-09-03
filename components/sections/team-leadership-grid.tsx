@@ -6,7 +6,6 @@ import Image from "next/image";
 import { useState } from "react";
 
 export type LeadershipMember = {
-  id: string | number;
   area: string;
   name: string;
   avatarUrl?: string;
@@ -72,8 +71,11 @@ export const TeamLeadershipGrid = ({
       </div>
 
       <div className="mt-8 flex flex-wrap justify-center gap-4 sm:gap-5">
-        {visibleMembers.map((member) => (
-          <div className="w-52 flex-none pl-4 sm:w-64 md:w-72" key={member.id}>
+        {visibleMembers.map((member, memberIndex) => (
+          <div
+            className="w-52 flex-none pl-4 sm:w-64 md:w-72"
+            key={memberIndex}
+          >
             <div className="relative aspect-square overflow-hidden rounded-2xl shadow-md">
               {member.avatarUrl ? (
                 <Image

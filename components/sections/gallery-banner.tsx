@@ -1,11 +1,8 @@
 import { renderEmphasizedText } from "@/helpers/render-emphasized-text";
-import { getText } from "@/services/cms";
+import { getText } from "@/services/content";
 import { RenderCms } from "../ui/render-cms";
 import { SectionReveal } from "../ui/section-reveal";
-import Skeleton from "../ui/skeleton";
 import { GalleryCarousel } from "./gallery-carousel";
-
-const populate = new URLSearchParams([["populate[image]", "true"]]);
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const processGalleryPhotos = (photos: any[]) => {
@@ -25,14 +22,11 @@ export default function GalleryBanner({
     <RenderCms
       locale={locale}
       cmsPath="gallery-page"
-      fallback={<Skeleton className="min-h-100" />}
       render={({ content: contentPage }) => {
         return (
           <RenderCms
             locale={locale}
-            populate={populate}
             cmsPath="gallery-photos"
-            fallback={<Skeleton className="min-h-100" />}
             render={({ content }) => {
               const title = getText(contentPage, "title");
               const description = getText(contentPage, "description");
