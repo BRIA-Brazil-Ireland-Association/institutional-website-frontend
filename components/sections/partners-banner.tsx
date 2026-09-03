@@ -90,16 +90,19 @@ export function PartnersBanner({
                               </span>
                             )}
 
-                            {partnerName && (
-                              <h3 className="text-lg font-semibold text-[#1a1a1a]">
-                                {partnerName}
-                              </h3>
-                            )}
-
-                            {partnerDescription && (
-                              <p className="text-sm leading-relaxed text-[#3d3d3d]">
-                                {partnerDescription}
-                              </p>
+                            {!compact && (
+                              <>
+                                {partnerName && (
+                                  <h3 className="text-lg font-semibold text-[#1a1a1a]">
+                                    {partnerName}
+                                  </h3>
+                                )}
+                                {partnerDescription && (
+                                  <p className="text-sm leading-relaxed text-[#3d3d3d]">
+                                    {partnerDescription}
+                                  </p>
+                                )}
+                              </>
                             )}
                           </DefaultCard>
                         </a>
