@@ -56,7 +56,7 @@ export function PartnersBanner({
                 )}
 
                 {partners.length > 0 && (
-                  <div className="mx-auto mt-8 grid max-w-5xl grid-cols-1 gap-6 sm:grid-cols-2">
+                  <div className="mx-auto mt-8 flex max-w-5xl justify-center gap-6">
                     {partners.map((partner, partnerIndex) => {
                       const partnerUrl = getText(partner, "url");
                       const partnerName = getText(partner, "name");
@@ -71,7 +71,7 @@ export function PartnersBanner({
 
                       return (
                         <a
-                          className="block rounded-xl transition-opacity hover:opacity-80 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#169b62]"
+                          className="block w-full rounded-xl transition-opacity hover:opacity-80 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#169b62] md:w-4/12"
                           href={partnerUrl ?? "#"}
                           key={partnerIndex}
                           rel="noopener noreferrer"
