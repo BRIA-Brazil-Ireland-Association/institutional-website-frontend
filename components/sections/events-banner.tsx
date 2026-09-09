@@ -6,7 +6,6 @@ import { Circle } from "@/components/ui/circle";
 import { RenderCms } from "@/components/ui/render-cms";
 import { formatEventDate } from "@/helpers/format-event-date";
 import { renderEmphasizedText } from "@/helpers/render-emphasized-text";
-import { Link } from "@/i18n/navigation";
 import { cn } from "@/libs/utils";
 import { useEvents } from "@/services/api/events";
 import { getMediaUrl, getObject, getText } from "@/services/content";
@@ -158,19 +157,17 @@ export function EventsBanner({
                                 event,
                                 "description",
                               );
-                              const eventUrl = getText(event, "url");
                               const eventDate = formatEventDate(
                                 getText(event, "date"),
                                 locale,
                               );
 
                               return (
-                                <Link
+                                <div
                                   className={cn(
-                                    "relative flex overflow-hidden rounded-md bg-white shadow-[0_10px_24px_rgba(0,0,0,0.08)] transition-shadow hover:shadow-[0_14px_28px_rgba(0,0,0,0.16)]",
+                                    "relative flex overflow-hidden rounded-md bg-white shadow-[0_10px_24px_rgba(0,0,0,0.08)] transition-shadow",
                                     isPast && "opacity-50 grayscale",
                                   )}
-                                  href={eventUrl ?? "#"}
                                   key={eventIndex}
                                 >
                                   {eventDate && (
@@ -203,7 +200,7 @@ export function EventsBanner({
                                   >
                                     <ChevronRightIcon className="size-3" />
                                   </span>
-                                </Link>
+                                </div>
                               );
                             },
                           )}
