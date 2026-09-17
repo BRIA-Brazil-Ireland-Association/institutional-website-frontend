@@ -110,6 +110,10 @@ export default async function LocaleLayout({
   return (
     <html lang={locale} className={`${poppins.variable} h-full antialiased`}>
       <body className="flex min-h-full flex-col" suppressHydrationWarning>
+        <meta
+          name="google-site-verification"
+          content="V8iToGgipDzU0awmFUomqikHxLpy1HM-77Ys1hs1EHo"
+        />
         <NextIntlClientProvider>
           <AppProviders globalContent={globalContent}>
             <Navbar />
