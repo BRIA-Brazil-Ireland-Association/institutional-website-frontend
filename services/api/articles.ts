@@ -30,6 +30,10 @@ const ARTICLES_BY_LOCALE: Record<string, Article[]> = {
   "pt-BR": articlesPt as Article[],
 };
 
+export const getArticles = (locale: string) => {
+  return ARTICLES_BY_LOCALE[locale] ?? [];
+};
+
 const fetchArticles = async ({
   locale,
   page,
@@ -39,7 +43,7 @@ const fetchArticles = async ({
   page: number;
   pageSize: number;
 }): Promise<ArticlesPage> => {
-  const allArticles = ARTICLES_BY_LOCALE[locale] ?? [];
+  const allArticles = getArticles(locale);
   const start = (page - 1) * pageSize;
   const articles = allArticles.slice(start, start + pageSize);
   const pagination: ArticlesPagination = {
@@ -68,16 +72,23 @@ export const useArticles = ({
   });
 };
 
-const fetchArticleBySlug = async ({
+export const getArticleBySlug = ({
   locale,
   slug,
 }: {
   locale: string;
   slug: string;
-}): Promise<Article | null> => {
-  const allArticles = ARTICLES_BY_LOCALE[locale] ?? [];
+}): Article | null => {
+  const allArticles = getArticles(locale);
 
   return allArticles.find((article) => article.slug === slug) ?? null;
+};
+
+const fetchArticleBySlug = async (params: {
+  locale: string;
+  slug: string;
+}): Promise<Article | null> => {
+  return getArticleBySlug(params);
 };
 
 export const useArticle = ({

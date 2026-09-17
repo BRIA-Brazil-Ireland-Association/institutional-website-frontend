@@ -6,9 +6,35 @@ import { HeroBanner } from "@/components/sections/hero-banner";
 import { NewsBanner } from "@/components/sections/news-banner";
 import { PartnersBanner } from "@/components/sections/partners-banner";
 import { TeamBanner } from "@/components/sections/team-banner";
+import {
+  getContent,
+  getObject,
+  getSingleContent,
+  getText,
+} from "@/services/content";
+import { getDescription, getPageMetadata } from "@/services/seo";
+import type { Metadata } from "next";
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export default async function Home({ params }: any) {
+type HomeProps = {
+  params: Promise<{ locale: string }>;
+};
+
+export async function generateMetadata({
+  params,
+}: HomeProps): Promise<Metadata> {
+  const { locale } = await params;
+  const content = getSingleContent(getContent("hero", locale));
+  const image = getObject(content, "image");
+
+  return getPageMetadata({
+    description: getDescription(getText(content, "subtitle")),
+    image: getText(image, "url"),
+    locale,
+    title: "Brazil-Ireland Association",
+  });
+}
+
+export default async function Home({ params }: HomeProps) {
   const { locale } = await params;
 
   return (

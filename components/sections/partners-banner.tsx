@@ -29,6 +29,7 @@ export function PartnersBanner({
 
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         const ctas: any[] = Array.isArray(content?.cta) ? content.cta : [];
+        const SectionHeading = compact ? "h2" : "h1";
 
         return (
           <div id="partners" className="scroll-mt-20 bg-white text-black">
@@ -41,9 +42,9 @@ export function PartnersBanner({
                 )}
 
                 {label && (
-                  <h2 className="mt-1 text-center text-4xl font-medium text-[#1a1a1a] sm:text-5xl">
+                  <SectionHeading className="mt-1 text-center text-4xl font-medium text-[#1a1a1a] sm:text-5xl">
                     {label}
-                  </h2>
+                  </SectionHeading>
                 )}
 
                 {description && (

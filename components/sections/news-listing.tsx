@@ -140,10 +140,12 @@ const NewsPagination = ({
 export const NewsListing = ({
   locale,
   eyebrow,
+  isPage = false,
   title,
 }: {
   locale: string;
   eyebrow?: string;
+  isPage?: boolean;
   title?: string;
 }) => {
   const [page, setPage] = useState(1);
@@ -156,6 +158,7 @@ export const NewsListing = ({
 
   const articles = data?.articles ?? [];
   const pagination = data?.pagination;
+  const SectionHeading = isPage ? "h1" : "h2";
 
   return (
     <div
@@ -170,9 +173,9 @@ export const NewsListing = ({
             </p>
           )}
           {title && (
-            <h2 className="mt-1 text-4xl font-medium text-[#1a1a1a] sm:text-5xl">
+            <SectionHeading className="mt-1 text-4xl font-medium text-[#1a1a1a] sm:text-5xl">
               {title}
-            </h2>
+            </SectionHeading>
           )}
 
           {isPending && (

@@ -66,6 +66,7 @@ export function TeamBanner({
           ? content.leadershipTeam
           : [];
         const leadershipMembers = processLeadershipMembers(leadershipTeam);
+        const SectionHeading = compact ? "h2" : "h1";
 
         return (
           <div
@@ -86,9 +87,9 @@ export function TeamBanner({
                   )}
 
                   {sectionTitle && (
-                    <h2 className="mt-1 text-4xl font-medium text-[#1a1a1a] sm:text-5xl">
+                    <SectionHeading className="mt-1 text-4xl font-medium text-[#1a1a1a] sm:text-5xl">
                       {sectionTitle}
-                    </h2>
+                    </SectionHeading>
                   )}
 
                   {description && (

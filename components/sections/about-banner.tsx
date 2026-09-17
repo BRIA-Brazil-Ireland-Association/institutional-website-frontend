@@ -32,6 +32,7 @@ export function AboutBanner({
           typeof image?.width === "number" ? image.width : 1484;
         const imageHeight =
           typeof image?.height === "number" ? image.height : 698;
+        const SectionHeading = compact ? "h2" : "h1";
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         const ctas: any[] = Array.isArray(content?.cta) ? content.cta : [];
 
@@ -78,9 +79,9 @@ export function AboutBanner({
                   )}
 
                   {sectionTitle && (
-                    <h2 className="mt-1 text-4xl font-medium text-[#1a1a1a] sm:text-5xl">
+                    <SectionHeading className="mt-1 text-4xl font-medium text-[#1a1a1a] sm:text-5xl">
                       {sectionTitle}
-                    </h2>
+                    </SectionHeading>
                   )}
 
                   {description && (

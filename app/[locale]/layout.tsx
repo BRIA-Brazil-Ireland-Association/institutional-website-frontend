@@ -10,6 +10,7 @@ import {
   getText,
   type CmsEntry,
 } from "@/services/content";
+import { SITE_URL } from "@/services/seo";
 import type { Metadata } from "next";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
@@ -34,17 +35,42 @@ const getGlobalContent = cache((locale: string) =>
   getSingleContent(getContent("global", locale)),
 );
 
-function buildMetadataFromGlobal(global: CmsEntry | null): Metadata {
+const buildMetadataFromGlobal = (global: CmsEntry | null): Metadata => {
   const title = getText(global, "siteName");
+  const siteName = title ?? "Brazil-Ireland Association";
   const description = getText(global, "siteDescription");
   const locale = getText(global, "locale")?.replace("-", "_");
   const favicon = getObject(global, "favicon");
   const faviconUrl = getMediaUrl(favicon);
-  const faviconAlt = getText(favicon, "alternativeText") ?? title;
+  const logo = getObject(global, "Logo");
+  const logoUrl = getMediaUrl(logo);
+  const logoAlt = getText(logo, "alternativeText") ?? siteName;
+  const isPreview = process.env.VERCEL_ENV === "preview";
 
   return {
-    title,
+    metadataBase: new URL(SITE_URL),
+    title: {
+      default: siteName,
+      template: `%s | ${siteName}`,
+    },
     description,
+    applicationName: siteName,
+    verification: {
+      google: "V8iToGgipDzU0awmFUomqikHxLpy1HM-77Ys1hs1EHo",
+    },
+    robots: isPreview
+      ? {
+          follow: false,
+          index: false,
+        }
+      : {
+          follow: true,
+          googleBot: {
+            follow: true,
+            index: true,
+          },
+          index: true,
+        },
     icons: faviconUrl
       ? {
           icon: faviconUrl,
@@ -53,27 +79,47 @@ function buildMetadataFromGlobal(global: CmsEntry | null): Metadata {
         }
       : undefined,
     openGraph: {
-      title,
+      title: siteName,
       description,
-      images: faviconUrl
+      images: logoUrl
         ? [
             {
-              url: faviconUrl,
-              ...(faviconAlt ? { alt: faviconAlt } : {}),
+              url: logoUrl,
+              ...(logoAlt ? { alt: logoAlt } : {}),
             },
           ]
         : undefined,
       locale,
-      siteName: title,
+      siteName,
     },
     twitter: {
-      card: faviconUrl ? "summary_large_image" : "summary",
-      title,
+      card: "summary",
+      title: siteName,
       description,
-      images: faviconUrl ? [faviconUrl] : undefined,
+      images: logoUrl ? [logoUrl] : undefined,
     },
   };
-}
+};
+
+const getOrganizationJsonLd = (global: CmsEntry | null) => {
+  const name = getText(global, "siteName");
+  const description = getText(global, "siteDescription");
+  const logoUrl = getMediaUrl(getObject(global, "Logo"));
+  const instagramUrl = getText(global, "instagramUrl");
+  const linkedinUrl = getText(global, "linkedinUrl");
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    ...(description ? { description } : {}),
+    ...(logoUrl ? { logo: new URL(logoUrl, SITE_URL).toString() } : {}),
+    ...(name ? { name } : {}),
+    sameAs: [instagramUrl, linkedinUrl].filter((url): url is string =>
+      Boolean(url),
+    ),
+    url: SITE_URL,
+  };
+};
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -106,13 +152,16 @@ export default async function LocaleLayout({
   setRequestLocale(locale);
 
   const globalContent = await getGlobalContent(locale);
+  const organizationJsonLd = JSON.stringify(
+    getOrganizationJsonLd(globalContent),
+  ).replace(/</g, "\\u003c");
 
   return (
     <html lang={locale} className={`${poppins.variable} h-full antialiased`}>
       <body className="flex min-h-full flex-col" suppressHydrationWarning>
-        <meta
-          name="google-site-verification"
-          content="V8iToGgipDzU0awmFUomqikHxLpy1HM-77Ys1hs1EHo"
+        <script
+          dangerouslySetInnerHTML={{ __html: organizationJsonLd }}
+          type="application/ld+json"
         />
         <NextIntlClientProvider>
           <AppProviders globalContent={globalContent}>

@@ -161,9 +161,9 @@ export function ContactBanner({
                 )}
 
                 {sectionTitle && (
-                  <h2 className="mt-1 text-4xl font-medium text-[#1a1a1a] sm:text-5xl">
+                  <h1 className="mt-1 text-4xl font-medium text-[#1a1a1a] sm:text-5xl">
                     {sectionTitle}
-                  </h2>
+                  </h1>
                 )}
 
                 {description && (

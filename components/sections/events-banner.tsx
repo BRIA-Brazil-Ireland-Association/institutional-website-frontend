@@ -99,6 +99,7 @@ export function EventsBanner({
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         const ctas: any[] = Array.isArray(content?.cta) ? content.cta : [];
         const processedEvents = processEvents(events ?? [], compact);
+        const SectionHeading = compact ? "h2" : "h1";
 
         return (
           <div
@@ -133,9 +134,9 @@ export function EventsBanner({
                     )}
 
                     {sectionTitle && (
-                      <h2 className="mt-1 text-4xl font-medium text-[#1a1a1a] sm:text-5xl">
+                      <SectionHeading className="mt-1 text-4xl font-medium text-[#1a1a1a] sm:text-5xl">
                         {sectionTitle}
-                      </h2>
+                      </SectionHeading>
                     )}
 
                     {Boolean(description && !compact) && (
