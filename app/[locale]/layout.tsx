@@ -11,6 +11,7 @@ import {
   type CmsEntry,
 } from "@/services/content";
 import { SITE_URL } from "@/services/seo";
+import { Analytics } from "@vercel/analytics/next";
 import type { Metadata } from "next";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
@@ -171,6 +172,7 @@ export default async function LocaleLayout({
           </AppProviders>
         </NextIntlClientProvider>
       </body>
+      <Analytics />
     </html>
   );
 }
