@@ -14,13 +14,19 @@ type EventCardProps = {
 export const EventCard = ({ event, isPast, locale }: EventCardProps) => {
   const eventTitle = getText(event, "title");
   const eventDescription = getText(event, "description");
-  const eventUrl = getText(event, "url");
+  const eventUrl = isPast ? undefined : getText(event, "url");
+  const isExternalUrl = Boolean(eventUrl?.startsWith("https://"));
+  const isInternalUrl = Boolean(eventUrl?.startsWith("/"));
+  const hasLink = isExternalUrl || isInternalUrl;
   const eventDate = formatEventDate(getText(event, "date"), locale);
+  const registerLabel = locale === "pt-BR" ? "Inscreva-se" : "Register";
+  const newTabLabel =
+    locale === "pt-BR" ? "(abre em nova aba)" : "(opens in a new tab)";
 
   const cardClassName = cn(
     "relative flex overflow-hidden rounded-md bg-white shadow-[0_10px_24px_rgba(0,0,0,0.08)]",
     isPast && "opacity-50 grayscale",
-    eventUrl && "transition-shadow hover:shadow-[0_14px_28px_rgba(0,0,0,0.16)]",
+    hasLink && "transition-shadow hover:shadow-[0_14px_28px_rgba(0,0,0,0.16)]",
   );
 
   const cardContent = (
@@ -47,9 +53,15 @@ export const EventCard = ({ event, isPast, locale }: EventCardProps) => {
             {eventDescription}
           </span>
         )}
+        {isExternalUrl && (
+          <span className="mt-2 inline-block text-xs font-semibold text-[#104722] underline underline-offset-2">
+            {registerLabel}
+            <span className="sr-only"> {newTabLabel}</span>
+          </span>
+        )}
       </span>
 
-      {eventUrl && (
+      {hasLink && (
         <span
           aria-hidden="true"
           className="absolute right-0 bottom-0 flex h-5 w-6 items-center justify-center bg-[#104722] text-white"
@@ -60,9 +72,22 @@ export const EventCard = ({ event, isPast, locale }: EventCardProps) => {
     </>
   );
 
-  if (eventUrl) {
+  if (isExternalUrl) {
     return (
-      <Link className={cardClassName} href={eventUrl}>
+      <a
+        className={cardClassName}
+        href={eventUrl}
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+        {cardContent}
+      </a>
+    );
+  }
+
+  if (isInternalUrl) {
+    return (
+      <Link className={cardClassName} href={eventUrl!}>
         {cardContent}
       </Link>
     );

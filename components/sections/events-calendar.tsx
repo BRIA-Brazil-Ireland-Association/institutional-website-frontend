@@ -2,6 +2,7 @@
 
 import ChevronLeftIcon from "@/components/Icons/ChevronLeftIcon";
 import ChevronRightIcon from "@/components/Icons/ChevronRightIcon";
+import { getDublinDateKey } from "@/helpers/get-dublin-date-key";
 import { cn } from "@/libs/utils";
 import { useState } from "react";
 import { EventCard } from "./event-card";
@@ -19,13 +20,7 @@ const MAX_VISIBLE_INDICATORS = 3;
 
 const buildDateKey = (date: Date) => date.toISOString().slice(0, 10);
 
-const getTodayUtcDate = () => {
-  const now = new Date();
-
-  return new Date(
-    Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate()),
-  );
-};
+const getTodayUtcDate = () => new Date(`${getDublinDateKey()}T00:00:00.000Z`);
 
 const groupEventsByDate = (events: CalendarEvent[]) => {
   const map = new Map<string, CalendarEvent[]>();
@@ -81,9 +76,9 @@ type EventsCalendarProps = {
 
 export const EventsCalendar = ({ events, locale }: EventsCalendarProps) => {
   const [currentMonth, setCurrentMonth] = useState(() => {
-    const now = new Date();
+    const today = getTodayUtcDate();
 
-    return new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), 1));
+    return new Date(Date.UTC(today.getUTCFullYear(), today.getUTCMonth(), 1));
   });
   const [selectedDateKey, setSelectedDateKey] = useState<string | null>(null);
 
