@@ -3,6 +3,7 @@ import { formatEventDate } from "@/helpers/format-event-date";
 import { Link } from "@/i18n/navigation";
 import { cn } from "@/libs/utils";
 import { getText } from "@/services/content";
+import Image from "next/image";
 
 type EventCardProps = {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -11,20 +12,35 @@ type EventCardProps = {
   locale: string;
 };
 
+const LINK_LABELS: Record<string, { en: string; pt: string }> = {
+  details: { en: "View details", pt: "Ver detalhes" },
+  register: { en: "Register", pt: "Inscreva-se" },
+  tickets: { en: "Tickets", pt: "Ingressos" },
+};
+
 export const EventCard = ({ event, isPast, locale }: EventCardProps) => {
   const eventTitle = getText(event, "title");
   const eventDescription = getText(event, "description");
   const eventUrl = isPast ? undefined : getText(event, "url");
+  const eventImageText = getText(event, "image");
+  const eventImage = eventImageText?.startsWith("https://")
+    ? eventImageText
+    : undefined;
   const isExternalUrl = Boolean(eventUrl?.startsWith("https://"));
   const isInternalUrl = Boolean(eventUrl?.startsWith("/"));
   const hasLink = isExternalUrl || isInternalUrl;
   const eventDate = formatEventDate(getText(event, "date"), locale);
-  const registerLabel = locale === "pt-BR" ? "Inscreva-se" : "Register";
+  const isOndeTem = getText(event, "origin") === "ondetem";
+  const eventLinkType = getText(event, "linkType");
+  const linkLabels =
+    LINK_LABELS[eventLinkType ?? "register"] ?? LINK_LABELS.register;
+  const registerLabel = locale === "pt-BR" ? linkLabels.pt : linkLabels.en;
   const newTabLabel =
     locale === "pt-BR" ? "(abre em nova aba)" : "(opens in a new tab)";
 
   const cardClassName = cn(
     "relative flex overflow-hidden rounded-md bg-white shadow-[0_10px_24px_rgba(0,0,0,0.08)]",
+    isOndeTem && "border border-[#104722]/50",
     isPast && "opacity-50 grayscale",
     hasLink && "transition-shadow hover:shadow-[0_14px_28px_rgba(0,0,0,0.16)]",
   );
@@ -59,7 +75,36 @@ export const EventCard = ({ event, isPast, locale }: EventCardProps) => {
             <span className="sr-only"> {newTabLabel}</span>
           </span>
         )}
+        {isOndeTem && (
+          <span className="mt-1.5 flex items-center gap-1 text-[10px] leading-none text-[#3d3d3d]">
+            <Image
+              alt="OndeTem"
+              className="h-5 w-auto"
+              height={112}
+              src="/assets/partner/ondetem-logo.png"
+              width={283}
+            />
+          </span>
+        )}
       </span>
+
+      {eventImage && (
+        <span
+          className={cn(
+            "relative size-24 shrink-0 self-center overflow-hidden rounded-md bg-[#d4ecf6]",
+            hasLink ? "mr-8" : "mr-3",
+          )}
+        >
+          <Image
+            alt=""
+            className="object-cover"
+            fill
+            sizes="56px"
+            src={eventImage}
+            unoptimized
+          />
+        </span>
+      )}
 
       {hasLink && (
         <span

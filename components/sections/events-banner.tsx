@@ -74,6 +74,8 @@ export function EventsBanner({
 }) {
   const { data: events, isPending } = useEvents({ locale });
 
+  console.log(events);
+
   return (
     <RenderCms
       locale={locale}
