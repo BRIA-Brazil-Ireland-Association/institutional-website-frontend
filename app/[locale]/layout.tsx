@@ -17,6 +17,7 @@ import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
 import { Poppins } from "next/font/google";
 import { notFound } from "next/navigation";
+import Script from "next/script";
 import { cache } from "react";
 import "../globals.css";
 
@@ -156,6 +157,7 @@ export default async function LocaleLayout({
   const organizationJsonLd = JSON.stringify(
     getOrganizationJsonLd(globalContent),
   ).replace(/</g, "\\u003c");
+  const gaMeasurementId = process.env.GA_MEASUREMENT_ID;
 
   return (
     <html lang={locale} className={`${poppins.variable} h-full antialiased`}>
@@ -173,6 +175,22 @@ export default async function LocaleLayout({
         </NextIntlClientProvider>
       </body>
       <Analytics />
+      {gaMeasurementId && (
+        <>
+          <Script
+            src={`https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(gaMeasurementId)}`}
+            strategy="afterInteractive"
+          />
+          <Script id="google-analytics" strategy="afterInteractive">
+            {`
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', ${JSON.stringify(gaMeasurementId)});
+            `}
+          </Script>
+        </>
+      )}
     </html>
   );
 }
