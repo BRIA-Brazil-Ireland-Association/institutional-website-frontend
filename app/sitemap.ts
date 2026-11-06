@@ -10,6 +10,7 @@ const staticPaths = [
   "/events",
   "/news",
   "/partners",
+  "/privacy",
   "/team",
 ];
 
