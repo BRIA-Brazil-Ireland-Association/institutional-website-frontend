@@ -1,0 +1,49 @@
+{
+  "title": "Legal",
+  "sectionTitle": "Privacy Policy",
+  "lastUpdated": "Last updated: 6 November 2026",
+  "description": "The Brazil-Ireland Association (BRIA) operates [https://www.brazilirelandassociation.org](https://www.brazilirelandassociation.org). This page explains how we collect, use and protect information when you visit our website, contact us or request our research reports.\n\nWe process information in accordance with the EU General Data Protection Regulation (GDPR) and the Irish Data Protection Acts 1988 to 2018.",
+  "tableOfContentsTitle": "On this page",
+  "sections": [
+    {
+      "id": "information-we-collect",
+      "title": "Information We Collect and How We Use It",
+      "description": "We collect only the information necessary to respond to enquiries, provide requested reports, manage subscriptions to BRIA updates, facilitate community participation and maintain our website.\n\nWe use this information to:",
+      "items": [
+        "Respond to messages and enquiries.",
+        "Deliver research reports requested through our website.",
+        "Send news and updates about BRIA’s research and activities, where you have given your consent.",
+        "Communicate with you about events, community activities and interest groups, where you have chosen to participate. For this purpose, we may ask for your phone number or WhatsApp contact details.",
+        "Understand, in aggregated form, the reach and engagement of our research.",
+        "Publish and moderate comments submitted to our website.",
+        "Maintain website functionality, security and performance."
+      ],
+      "closing": "Participation in community groups and communications is voluntary. You can leave any group or opt out of these communications at any time.\n\nWe do not request sensitive personal information, such as health, religious or political information, through our website. Please do not include such information in your messages.\n\nWe do not sell personal information or share it with BRIA partners or sponsors without your consent. Information may be processed by trusted service providers strictly as necessary to operate our website and services, or disclosed when required by law."
+    },
+    {
+      "id": "data-protection-and-retention",
+      "title": "Data Protection and Retention",
+      "description": "We take reasonable technical and organisational measures to protect the information we handle against unauthorised access, loss, misuse or disclosure.\n\nWe retain information only for as long as necessary to fulfil the purposes described in this policy or to meet legal obligations. Where appropriate, information is deleted or anonymised."
+    },
+    {
+      "id": "cookies-and-analytics",
+      "title": "Cookies and Analytics",
+      "description": "Our website uses cookies, including cookies associated with Google Analytics, to understand how visitors use our website and to help us improve its content, functionality and user experience.\n\nGoogle Analytics may collect technical and browsing information, such as device and browser details, pages visited and interactions with the website.\n\nBy accepting cookies, you consent to their use in accordance with this policy and our cookie settings. You can manage or withdraw your cookie consent through the available cookie settings on our website.\n\nLinks to external websites, including social media platforms, are subject to the respective privacy and cookie policies of those websites."
+    },
+    {
+      "id": "your-rights",
+      "title": "Your Rights",
+      "description": "Under the GDPR, you have the right to request access to, correction or deletion of your personal information, as well as to restrict or object to its processing. You may also withdraw your consent at any time.\n\nTo exercise these rights or ask questions about this policy, please contact us at [contact@brazilirelandassociation.org](mailto:contact@brazilirelandassociation.org).\n\nYou also have the right to lodge a complaint with the Irish Data Protection Commission at [https://www.dataprotection.ie](https://www.dataprotection.ie)."
+    },
+    {
+      "id": "children",
+      "title": "Children",
+      "description": "Our website is not intended for children under the age of 16, and we do not knowingly collect their personal information."
+    },
+    {
+      "id": "changes",
+      "title": "Changes to This Policy",
+      "description": "We may update this Privacy Policy from time to time to reflect changes in our practices or legal requirements. The latest version will always be available on our website."
+    }
+  ]
+}

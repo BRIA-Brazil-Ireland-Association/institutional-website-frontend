@@ -1,3 +1,4 @@
+import { AnnouncementBar } from "@/components/ui/announcement-bar";
 import { Footer } from "@/components/ui/footer";
 import { Navbar } from "@/components/ui/navbar";
 import { routing } from "@/i18n/routing";
@@ -157,7 +158,6 @@ export default async function LocaleLayout({
   const organizationJsonLd = JSON.stringify(
     getOrganizationJsonLd(globalContent),
   ).replace(/</g, "\\u003c");
-  const gaMeasurementId = process.env.GA_MEASUREMENT_ID;
 
   return (
     <html lang={locale} className={`${poppins.variable} h-full antialiased`}>
@@ -168,6 +168,7 @@ export default async function LocaleLayout({
         />
         <NextIntlClientProvider>
           <AppProviders globalContent={globalContent}>
+            <AnnouncementBar />
             <Navbar />
             {children}
             <Footer />
@@ -175,22 +176,7 @@ export default async function LocaleLayout({
         </NextIntlClientProvider>
       </body>
       <Analytics />
-      {gaMeasurementId && (
-        <>
-          <Script
-            src={`https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(gaMeasurementId)}`}
-            strategy="afterInteractive"
-          />
-          <Script id="google-analytics" strategy="afterInteractive">
-            {`
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', ${JSON.stringify(gaMeasurementId)});
-            `}
-          </Script>
-        </>
-      )}
+      <Script src="/cookie-consent.js" strategy="afterInteractive" />
     </html>
   );
 }

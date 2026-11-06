@@ -9,6 +9,7 @@ import globalEn from "@/content/en/global.json";
 import heroEn from "@/content/en/hero.json";
 import newsComponentEn from "@/content/en/news-component.json";
 import partnerEn from "@/content/en/partner.json";
+import privacyPageEn from "@/content/en/privacy-page.json";
 import teamEn from "@/content/en/team.json";
 import teamPageEn from "@/content/en/team-page.json";
 
@@ -23,6 +24,7 @@ import globalPt from "@/content/pt-BR/global.json";
 import heroPt from "@/content/pt-BR/hero.json";
 import newsComponentPt from "@/content/pt-BR/news-component.json";
 import partnerPt from "@/content/pt-BR/partner.json";
+import privacyPagePt from "@/content/pt-BR/privacy-page.json";
 import teamPt from "@/content/pt-BR/team.json";
 import teamPagePt from "@/content/pt-BR/team-page.json";
 
@@ -44,6 +46,7 @@ const CONTENT_BY_PATH: Record<string, Record<string, CmsData>> = {
   hero: { en: heroEn, "pt-BR": heroPt },
   "news-component": { en: newsComponentEn, "pt-BR": newsComponentPt },
   partner: { en: partnerEn, "pt-BR": partnerPt },
+  "privacy-page": { en: privacyPageEn, "pt-BR": privacyPagePt },
   team: { en: teamEn, "pt-BR": teamPt },
   "team-page": { en: teamPageEn, "pt-BR": teamPagePt },
 };
