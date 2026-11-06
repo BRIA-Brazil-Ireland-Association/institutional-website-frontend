@@ -4,6 +4,17 @@
   "contactEmail": "contact@brazilirelandassociation.org",
   "instagramUrl": "https://www.instagram.com/brazil.ireland.association",
   "linkedinUrl": "https://www.linkedin.com/company/bria-brazil-ireland-association/",
+  "announcementBar": {
+    "enabled": true,
+    "startsAt": "2026-11-25T00:00:00Z",
+    "messages": [
+      {
+        "text": "1,897 Brazilian professionals in Ireland: what BRIA's new report reveals about their careers.",
+        "linkLabel": "Get the report",
+        "href": "https://www.brazilirelandassociation.org/en/report-2026"
+      }
+    ]
+  },
   "Logo": {
     "alternativeText": null,
     "width": 768,
@@ -80,6 +91,14 @@
       {
         "label": "Partners",
         "href": "#partners"
+      },
+      {
+        "label": "Privacy Policy",
+        "href": "/privacy"
+      },
+      {
+        "label": "Cookie settings",
+        "href": "#cookie-settings"
       }
     ],
     "communityLinks": [

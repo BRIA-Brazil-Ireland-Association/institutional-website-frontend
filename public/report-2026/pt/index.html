@@ -1,0 +1,471 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Brazilian Talent in Ireland · Relatório BRIA 2026</title>
+<meta name="description" content="1.897 profissionais brasileiros na Irlanda responderam à pesquisa BRIA 2026. Receba o relatório e veja o que as respostas revelam sobre o talento brasileiro no país.">
+<link rel="canonical" href="https://www.brazilirelandassociation.org/pt-BR/relatorio-2026">
+<link rel="alternate" hreflang="en" href="https://www.brazilirelandassociation.org/en/report-2026">
+<link rel="alternate" hreflang="pt-BR" href="https://www.brazilirelandassociation.org/pt-BR/relatorio-2026">
+<link rel="alternate" hreflang="x-default" href="https://www.brazilirelandassociation.org/en/report-2026">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Brazilian Talent in Ireland · Relatório BRIA 2026">
+<meta property="og:description" content="1.897 profissionais brasileiros na Irlanda responderam à pesquisa BRIA 2026. Receba o relatório e veja o que as respostas revelam sobre o talento brasileiro no país.">
+<meta property="og:url" content="https://www.brazilirelandassociation.org/pt-BR/relatorio-2026">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Kalam:wght@700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
+<style>
+:root{
+  color-scheme: light;
+  --green:#084727; --green-mid:#009a54; --green-bright:#3eb763; --green-light:#70f1af;
+  --navy:#31287c; --blue:#007ab2; --cyan:#00b5d3; --teal:#2e6971;
+  --yellow:#ffbb40; --grey:#ebe9e9;
+  --ink:#1a1a1a; --text:#3d4040; --muted:#6b6e6e; --rule:#e1e3e3;
+  --paper:#ffffff; --page:#f9f9f9;
+  --wrap:1160px; --gutter:clamp(16px, 4vw, 40px); --radius:20px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:"Montserrat",system-ui,sans-serif;color:var(--text);background:var(--paper);line-height:1.6;font-size:17px;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit}
+p,li,h1,h2,h3,.q{text-wrap:pretty}
+.wrap{max-width:calc(var(--wrap) + 2*var(--gutter));margin:0 auto;padding:0 var(--gutter)}
+
+.pill{display:inline-flex;align-items:center;gap:8px;border:1.5px solid currentColor;border-radius:999px;padding:6px 16px;
+  font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;line-height:1.2}
+.pill--light{color:rgba(255,255,255,.85)}
+.pill--green{color:var(--green)}
+.lb{font-weight:300}
+.nw{white-space:nowrap}
+.bd{font-weight:700}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;border:0;border-radius:999px;cursor:pointer;
+  font:600 16px/1 "Montserrat",sans-serif;padding:18px 32px;text-decoration:none;transition:transform .15s ease, box-shadow .15s ease, background .15s ease}
+.btn--yellow{background:var(--yellow);color:var(--green)}
+.btn--yellow:hover{transform:translateY(-1px);box-shadow:0 8px 24px rgba(255,187,64,.35)}
+.btn--ghost{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.6);padding:12px 22px;font-size:14px}
+.btn--ghost:hover{background:rgba(255,255,255,.1)}
+.btn:focus-visible,input:focus-visible,select:focus-visible,a:focus-visible{outline:3px solid var(--cyan);outline-offset:3px}
+.sec-head{max-width:760px;margin:0 auto;text-align:center}
+.sec-head h2{margin-top:20px;font-size:clamp(28px,3.6vw,44px);line-height:1.15;letter-spacing:-.02em;color:var(--ink);text-wrap:balance}
+.sec-head p{margin-top:16px;color:var(--muted);font-size:18px}
+
+/* Header: logo and the EN | PT switch, no navigation (the form is the page's only action) */
+.site-header{position:absolute;inset:0 0 auto 0;z-index:5}
+.site-header .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;height:76px}
+.site-header .logo{height:44px;width:auto}
+.lang-switch{display:flex;align-items:center;font:600 13px/1 "Montserrat",sans-serif;letter-spacing:.12em;color:rgba(255,255,255,.7)}
+.lang-switch a,.lang-switch span[aria-current]{display:inline-flex;align-items:center;min-height:44px;padding:0 8px;text-decoration:none}
+.lang-switch a{color:rgba(255,255,255,.7);transition:color .15s ease}
+.lang-switch a:hover{color:#fff}
+.lang-switch span[aria-current]{color:#fff;text-decoration:underline 2px var(--yellow);text-underline-offset:7px}
+.lang-switch .sep{color:rgba(255,255,255,.35)}
+
+/* Hero */
+.hero{position:relative;background:var(--green);color:#fff;overflow:hidden;padding:150px 0 120px}
+.hero-deco{position:absolute;inset:0;pointer-events:none}
+.hero-deco svg{position:absolute;inset:0;width:100%;height:100%}
+.hero-disc{position:absolute;border-radius:50%;background:var(--green-bright);opacity:.9;width:440px;height:440px;right:-230px;top:200px}
+.hero-ring{position:absolute;border-radius:50%;border:34px solid var(--yellow);width:260px;height:260px;left:38%;bottom:-170px}
+.hero-float{position:absolute;border-radius:50%}
+.hero-float--a{width:64px;height:64px;border:10px solid var(--yellow);right:7%;top:104px}
+.hero-float--b{width:22px;height:22px;background:var(--green-light);opacity:.7;left:9%;bottom:64px}
+.hero-float--c{width:180px;height:180px;border:2px solid rgba(255,255,255,.18);left:-120px;top:38%}
+@media (max-width: 1300px){.hero-float--c{display:none}}
+/* Floating circles: slow transform-only drift, alternating, so it stays light on the GPU */
+.hero-disc{animation:float-a 12s ease-in-out infinite alternate}
+.hero-ring{animation:float-b 14s ease-in-out infinite alternate}
+.hero-float--a{animation:float-c 9s ease-in-out infinite alternate}
+.hero-float--b{animation:float-b 7s ease-in-out infinite alternate-reverse}
+.hero-float--c{animation:float-v 16s ease-in-out infinite alternate-reverse}
+.hero-deco .drift-1{animation:float-a 18s ease-in-out infinite alternate}
+.hero-deco .drift-2{animation:float-b 20s ease-in-out infinite alternate}
+@keyframes float-a{to{transform:translate(-80px,90px) scale(1.04)}}
+@keyframes float-b{to{transform:translate(90px,-60px)}}
+@keyframes float-c{to{transform:translate(-50px,60px)}}
+@keyframes float-v{to{transform:translate(20px,-120px)}}
+.hero-grid{position:relative;display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:72px;align-items:center}
+.hero h1{margin-top:28px;font-size:clamp(34px,4.6vw,58px);line-height:1.08;letter-spacing:-.02em;font-weight:300;text-wrap:balance}
+.hero-lede{margin-top:28px;max-width:540px;font-size:19px;line-height:1.6;font-weight:300;color:rgba(255,255,255,.88)}
+
+/* Form */
+.form-card{position:relative;background:var(--paper);color:var(--text);border-radius:24px;padding:36px 32px 32px;box-shadow:0 30px 60px -20px rgba(0,0,0,.45)}
+.form-card h2{font-size:24px;line-height:1.25;color:var(--ink);letter-spacing:-.01em}
+.form-card h2 .bd{color:var(--green)}
+.form-card .form-sub{margin-top:8px;font-size:14px;color:var(--muted)}
+.field{margin-top:14px;border:1.5px solid var(--rule);border-radius:14px;padding:10px 16px;background:var(--page);transition:border-color .15s ease, background .15s ease}
+.field:focus-within{border-color:var(--green-mid);background:#fff}
+.field label{display:block;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--green)}
+.field label small{font-size:11px;font-weight:500;text-transform:none;letter-spacing:0;color:var(--muted)}
+.field input,.field select{width:100%;border:0;background:transparent;font:400 16px/1.4 "Montserrat",sans-serif;color:var(--ink);padding:4px 0 2px;outline:none;appearance:none;-webkit-appearance:none}
+.field input::placeholder{color:#9a9d9d}
+.field--select{position:relative}
+.field--select::after{content:"";position:absolute;right:18px;bottom:18px;width:8px;height:8px;border-right:2px solid var(--green);border-bottom:2px solid var(--green);transform:rotate(45deg);pointer-events:none}
+.field select:invalid{color:#9a9d9d}
+.field.has-error{border-color:#c0392b}
+.check{display:flex;gap:12px;align-items:flex-start;margin-top:16px;font-size:13px;line-height:1.5;color:var(--muted)}
+.check input{flex:none;width:20px;height:20px;margin-top:1px;accent-color:var(--green-mid)}
+.check a{color:var(--blue)}
+.check.has-error span{color:#c0392b}
+.form-card .btn{width:100%;margin-top:22px}
+.form-card .btn[disabled]{opacity:.6;cursor:progress;transform:none;box-shadow:none}
+.form-error{margin-top:14px;font-size:13px;color:#c0392b;text-align:center}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.form-note{margin-top:14px;font-size:12px;color:var(--muted);text-align:center}
+.form-note:empty{display:none}
+.form-success{display:none;text-align:center;padding:24px 4px 8px}
+.form-success .ok{width:84px;height:84px;margin:0 auto;border-radius:50%;border:10px solid var(--yellow);display:grid;place-items:center;color:var(--green);font-size:34px}
+.form-success h3{margin-top:22px;font-size:24px;color:var(--ink)}
+.form-success p{margin-top:10px;font-size:15px;color:var(--muted)}
+.form-success p a{color:var(--green);font-weight:600;text-decoration:underline;text-underline-offset:3px}
+.ev-invite{display:flex;align-items:center;gap:14px;margin-top:24px;padding:14px 16px;border:1.5px solid var(--rule);border-radius:14px;background:var(--page);text-align:left;text-decoration:none;transition:border-color .15s ease, background .15s ease}
+.ev-invite[hidden]{display:none}
+.ev-invite:hover{border-color:var(--green-mid);background:#fff}
+.ev-invite .ev-ic{flex:none;display:grid;place-items:center;width:44px;height:44px;border-radius:50%;background:var(--green);color:var(--yellow);font-size:22px}
+.ev-invite .ev-tx{flex:1;min-width:0;display:grid;gap:2px}
+.ev-invite b{font-size:15px;color:var(--ink)}
+.ev-invite .ev-tx span{font-size:14px;line-height:1.4;color:var(--muted)}
+.ev-invite .ev-go{flex:none;color:var(--green);font-size:18px}
+.form-card.is-sent form{display:none}
+.form-card.is-sent .form-success{display:block}
+
+/* Data source */
+.source{padding:120px 0 110px;background:var(--paper)}
+.source-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:80px;align-items:center}
+.source-photo{position:relative;aspect-ratio:1;max-width:460px;width:100%;justify-self:center}
+.source-photo img{width:100%;height:100%;object-fit:cover;object-position:60% 50%;border-radius:50%}
+.source-photo::after{content:"";position:absolute;width:34%;aspect-ratio:1;border-radius:50%;border:22px solid var(--yellow);right:-4%;bottom:-2%}
+.source-photo figcaption{position:absolute;left:0;bottom:-34px;font-size:11px;color:var(--muted)}
+.source-photo figcaption a{color:var(--muted)}
+.source h2{margin-top:20px;font-size:clamp(28px,3.4vw,42px);line-height:1.15;letter-spacing:-.02em;color:var(--ink);text-wrap:balance}
+.source-copy>p{margin-top:20px;font-size:18px}
+.source-copy>p.small{font-size:14px;color:var(--muted);margin-top:14px}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:36px}
+.stat{border:1.5px solid var(--rule);border-radius:var(--radius);padding:18px 18px}
+.stat b{display:block;font-size:32px;line-height:1.1;font-weight:700;color:var(--green);letter-spacing:-.02em}
+.stat span{display:block;margin-top:6px;font-size:13px;line-height:1.4;color:var(--muted)}
+
+/* Journey of questions */
+.journey{position:relative;padding:110px 0 120px;background:var(--page);overflow:hidden}
+.journey-track{position:relative;margin-top:64px}
+.steps{list-style:none;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:48px;max-width:1040px;margin:0 auto}
+.step{display:flex;flex-direction:column;align-items:center;text-align:center}
+.step .dot{display:grid;place-items:center;border-radius:50%;color:#fff;aspect-ratio:1;flex:none;width:96px;font-size:40px}
+.step .meta{margin-top:28px;display:flex;flex-direction:column;align-items:center}
+.step h3{font-size:22px;line-height:1.2;font-weight:700;color:var(--ink);letter-spacing:-.01em}
+.step .q{margin-top:10px;font-size:16px;line-height:1.55;color:var(--text);max-width:300px;text-wrap:pretty}
+.step .ch{margin-top:14px;font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--teal)}
+.d-green{background:var(--green-bright)}
+.d-navy{background:var(--navy)}
+.d-ring{background:var(--green);box-shadow:0 0 0 9px var(--yellow)}
+.journey{padding-bottom:40px}
+.journey-note{display:flex;justify-content:center;align-items:flex-start;gap:10px;margin-top:64px;pointer-events:none}
+.journey-note p{font-family:"Kalam",cursive;font-weight:700;color:#e8a52a;font-size:26px;line-height:1.15;transform:rotate(-5deg)}
+.journey-note img{height:92px;transform:rotate(-24deg);margin-top:30px}
+
+/* Closing CTA */
+.closing{padding:24px 0 72px;background:var(--page)}
+.cta-card{position:relative;overflow:hidden;background:var(--navy);color:#fff;border-radius:32px;padding:88px 40px;text-align:center}
+.cta-card .disc{position:absolute;border-radius:50%;background:var(--green-bright);opacity:.9;width:260px;height:260px;left:-120px;bottom:-140px}
+.cta-card .ring{position:absolute;border-radius:50%;border:28px solid var(--yellow);width:200px;height:200px;right:-70px;top:-80px}
+.cta-card>*{position:relative}
+.cta-card h2{margin:24px auto 0;max-width:760px;font-size:clamp(30px,4vw,48px);line-height:1.12;letter-spacing:-.02em;font-weight:300;text-wrap:balance}
+.cta-card h2 .bd{display:block}
+.cta-card p{margin:18px auto 0;max-width:560px;font-size:18px;font-weight:300;color:rgba(255,255,255,.85)}
+.cta-card .btn{margin-top:36px}
+
+/* Closing line: no footer, one link back to the BRIA home */
+.site-foot{background:var(--page);padding:0 0 40px;text-align:center;font-size:13px;letter-spacing:.06em;color:var(--muted)}
+.site-foot a{color:var(--green);font-weight:600;text-decoration:none}
+.site-foot a:hover{text-decoration:underline}
+
+/* Responsive */
+@media (max-width: 1040px){
+  .hero-grid{grid-template-columns:1fr;gap:56px}
+  .hero-lede{max-width:none}
+  .source-grid{grid-template-columns:1fr;gap:72px}
+  .source-photo{max-width:360px}
+  .stats{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .steps{grid-template-columns:1fr;gap:32px;max-width:560px}
+  .step{flex-direction:row;align-items:flex-start;text-align:left;gap:24px}
+  .step .dot{width:72px;font-size:30px}
+  .step.d-ring-row .dot{box-shadow:0 0 0 7px var(--yellow)}
+  .step .meta{margin-top:4px;align-items:flex-start}
+  .step .q{max-width:none}
+  .journey-note{margin-top:40px}
+  .journey-note img{height:72px}
+}
+@media (max-width: 760px){
+  body{font-size:16px}
+  .site-header .logo{height:36px}
+  .hero{padding:118px 0 96px}
+  .hero-disc{display:none}
+  .hero-ring{width:180px;height:180px;border-width:24px;left:auto;right:-60px;bottom:-110px}
+  .hero-float--a,.hero-float--c{display:none}
+  .form-card{padding:28px 20px 24px}
+  .stat b{font-size:28px}
+  .cta-card{padding:72px 22px 96px;border-radius:24px}
+  .cta-card .ring{width:130px;height:130px;border-width:20px;right:-60px;top:-60px}
+  .cta-card .disc{width:160px;height:160px;left:-80px;bottom:-110px}
+}
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  *{transition:none!important}
+  .hero-deco *{animation:none!important}
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <img class="logo" src="/report-2026/assets/BRIA-LOGO-white.svg" alt="BRIA, Brazil Ireland Association">
+    <div class="lang-switch" role="group" aria-label="Idioma"><a href="/en/report-2026" hreflang="en" lang="en" title="English" aria-label="English">EN</a><span class="sep" aria-hidden="true">|</span><span aria-current="page" lang="pt-BR" title="Português">PT</span></div>
+    <script>(function(){var q=location.search;if(!q)return;document.querySelectorAll('.lang-switch a').forEach(function(a){a.href=a.getAttribute('href').split('?')[0]+q;});})();</script>
+  </div>
+</header>
+
+<main>
+
+<section class="hero" aria-labelledby="hero-title">
+  <div class="hero-deco" aria-hidden="true">
+    <svg viewBox="0 0 1920 1080" preserveAspectRatio="xMidYMid slice">
+      <defs>
+        <linearGradient id="ring-hero" gradientUnits="userSpaceOnUse" x1="813" y1="734" x2="2066" y2="513">
+          <stop offset="0" stop-color="#fff" stop-opacity="0"/>
+          <stop offset=".36" stop-color="#fff" stop-opacity=".16"/>
+          <stop offset=".6" stop-color="#fff" stop-opacity=".16"/>
+          <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+        </linearGradient>
+      </defs>
+      <g transform="translate(120 0)">
+        <g class="drift-1" fill="none" stroke="#fff" stroke-width="160">
+          <circle cx="1840" cy="380" r="780" stroke-opacity=".06"/>
+          <circle cx="1550" cy="1250" r="900" stroke-opacity=".06"/>
+        </g>
+        <path class="drift-2" d="M704,942 A900,900 0 0 1 2066,513" fill="none" stroke="url(#ring-hero)" stroke-width="160"/>
+      </g>
+    </svg>
+    <div class="hero-disc"></div>
+    <div class="hero-ring"></div>
+    <div class="hero-float hero-float--a"></div>
+    <div class="hero-float hero-float--b"></div>
+    <div class="hero-float hero-float--c"></div>
+  </div>
+
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <span class="pill pill--light">BRIA · Relatório 2026</span>
+      <h1 id="hero-title"><span class="lb">1.897 profissionais brasileiros na Irlanda responderam.</span> <span class="bd">Veja o que as respostas&nbsp;revelam.</span></h1>
+      <p class="hero-lede"><em>Brazilian Talent in Ireland</em> é o primeiro relatório da BRIA sobre os brasileiros qualificados que vivem na Irlanda: em que se formaram, onde trabalham hoje e o que existe entre uma coisa e&nbsp;outra.</p>
+    </div>
+
+    <div class="form-card" id="get-report">
+      <form id="lead-form" novalidate>
+        <h2><span class="lb">Preencha o formulário e</span> <span class="bd">receba o relatório&nbsp;agora</span></h2>
+        <p class="form-sub">PDF gratuito, com download na hora. Relatório em&nbsp;inglês.</p>
+
+        <div class="field">
+          <label for="f-name">Nome completo</label>
+          <input id="f-name" name="name" type="text" autocomplete="name" placeholder="Seu nome completo" required>
+        </div>
+        <div class="field">
+          <label for="f-email">E-mail</label>
+          <input id="f-email" name="email" type="email" autocomplete="email" placeholder="nome@exemplo.com" required>
+        </div>
+        <div class="field">
+          <label for="f-org">Organização <small>(opcional)</small></label>
+          <input id="f-org" name="organisation" type="text" autocomplete="organization" placeholder="Empresa, instituição ou equipe">
+        </div>
+        <div class="field field--select">
+          <label for="f-profile">Eu sou</label>
+          <select id="f-profile" name="profile" required>
+            <option value="" disabled selected>Selecione uma opção</option>
+            <option value="A Brazilian professional in Ireland">Profissional brasileiro(a) na Irlanda</option>
+            <option value="An employer or recruiter">Empregador(a) ou recrutador(a)</option>
+            <option value="From the public sector or policy">Do setor público ou de políticas públicas</option>
+            <option value="From education or research">Da área de educação ou pesquisa</option>
+            <option value="From a community organisation">De uma organização comunitária</option>
+            <option value="From the media">Da imprensa</option>
+            <option value="Other">Outro</option>
+          </select>
+        </div>
+
+        <label class="check">
+          <input type="checkbox" name="consent" required>
+          <span>Concordo que a BRIA armazene meus dados para me dar acesso ao relatório, conforme a <a href="https://www.brazilirelandassociation.org/pt-BR/privacy" target="_blank" rel="noopener">política de&nbsp;privacidade</a>.</span>
+        </label>
+        <label class="check">
+          <input type="checkbox" name="updates">
+          <span>Quero receber novidades e convites para eventos da BRIA. Você pode cancelar quando&nbsp;quiser.</span>
+        </label>
+
+        <!-- Tracking: filled by the script from the URL (utm_*) -->
+        <input type="hidden" name="lang" value="pt">
+        <input type="hidden" name="utm_source">
+        <input type="hidden" name="utm_medium">
+        <input type="hidden" name="utm_campaign">
+        <input type="hidden" name="utm_content">
+        <input type="hidden" name="utm_term">
+        <input type="hidden" name="landing_url">
+        <input type="hidden" name="referrer">
+        <!-- Honeypot: hidden from people, bots fill it and get dropped -->
+        <div class="hp" aria-hidden="true"><input type="text" name="website" tabindex="-1" autocomplete="off"></div>
+
+        <button class="btn btn--yellow" type="submit">Receber o relatório <i class="ph ph-arrow-right" aria-hidden="true"></i></button>
+        <p class="form-error" role="alert" hidden>Algo deu errado. Verifique sua conexão e tente de novo.</p>
+        <p class="form-note"></p>
+      </form>
+
+      <div class="form-success" role="status" aria-live="polite">
+        <div class="ok"><i class="ph ph-check" aria-hidden="true"></i></div>
+        <h3>Obrigado</h3>
+        <p>O download deve começar automaticamente. Se não começar, <a href="/report-2026/assets/BRIA-Brazilian-Talent-in-Ireland-2026.pdf" download>baixe o relatório&nbsp;aqui</a>.</p>
+        <a class="ev-invite" href="/pt-BR/relatorio-2026/evento-interesse" data-until="2026-11-24T12:00:00Z" hidden>
+          <span class="ev-ic"><i class="ph ph-calendar-star" aria-hidden="true"></i></span>
+          <span class="ev-tx"><b>Venha ao lançamento</b><span>25 de novembro, em Dublin. Registre seu&nbsp;interesse.</span></span>
+          <i class="ph ph-arrow-right ev-go" aria-hidden="true"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="source" id="data" aria-labelledby="data-title">
+  <div class="wrap source-grid">
+    <figure class="source-photo">
+      <img src="/report-2026/assets/dublin-bridge.jpg" alt="Ponte Samuel Beckett, em Dublin, refletida no rio Liffey" loading="lazy">
+      <figcaption>Foto: <a href="https://unsplash.com/@alamanga?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Yanhao Fang</a> no <a href="https://unsplash.com/photos/samuel-beckett-bridge-and-dublin-cityscape-reflected-in-the-liffey-bjROiiuUXwA?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></figcaption>
+    </figure>
+    <div class="source-copy">
+      <span class="pill pill--green">Sobre a&nbsp;pesquisa</span>
+      <h2 id="data-title"><span class="lb">De onde vêm</span> <span class="bd">esses&nbsp;dados?</span></h2>
+      <p>Entre outubro de 2024 e julho de 2026, 1.897 profissionais brasileiros que vivem na Irlanda responderam à pesquisa da BRIA. Contaram sobre a formação, a carreira e a vida aqui. O relatório lê essas respostas passo a&nbsp;passo.</p>
+      <p class="small">A participação foi voluntária, por isso os resultados descrevem quem respondeu, não toda a comunidade brasileira na&nbsp;Irlanda.</p>
+      <div class="stats">
+        <div class="stat"><b>1.897</b><span>respondentes</span></div>
+        <div class="stat"><b>22</b><span>meses de&nbsp;coleta</span></div>
+        <div class="stat"><b>40+</b><span>áreas de&nbsp;formação</span></div>
+        <div class="stat"><b>10</b><span>capítulos</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="journey" id="inside" aria-labelledby="journey-title">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="pill pill--green">O que você vai&nbsp;encontrar</span>
+      <h2 id="journey-title"><span class="lb">Um relatório,</span> <span class="bd">três&nbsp;perguntas</span></h2>
+      <p>Do tamanho do descompasso a quem pode ajudar a&nbsp;reduzi-lo.</p>
+    </div>
+
+    <div class="journey-track">
+      <ol class="steps">
+        <li class="step">
+          <div class="dot d-navy"><i class="ph ph-briefcase" aria-hidden="true"></i></div>
+          <div class="meta"><h3>O descompasso</h3><span class="q">Quantos trabalham na área em que se formaram, e onde estão os&nbsp;outros.</span><span class="ch">Capítulos 01 e&nbsp;02</span></div>
+        </li>
+        <li class="step d-ring-row">
+          <div class="dot d-ring"><i class="ph ph-signpost" aria-hidden="true"></i></div>
+          <div class="meta"><h3>As barreiras</h3><span class="q">O que mantém profissionais qualificados fora da área, mesmo quando estão prontos em todos os&nbsp;critérios.</span><span class="ch">Capítulos 03 a&nbsp;05</span></div>
+        </li>
+        <li class="step">
+          <div class="dot d-green"><i class="ph ph-handshake" aria-hidden="true"></i></div>
+          <div class="meta"><h3>Os caminhos</h3><span class="q">Quanto isso custa, por que tantos ficam e quem está em posição de&nbsp;agir.</span><span class="ch">Capítulos 06 a&nbsp;10</span></div>
+        </li>
+      </ol>
+    </div>
+
+    <div class="journey-note" aria-hidden="true">
+      <p>as respostas estão<br>no&nbsp;relatório</p>
+      <img src="/report-2026/assets/arrow.svg" alt="">
+    </div>
+  </div>
+</section>
+
+<section class="closing" aria-labelledby="closing-title">
+  <div class="wrap">
+    <div class="cta-card">
+      <span class="disc" aria-hidden="true"></span>
+      <span class="ring" aria-hidden="true"></span>
+      <span class="pill pill--light">BRIA · Relatório 2026</span>
+      <h2 id="closing-title"><span class="lb">O talento já está aqui.</span> <span class="bd">Vamos <span class="nw">aproximá-lo</span> das&nbsp;oportunidades.</span></h2>
+      <p>Preencha o formulário e baixe o relatório&nbsp;completo.</p>
+      <a class="btn btn--yellow" href="#get-report">Receber o relatório <i class="ph ph-arrow-up" aria-hidden="true"></i></a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="site-foot">
+  <p>2026 &bull; <a href="https://www.brazilirelandassociation.org/pt-BR" aria-label="Ir para o site da BRIA">BRIA</a> &bull; <a href="#cookie-settings">Configurações de cookies</a></p>
+</footer>
+
+<script>
+  // UTM capture: read utm_* from the URL into the form's hidden fields.
+  (function(){
+    var KEYS = ['utm_source','utm_medium','utm_campaign','utm_content','utm_term'];
+    var params = new URLSearchParams(location.search);
+    var form = document.getElementById('lead-form');
+    KEYS.forEach(function(k){ var v = params.get(k); if (v) form.elements[k].value = v.slice(0, 200); });
+    form.elements.landing_url.value = location.href.split('#')[0];
+    form.elements.referrer.value = document.referrer;
+  })();
+
+  // Lead form: validation, then POST to the website's API route, which writes the lead
+  // to BRIA's Google Sheet through Apps Script. On file:// it runs in preview mode.
+  (function(){
+    var ENDPOINT = '/api/report-lead';
+    var REPORT_PDF = '/report-2026/assets/BRIA-Brazilian-Talent-in-Ireland-2026.pdf';
+    var invite = document.querySelector('.ev-invite');
+    if (invite && Date.now() < Date.parse(invite.dataset.until)){
+      if (location.search) invite.href = invite.getAttribute('href').split('?')[0] + location.search;
+      invite.hidden = false;
+    }
+    var form = document.getElementById('lead-form');
+    var card = document.querySelector('.form-card');
+    var btn = form.querySelector('button[type=submit]');
+    var err = form.querySelector('.form-error');
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      var ok = true;
+      form.querySelectorAll('[required]').forEach(function(el){
+        var bad = el.type === 'checkbox' ? !el.checked : !el.checkValidity();
+        var box = el.closest('.field') || el.closest('.check');
+        if (box) box.classList.toggle('has-error', bad);
+        if (bad && ok){ el.focus(); ok = false; }
+      });
+      if (!ok) return;
+
+      function done(){
+        card.classList.add('is-sent');
+        var a = document.createElement('a');
+        a.href = REPORT_PDF; a.download = '';
+        document.body.appendChild(a); a.click(); a.remove();
+      }
+      function fail(){ err.hidden = false; btn.disabled = false; }
+
+      var data = Object.fromEntries(new FormData(form));
+      data.consent = form.elements.consent.checked;
+      data.updates = form.elements.updates.checked;
+      if (location.protocol === 'file:'){ console.warn('Preview mode, lead not sent:', data); done(); return; }
+
+      btn.disabled = true; err.hidden = true;
+      fetch(ENDPOINT, {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(data)})
+        .then(function(r){ if (r.ok) done(); else fail(); })
+        .catch(fail);
+    });
+    form.addEventListener('input', function(e){
+      var box = e.target.closest('.field') || e.target.closest('.check');
+      if (box) box.classList.remove('has-error');
+    });
+  })();
+</script>
+<script src="/cookie-consent.js" defer></script>
+</body>
+</html>

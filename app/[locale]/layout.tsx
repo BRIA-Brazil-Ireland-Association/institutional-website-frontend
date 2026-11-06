@@ -1,3 +1,4 @@
+import { AnnouncementBar } from "@/components/ui/announcement-bar";
 import { Footer } from "@/components/ui/footer";
 import { Navbar } from "@/components/ui/navbar";
 import { routing } from "@/i18n/routing";
@@ -17,6 +18,7 @@ import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
 import { Poppins } from "next/font/google";
 import { notFound } from "next/navigation";
+import Script from "next/script";
 import { cache } from "react";
 import "../globals.css";
 
@@ -166,6 +168,7 @@ export default async function LocaleLayout({
         />
         <NextIntlClientProvider>
           <AppProviders globalContent={globalContent}>
+            <AnnouncementBar />
             <Navbar />
             {children}
             <Footer />
@@ -173,6 +176,7 @@ export default async function LocaleLayout({
         </NextIntlClientProvider>
       </body>
       <Analytics />
+      <Script src="/cookie-consent.js" strategy="afterInteractive" />
     </html>
   );
 }

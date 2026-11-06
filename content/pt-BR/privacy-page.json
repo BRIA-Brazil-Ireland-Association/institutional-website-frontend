@@ -1,0 +1,49 @@
+{
+  "title": "Legal",
+  "sectionTitle": "Política de Privacidade",
+  "lastUpdated": "Última atualização: 6 de novembro de 2026",
+  "description": "A Brazil-Ireland Association (BRIA) opera o site [https://www.brazilirelandassociation.org](https://www.brazilirelandassociation.org). Esta página explica como coletamos, usamos e protegemos informações quando você visita nosso site, entra em contato conosco ou solicita nossos relatórios de pesquisa.\n\nTratamos informações de acordo com o Regulamento Geral sobre a Proteção de Dados da União Europeia (GDPR) e as Leis Irlandesas de Proteção de Dados de 1988 a 2018.",
+  "tableOfContentsTitle": "Nesta página",
+  "sections": [
+    {
+      "id": "information-we-collect",
+      "title": "Informações que coletamos e como as usamos",
+      "description": "Coletamos apenas as informações necessárias para responder a solicitações, enviar os relatórios pedidos, gerenciar as inscrições para receber novidades da BRIA, facilitar a participação na comunidade e manter nosso site.\n\nUsamos essas informações para:",
+      "items": [
+        "Responder a mensagens e solicitações.",
+        "Enviar os relatórios de pesquisa solicitados pelo nosso site.",
+        "Enviar notícias e novidades sobre as pesquisas e atividades da BRIA, quando você tiver dado o seu consentimento.",
+        "Falar com você sobre eventos, atividades da comunidade e grupos de interesse, quando você tiver escolhido participar. Para isso, podemos pedir seu número de telefone ou seu contato de WhatsApp.",
+        "Entender, de forma agregada, o alcance e o engajamento das nossas pesquisas.",
+        "Publicar e moderar comentários enviados ao nosso site.",
+        "Manter o funcionamento, a segurança e o desempenho do site."
+      ],
+      "closing": "A participação em grupos da comunidade e nessas comunicações é voluntária. Você pode sair de qualquer grupo ou deixar de receber essas comunicações a qualquer momento.\n\nNão solicitamos informações pessoais sensíveis, como dados de saúde, religiosos ou políticos, por meio do nosso site. Por favor, não inclua esse tipo de informação nas suas mensagens.\n\nNão vendemos informações pessoais nem as compartilhamos com parceiros ou patrocinadores da BRIA sem o seu consentimento. As informações podem ser tratadas por prestadores de serviço de confiança, estritamente na medida necessária para operar nosso site e nossos serviços, ou divulgadas quando exigido por lei."
+    },
+    {
+      "id": "data-protection-and-retention",
+      "title": "Proteção e retenção de dados",
+      "description": "Adotamos medidas técnicas e organizacionais razoáveis para proteger as informações que tratamos contra acesso não autorizado, perda, uso indevido ou divulgação.\n\nGuardamos as informações apenas pelo tempo necessário para cumprir as finalidades descritas nesta política ou para atender a obrigações legais. Quando apropriado, as informações são apagadas ou anonimizadas."
+    },
+    {
+      "id": "cookies-and-analytics",
+      "title": "Cookies e análise de dados",
+      "description": "Nosso site usa cookies, incluindo cookies associados ao Google Analytics, para entender como os visitantes usam o site e nos ajudar a melhorar seu conteúdo, sua funcionalidade e a experiência de uso.\n\nO Google Analytics pode coletar informações técnicas e de navegação, como detalhes do dispositivo e do navegador, páginas visitadas e interações com o site.\n\nAo aceitar os cookies, você consente com o seu uso de acordo com esta política e com as nossas configurações de cookies. Você pode gerenciar ou retirar o seu consentimento para cookies pelas configurações de cookies disponíveis no nosso site.\n\nLinks para sites externos, incluindo redes sociais, estão sujeitos às políticas de privacidade e de cookies desses próprios sites."
+    },
+    {
+      "id": "your-rights",
+      "title": "Seus direitos",
+      "description": "Segundo o GDPR, você tem o direito de solicitar acesso, correção ou exclusão das suas informações pessoais, além de limitar o tratamento delas ou se opor a ele. Você também pode retirar o seu consentimento a qualquer momento.\n\nPara exercer esses direitos ou tirar dúvidas sobre esta política, entre em contato pelo e-mail [contact@brazilirelandassociation.org](mailto:contact@brazilirelandassociation.org).\n\nVocê também tem o direito de apresentar uma reclamação à autoridade irlandesa de proteção de dados (Data Protection Commission) em [https://www.dataprotection.ie](https://www.dataprotection.ie)."
+    },
+    {
+      "id": "children",
+      "title": "Crianças",
+      "description": "Nosso site não é destinado a menores de 16 anos, e não coletamos informações pessoais deles de forma intencional."
+    },
+    {
+      "id": "changes",
+      "title": "Alterações nesta política",
+      "description": "Podemos atualizar esta Política de Privacidade periodicamente para refletir mudanças nas nossas práticas ou em exigências legais. A versão mais recente estará sempre disponível no nosso site."
+    }
+  ]
+}

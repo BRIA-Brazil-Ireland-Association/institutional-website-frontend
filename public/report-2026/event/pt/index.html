@@ -1,0 +1,626 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Evento de lançamento · Relatório BRIA 2026</title>
+<meta name="description" content="Venha ao lançamento de Brazilian Talent in Ireland, o Relatório BRIA 2026. As vagas são limitadas: confirme sua presença.">
+<link rel="canonical" href="https://www.brazilirelandassociation.org/pt-BR/relatorio-2026/evento">
+<link rel="alternate" hreflang="en" href="https://www.brazilirelandassociation.org/en/report-2026/event">
+<link rel="alternate" hreflang="pt-BR" href="https://www.brazilirelandassociation.org/pt-BR/relatorio-2026/evento">
+<link rel="alternate" hreflang="x-default" href="https://www.brazilirelandassociation.org/en/report-2026/event">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Evento de lançamento · Relatório BRIA 2026">
+<meta property="og:description" content="Venha ao lançamento de Brazilian Talent in Ireland, o Relatório BRIA 2026. As vagas são limitadas: confirme sua presença.">
+<meta property="og:url" content="https://www.brazilirelandassociation.org/pt-BR/relatorio-2026/evento">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
+<style>
+:root{
+  color-scheme: light;
+  --green:#084727; --green-mid:#009a54; --green-bright:#3eb763; --green-light:#70f1af;
+  --navy:#31287c; --blue:#007ab2; --cyan:#00b5d3; --teal:#2e6971;
+  --yellow:#ffbb40; --grey:#ebe9e9;
+  --ink:#1a1a1a; --text:#3d4040; --muted:#6b6e6e; --rule:#e1e3e3;
+  --paper:#ffffff; --page:#f9f9f9;
+  --wrap:1160px; --gutter:clamp(16px, 4vw, 40px); --radius:20px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:"Montserrat",system-ui,sans-serif;color:var(--text);background:var(--paper);line-height:1.6;font-size:17px;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit}
+p,li,h1,h2,h3,.q{text-wrap:pretty}
+.wrap{max-width:calc(var(--wrap) + 2*var(--gutter));margin:0 auto;padding:0 var(--gutter)}
+
+.pill{display:inline-flex;align-items:center;gap:8px;border:1.5px solid currentColor;border-radius:999px;padding:6px 16px;
+  font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;line-height:1.2}
+.pill--light{color:rgba(255,255,255,.85)}
+.pill--green{color:var(--green)}
+.lb{font-weight:300}
+.nw{white-space:nowrap}
+.bd{font-weight:700}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;border:0;border-radius:999px;cursor:pointer;
+  font:600 16px/1 "Montserrat",sans-serif;padding:18px 32px;text-decoration:none;transition:transform .15s ease, box-shadow .15s ease, background .15s ease}
+.btn--yellow{background:var(--yellow);color:var(--green)}
+.btn--yellow:hover{transform:translateY(-1px);box-shadow:0 8px 24px rgba(255,187,64,.35)}
+.btn--ghost{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.6);padding:12px 22px;font-size:14px}
+.btn--ghost:hover{background:rgba(255,255,255,.1)}
+.btn:focus-visible,input:focus-visible,select:focus-visible,a:focus-visible{outline:3px solid var(--cyan);outline-offset:3px}
+.sec-head{max-width:760px;margin:0 auto;text-align:center}
+.sec-head h2{margin-top:20px;font-size:clamp(28px,3.6vw,44px);line-height:1.15;letter-spacing:-.02em;color:var(--ink);text-wrap:balance}
+.sec-head p{margin-top:16px;color:var(--muted);font-size:18px}
+
+/* Header: logo and the EN | PT switch, no navigation (the form is the page's only action) */
+.site-header{position:absolute;inset:0 0 auto 0;z-index:5}
+.site-header .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;height:76px}
+.site-header .logo{height:44px;width:auto}
+.lang-switch{display:flex;align-items:center;font:600 13px/1 "Montserrat",sans-serif;letter-spacing:.12em;color:rgba(255,255,255,.7)}
+.lang-switch a,.lang-switch span[aria-current]{display:inline-flex;align-items:center;min-height:44px;padding:0 8px;text-decoration:none}
+.lang-switch a{color:rgba(255,255,255,.7);transition:color .15s ease}
+.lang-switch a:hover{color:#fff}
+.lang-switch span[aria-current]{color:#fff;text-decoration:underline 2px var(--yellow);text-underline-offset:7px}
+.lang-switch .sep{color:rgba(255,255,255,.35)}
+
+/* Hero */
+.hero{position:relative;background:var(--green);color:#fff;overflow:hidden;padding:150px 0 120px}
+.hero-deco{position:absolute;inset:0;pointer-events:none}
+.hero-deco svg{position:absolute;inset:0;width:100%;height:100%}
+.hero-disc{position:absolute;border-radius:50%;background:var(--green-bright);opacity:.9;width:440px;height:440px;right:-230px;top:200px}
+.hero-ring{position:absolute;border-radius:50%;border:34px solid var(--yellow);width:260px;height:260px;left:38%;bottom:-170px}
+.hero-float{position:absolute;border-radius:50%}
+.hero-float--a{width:64px;height:64px;border:10px solid var(--yellow);right:7%;top:104px}
+.hero-float--b{width:22px;height:22px;background:var(--green-light);opacity:.7;left:9%;bottom:64px}
+.hero-float--c{width:180px;height:180px;border:2px solid rgba(255,255,255,.18);left:-120px;top:38%}
+@media (max-width: 1300px){.hero-float--c{display:none}}
+/* Floating circles: slow transform-only drift, alternating, so it stays light on the GPU */
+.hero-disc{animation:float-a 12s ease-in-out infinite alternate}
+.hero-ring{animation:float-b 14s ease-in-out infinite alternate}
+.hero-float--a{animation:float-c 9s ease-in-out infinite alternate}
+.hero-float--b{animation:float-b 7s ease-in-out infinite alternate-reverse}
+.hero-float--c{animation:float-v 16s ease-in-out infinite alternate-reverse}
+.hero-deco .drift-1{animation:float-a 18s ease-in-out infinite alternate}
+.hero-deco .drift-2{animation:float-b 20s ease-in-out infinite alternate}
+@keyframes float-a{to{transform:translate(-80px,90px) scale(1.04)}}
+@keyframes float-b{to{transform:translate(90px,-60px)}}
+@keyframes float-c{to{transform:translate(-50px,60px)}}
+@keyframes float-v{to{transform:translate(20px,-120px)}}
+.hero-grid{position:relative;display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:72px;align-items:center}
+.hero h1{margin-top:28px;font-size:clamp(34px,4.6vw,58px);line-height:1.08;letter-spacing:-.02em;font-weight:300;text-wrap:balance}
+.hero-lede{margin-top:28px;max-width:540px;font-size:19px;line-height:1.6;font-weight:300;color:rgba(255,255,255,.88)}
+
+/* Form */
+.form-card{position:relative;background:var(--paper);color:var(--text);border-radius:24px;padding:36px 32px 32px;box-shadow:0 30px 60px -20px rgba(0,0,0,.45)}
+.form-card h2{font-size:24px;line-height:1.25;color:var(--ink);letter-spacing:-.01em}
+.form-card h2 .bd{color:var(--green)}
+.form-card .form-sub{margin-top:8px;font-size:14px;color:var(--muted)}
+.field{margin-top:14px;border:1.5px solid var(--rule);border-radius:14px;padding:10px 16px;background:var(--page);transition:border-color .15s ease, background .15s ease}
+.field:focus-within{border-color:var(--green-mid);background:#fff}
+.field label{display:block;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--green)}
+.field label small{font-size:11px;font-weight:500;text-transform:none;letter-spacing:0;color:var(--muted)}
+.field input,.field select{width:100%;border:0;background:transparent;font:400 16px/1.4 "Montserrat",sans-serif;color:var(--ink);padding:4px 0 2px;outline:none;appearance:none;-webkit-appearance:none}
+.field input::placeholder{color:#9a9d9d}
+.field--select{position:relative}
+.field--select::after{content:"";position:absolute;right:18px;bottom:18px;width:8px;height:8px;border-right:2px solid var(--green);border-bottom:2px solid var(--green);transform:rotate(45deg);pointer-events:none}
+.field select:invalid{color:#9a9d9d}
+.field.has-error{border-color:#c0392b}
+.check{display:flex;gap:12px;align-items:flex-start;margin-top:16px;font-size:13px;line-height:1.5;color:var(--muted)}
+.check input{flex:none;width:20px;height:20px;margin-top:1px;accent-color:var(--green-mid)}
+.check a{color:var(--blue)}
+.check.has-error span{color:#c0392b}
+.form-card .btn{width:100%;margin-top:22px}
+.form-card .btn[disabled]{opacity:.6;cursor:progress;transform:none;box-shadow:none}
+.form-error{margin-top:14px;font-size:13px;color:#c0392b;text-align:center}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.form-note{margin-top:14px;font-size:12px;color:var(--muted);text-align:center}
+.form-note:empty{display:none}
+.form-success{display:none;text-align:center;padding:24px 4px 8px}
+.form-success .ok{width:84px;height:84px;margin:0 auto;border-radius:50%;border:10px solid var(--yellow);display:grid;place-items:center;color:var(--green);font-size:34px}
+.form-success h3{margin-top:22px;font-size:24px;color:var(--ink)}
+.form-success p{margin-top:10px;font-size:15px;color:var(--muted)}
+.form-success p a{color:var(--green);font-weight:600;text-decoration:underline;text-underline-offset:3px}
+.ev-invite{display:flex;align-items:center;gap:14px;margin-top:24px;padding:14px 16px;border:1.5px solid var(--rule);border-radius:14px;background:var(--page);text-align:left;text-decoration:none;transition:border-color .15s ease, background .15s ease}
+.ev-invite[hidden]{display:none}
+.ev-invite:hover{border-color:var(--green-mid);background:#fff}
+.ev-invite .ev-ic{flex:none;display:grid;place-items:center;width:44px;height:44px;border-radius:50%;background:var(--green);color:var(--yellow);font-size:22px}
+.ev-invite .ev-tx{flex:1;min-width:0;display:grid;gap:2px}
+.ev-invite b{font-size:15px;color:var(--ink)}
+.ev-invite .ev-tx span{font-size:14px;line-height:1.4;color:var(--muted)}
+.ev-invite .ev-go{flex:none;color:var(--green);font-size:18px}
+.form-card.is-sent form{display:none}
+.form-card.is-sent .form-success{display:block}
+
+/* Data source */
+.source{padding:120px 0 110px;background:var(--paper)}
+.source-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:80px;align-items:center}
+.source-photo{position:relative;aspect-ratio:1;max-width:460px;width:100%;justify-self:center}
+.source-photo img{width:100%;height:100%;object-fit:cover;object-position:60% 50%;border-radius:50%}
+.source-photo::after{content:"";position:absolute;width:34%;aspect-ratio:1;border-radius:50%;border:22px solid var(--yellow);right:-4%;bottom:-2%}
+.source-photo figcaption{position:absolute;left:0;bottom:-34px;font-size:11px;color:var(--muted)}
+.source-photo figcaption a{color:var(--muted)}
+.source h2{margin-top:20px;font-size:clamp(28px,3.4vw,42px);line-height:1.15;letter-spacing:-.02em;color:var(--ink);text-wrap:balance}
+.source-copy>p{margin-top:20px;font-size:18px}
+.source-copy>p.small{font-size:14px;color:var(--muted);margin-top:14px}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:36px}
+.stat{border:1.5px solid var(--rule);border-radius:var(--radius);padding:18px 18px}
+.stat b{display:block;font-size:32px;line-height:1.1;font-weight:700;color:var(--green);letter-spacing:-.02em}
+.stat span{display:block;margin-top:6px;font-size:13px;line-height:1.4;color:var(--muted)}
+
+/* Journey of questions */
+.journey{position:relative;padding:110px 0 120px;background:var(--page);overflow:hidden}
+.journey-track{position:relative;margin-top:64px}
+.steps{list-style:none;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:48px;max-width:1040px;margin:0 auto}
+.step{display:flex;flex-direction:column;align-items:center;text-align:center}
+.step .dot{display:grid;place-items:center;border-radius:50%;color:#fff;aspect-ratio:1;flex:none;width:96px;font-size:40px}
+.step .meta{margin-top:28px;display:flex;flex-direction:column;align-items:center}
+.step h3{font-size:22px;line-height:1.2;font-weight:700;color:var(--ink);letter-spacing:-.01em}
+.step .q{margin-top:10px;font-size:16px;line-height:1.55;color:var(--text);max-width:300px;text-wrap:pretty}
+.step .ch{margin-top:14px;font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--teal)}
+.d-green{background:var(--green-bright)}
+.d-navy{background:var(--navy)}
+.d-ring{background:var(--green);box-shadow:0 0 0 9px var(--yellow)}
+.journey{padding-bottom:40px}
+.journey-note{display:flex;justify-content:center;align-items:flex-start;gap:10px;margin-top:64px;pointer-events:none}
+.journey-note p{font-family:"Kalam",cursive;font-weight:700;color:#e8a52a;font-size:26px;line-height:1.15;transform:rotate(-5deg)}
+.journey-note img{height:92px;transform:rotate(-24deg);margin-top:30px}
+
+/* Closing CTA */
+.closing{padding:24px 0 72px;background:var(--page)}
+.cta-card{position:relative;overflow:hidden;background:var(--navy);color:#fff;border-radius:32px;padding:88px 40px;text-align:center}
+.cta-card .disc{position:absolute;border-radius:50%;background:var(--green-bright);opacity:.9;width:260px;height:260px;left:-120px;bottom:-140px}
+.cta-card .ring{position:absolute;border-radius:50%;border:28px solid var(--yellow);width:200px;height:200px;right:-70px;top:-80px}
+.cta-card>*{position:relative}
+.cta-card h2{margin:24px auto 0;max-width:760px;font-size:clamp(30px,4vw,48px);line-height:1.12;letter-spacing:-.02em;font-weight:300;text-wrap:balance}
+.cta-card h2 .bd{display:block}
+.cta-card p{margin:18px auto 0;max-width:560px;font-size:18px;font-weight:300;color:rgba(255,255,255,.85)}
+.cta-card .btn{margin-top:36px}
+
+/* Closing line: no footer, one link back to the BRIA home */
+.site-foot{background:var(--page);padding:0 0 40px;text-align:center;font-size:13px;letter-spacing:.06em;color:var(--muted)}
+.site-foot a{color:var(--green);font-weight:600;text-decoration:none}
+.site-foot a:hover{text-decoration:underline}
+
+/* Responsive */
+@media (max-width: 1040px){
+  .hero-grid{grid-template-columns:1fr;gap:56px}
+  .hero-lede{max-width:none}
+  .source-grid{grid-template-columns:1fr;gap:72px}
+  .source-photo{max-width:360px}
+  .stats{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .steps{grid-template-columns:1fr;gap:32px;max-width:560px}
+  .step{flex-direction:row;align-items:flex-start;text-align:left;gap:24px}
+  .step .dot{width:72px;font-size:30px}
+  .step.d-ring-row .dot{box-shadow:0 0 0 7px var(--yellow)}
+  .step .meta{margin-top:4px;align-items:flex-start}
+  .step .q{max-width:none}
+  .journey-note{margin-top:40px}
+  .journey-note img{height:72px}
+}
+@media (max-width: 760px){
+  body{font-size:16px}
+  .site-header .logo{height:36px}
+  .hero{padding:118px 0 96px}
+  .hero-disc{display:none}
+  .hero-ring{width:180px;height:180px;border-width:24px;left:auto;right:-60px;bottom:-110px}
+  .hero-float--a,.hero-float--c{display:none}
+  .form-card{padding:28px 20px 24px}
+  .stat b{font-size:28px}
+  .cta-card{padding:72px 22px 96px;border-radius:24px}
+  .cta-card .ring{width:130px;height:130px;border-width:20px;right:-60px;top:-60px}
+  .cta-card .disc{width:160px;height:160px;left:-80px;bottom:-110px}
+}
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  *{transition:none!important}
+  .hero-deco *{animation:none!important}
+}
+
+body{background:var(--green)}
+.hero--solo{min-height:calc(100vh - 56px);min-height:calc(100svh - 56px);display:flex;align-items:center;padding:132px 0 110px}
+.hero--solo .hero-grid{width:100%}
+.hero--solo .hero-float--b{display:none}
+.form-card.is-sent{display:flex;align-items:center;justify-content:center}
+.details{list-style:none;margin-top:36px;display:grid;gap:14px;max-width:540px}
+.details li{display:flex;align-items:center;gap:14px;font-size:16px;line-height:1.4;color:rgba(255,255,255,.92)}
+.details i{flex:none;display:grid;place-items:center;width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.1);color:var(--yellow);font-size:20px}
+.phone-row{display:flex;align-items:center;gap:12px}
+.cc{position:relative;flex:none;display:inline-flex;align-items:center;gap:8px;padding:4px 12px 2px 0;border-right:1.5px solid var(--rule);font:400 16px/1.4 "Montserrat",sans-serif;color:var(--ink)}
+.cc::after{content:"";width:6px;height:6px;margin-top:-3px;border-right:2px solid var(--green);border-bottom:2px solid var(--green);transform:rotate(45deg)}
+.field .cc select{position:absolute;inset:0;width:100%;opacity:0;cursor:pointer;padding:0}
+.cc:focus-within{outline:3px solid var(--cyan);outline-offset:3px;border-radius:4px}
+.phone-row input{flex:1;min-width:0}
+.site-foot--dark{background:var(--green);color:rgba(255,255,255,.6);padding:16px 0 24px}
+.site-foot--dark a{color:#fff}
+@media (max-width: 760px){
+  .hero--solo{min-height:0;padding:112px 0 96px}
+  .details{margin-top:28px}
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <img class="logo" src="/report-2026/assets/BRIA-LOGO-white.svg" alt="BRIA, Brazil Ireland Association">
+    <div class="lang-switch" role="group" aria-label="Idioma"><a href="/en/report-2026/event" hreflang="en" lang="en" title="English" aria-label="English">EN</a><span class="sep" aria-hidden="true">|</span><span aria-current="page" lang="pt-BR" title="Português">PT</span></div>
+    <script>(function(){var q=location.search;if(!q)return;document.querySelectorAll('.lang-switch a').forEach(function(a){a.href=a.getAttribute('href').split('?')[0]+q;});})();</script>
+  </div>
+</header>
+
+<main>
+<section class="hero hero--solo" aria-labelledby="hero-title">
+  <div class="hero-deco" aria-hidden="true">
+    <svg viewBox="0 0 1920 1080" preserveAspectRatio="xMidYMid slice">
+      <defs>
+        <linearGradient id="ring-hero" gradientUnits="userSpaceOnUse" x1="813" y1="734" x2="2066" y2="513">
+          <stop offset="0" stop-color="#fff" stop-opacity="0"/>
+          <stop offset=".36" stop-color="#fff" stop-opacity=".16"/>
+          <stop offset=".6" stop-color="#fff" stop-opacity=".16"/>
+          <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+        </linearGradient>
+      </defs>
+      <g transform="translate(120 0)">
+        <g class="drift-1" fill="none" stroke="#fff" stroke-width="160">
+          <circle cx="1840" cy="380" r="780" stroke-opacity=".06"/>
+          <circle cx="1550" cy="1250" r="900" stroke-opacity=".06"/>
+        </g>
+        <path class="drift-2" d="M704,942 A900,900 0 0 1 2066,513" fill="none" stroke="url(#ring-hero)" stroke-width="160"/>
+      </g>
+    </svg>
+    <div class="hero-disc"></div>
+    <div class="hero-ring"></div>
+    <div class="hero-float hero-float--a"></div>
+    <div class="hero-float hero-float--b"></div>
+    <div class="hero-float hero-float--c"></div>
+  </div>
+
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <span class="pill pill--light">BRIA · Evento de lançamento</span>
+      <h1 id="hero-title"><span class="lb">Brazilian Talent in Ireland:</span> <span class="bd">venha ao&nbsp;lançamento.</span></h1>
+      <p class="hero-lede">Uma noite com quem fez o primeiro relatório da BRIA sobre os brasileiros qualificados na Irlanda, e com as pessoas de quem ele fala. As vagas são limitadas, por isso pedimos que confirme sua&nbsp;presença.</p>
+      <ul class="details">
+        <li><i class="ph ph-calendar-blank" aria-hidden="true"></i><span>Quarta-feira, 25 de novembro de&nbsp;2026</span></li>
+        <li><i class="ph ph-clock" aria-hidden="true"></i><span>À noite, horário a&nbsp;confirmar</span></li>
+        <li><i class="ph ph-map-pin" aria-hidden="true"></i><span>Dublin, local a&nbsp;confirmar</span></li>
+        <li><i class="ph ph-translate" aria-hidden="true"></i><span>O evento é em&nbsp;inglês</span></li>
+      </ul>
+    </div>
+
+    <div class="form-card">
+      <form id="lead-form" novalidate>
+        <h2><span class="lb">Confirme sua</span>&nbsp;<span class="bd">presença</span></h2>
+        <p class="form-sub">Leva menos de um&nbsp;minuto.</p>
+        <div class="field">
+          <label for="f-name">Nome completo</label>
+          <input id="f-name" name="name" type="text" autocomplete="name" placeholder="Seu nome completo" required>
+        </div>
+        <div class="field">
+          <label for="f-email">E-mail</label>
+          <input id="f-email" name="email" type="email" autocomplete="email" placeholder="nome@exemplo.com" required>
+        </div>
+        <div class="field">
+          <label for="f-org">Instituição</label>
+          <input id="f-org" name="institution" type="text" autocomplete="organization" placeholder="Empresa, instituição ou organização" required>
+        </div>
+        <div class="field field--phone">
+          <label for="f-phone">Telefone <small>(opcional)</small></label>
+          <div class="phone-row">
+            <span class="cc">
+              <span class="cc-show" aria-hidden="true">+353</span>
+              <select id="f-phone-code" name="phone_code" aria-label="Código do país">
+              <optgroup label="Sugeridos">
+                <option value="+353" data-iso="IE" selected>Ireland (+353)</option>
+                <option value="+55" data-iso="BR">Brazil (+55)</option>
+                <option value="+351" data-iso="PT">Portugal (+351)</option>
+                <option value="+44" data-iso="GB">United Kingdom (+44)</option>
+              </optgroup>
+              <optgroup label="Todos os países" data-sort>
+                <option value="+93" data-iso="AF">Afghanistan (+93)</option>
+                <option value="+355" data-iso="AL">Albania (+355)</option>
+                <option value="+213" data-iso="DZ">Algeria (+213)</option>
+                <option value="+376" data-iso="AD">Andorra (+376)</option>
+                <option value="+244" data-iso="AO">Angola (+244)</option>
+                <option value="+1" data-iso="AG">Antigua and Barbuda (+1)</option>
+                <option value="+54" data-iso="AR">Argentina (+54)</option>
+                <option value="+374" data-iso="AM">Armenia (+374)</option>
+                <option value="+61" data-iso="AU">Australia (+61)</option>
+                <option value="+43" data-iso="AT">Austria (+43)</option>
+                <option value="+994" data-iso="AZ">Azerbaijan (+994)</option>
+                <option value="+1" data-iso="BS">Bahamas (+1)</option>
+                <option value="+973" data-iso="BH">Bahrain (+973)</option>
+                <option value="+880" data-iso="BD">Bangladesh (+880)</option>
+                <option value="+1" data-iso="BB">Barbados (+1)</option>
+                <option value="+375" data-iso="BY">Belarus (+375)</option>
+                <option value="+32" data-iso="BE">Belgium (+32)</option>
+                <option value="+501" data-iso="BZ">Belize (+501)</option>
+                <option value="+229" data-iso="BJ">Benin (+229)</option>
+                <option value="+975" data-iso="BT">Bhutan (+975)</option>
+                <option value="+591" data-iso="BO">Bolivia (+591)</option>
+                <option value="+387" data-iso="BA">Bosnia and Herzegovina (+387)</option>
+                <option value="+267" data-iso="BW">Botswana (+267)</option>
+                <option value="+673" data-iso="BN">Brunei (+673)</option>
+                <option value="+359" data-iso="BG">Bulgaria (+359)</option>
+                <option value="+226" data-iso="BF">Burkina Faso (+226)</option>
+                <option value="+257" data-iso="BI">Burundi (+257)</option>
+                <option value="+238" data-iso="CV">Cabo Verde (+238)</option>
+                <option value="+855" data-iso="KH">Cambodia (+855)</option>
+                <option value="+237" data-iso="CM">Cameroon (+237)</option>
+                <option value="+1" data-iso="CA">Canada (+1)</option>
+                <option value="+236" data-iso="CF">Central African Republic (+236)</option>
+                <option value="+235" data-iso="TD">Chad (+235)</option>
+                <option value="+56" data-iso="CL">Chile (+56)</option>
+                <option value="+86" data-iso="CN">China (+86)</option>
+                <option value="+57" data-iso="CO">Colombia (+57)</option>
+                <option value="+269" data-iso="KM">Comoros (+269)</option>
+                <option value="+242" data-iso="CG">Congo (+242)</option>
+                <option value="+243" data-iso="CD">Congo (DRC) (+243)</option>
+                <option value="+506" data-iso="CR">Costa Rica (+506)</option>
+                <option value="+385" data-iso="HR">Croatia (+385)</option>
+                <option value="+53" data-iso="CU">Cuba (+53)</option>
+                <option value="+357" data-iso="CY">Cyprus (+357)</option>
+                <option value="+420" data-iso="CZ">Czechia (+420)</option>
+                <option value="+225" data-iso="CI">Côte d’Ivoire (+225)</option>
+                <option value="+45" data-iso="DK">Denmark (+45)</option>
+                <option value="+253" data-iso="DJ">Djibouti (+253)</option>
+                <option value="+1" data-iso="DM">Dominica (+1)</option>
+                <option value="+1" data-iso="DO">Dominican Republic (+1)</option>
+                <option value="+593" data-iso="EC">Ecuador (+593)</option>
+                <option value="+20" data-iso="EG">Egypt (+20)</option>
+                <option value="+503" data-iso="SV">El Salvador (+503)</option>
+                <option value="+240" data-iso="GQ">Equatorial Guinea (+240)</option>
+                <option value="+291" data-iso="ER">Eritrea (+291)</option>
+                <option value="+372" data-iso="EE">Estonia (+372)</option>
+                <option value="+268" data-iso="SZ">Eswatini (+268)</option>
+                <option value="+251" data-iso="ET">Ethiopia (+251)</option>
+                <option value="+679" data-iso="FJ">Fiji (+679)</option>
+                <option value="+358" data-iso="FI">Finland (+358)</option>
+                <option value="+33" data-iso="FR">France (+33)</option>
+                <option value="+241" data-iso="GA">Gabon (+241)</option>
+                <option value="+220" data-iso="GM">Gambia (+220)</option>
+                <option value="+995" data-iso="GE">Georgia (+995)</option>
+                <option value="+49" data-iso="DE">Germany (+49)</option>
+                <option value="+233" data-iso="GH">Ghana (+233)</option>
+                <option value="+350" data-iso="GI">Gibraltar (+350)</option>
+                <option value="+30" data-iso="GR">Greece (+30)</option>
+                <option value="+1" data-iso="GD">Grenada (+1)</option>
+                <option value="+502" data-iso="GT">Guatemala (+502)</option>
+                <option value="+224" data-iso="GN">Guinea (+224)</option>
+                <option value="+245" data-iso="GW">Guinea-Bissau (+245)</option>
+                <option value="+592" data-iso="GY">Guyana (+592)</option>
+                <option value="+509" data-iso="HT">Haiti (+509)</option>
+                <option value="+504" data-iso="HN">Honduras (+504)</option>
+                <option value="+852" data-iso="HK">Hong Kong (+852)</option>
+                <option value="+36" data-iso="HU">Hungary (+36)</option>
+                <option value="+354" data-iso="IS">Iceland (+354)</option>
+                <option value="+91" data-iso="IN">India (+91)</option>
+                <option value="+62" data-iso="ID">Indonesia (+62)</option>
+                <option value="+98" data-iso="IR">Iran (+98)</option>
+                <option value="+964" data-iso="IQ">Iraq (+964)</option>
+                <option value="+972" data-iso="IL">Israel (+972)</option>
+                <option value="+39" data-iso="IT">Italy (+39)</option>
+                <option value="+1" data-iso="JM">Jamaica (+1)</option>
+                <option value="+81" data-iso="JP">Japan (+81)</option>
+                <option value="+962" data-iso="JO">Jordan (+962)</option>
+                <option value="+7" data-iso="KZ">Kazakhstan (+7)</option>
+                <option value="+254" data-iso="KE">Kenya (+254)</option>
+                <option value="+383" data-iso="XK">Kosovo (+383)</option>
+                <option value="+965" data-iso="KW">Kuwait (+965)</option>
+                <option value="+996" data-iso="KG">Kyrgyzstan (+996)</option>
+                <option value="+856" data-iso="LA">Laos (+856)</option>
+                <option value="+371" data-iso="LV">Latvia (+371)</option>
+                <option value="+961" data-iso="LB">Lebanon (+961)</option>
+                <option value="+266" data-iso="LS">Lesotho (+266)</option>
+                <option value="+231" data-iso="LR">Liberia (+231)</option>
+                <option value="+218" data-iso="LY">Libya (+218)</option>
+                <option value="+423" data-iso="LI">Liechtenstein (+423)</option>
+                <option value="+370" data-iso="LT">Lithuania (+370)</option>
+                <option value="+352" data-iso="LU">Luxembourg (+352)</option>
+                <option value="+853" data-iso="MO">Macao (+853)</option>
+                <option value="+261" data-iso="MG">Madagascar (+261)</option>
+                <option value="+265" data-iso="MW">Malawi (+265)</option>
+                <option value="+60" data-iso="MY">Malaysia (+60)</option>
+                <option value="+960" data-iso="MV">Maldives (+960)</option>
+                <option value="+223" data-iso="ML">Mali (+223)</option>
+                <option value="+356" data-iso="MT">Malta (+356)</option>
+                <option value="+222" data-iso="MR">Mauritania (+222)</option>
+                <option value="+230" data-iso="MU">Mauritius (+230)</option>
+                <option value="+52" data-iso="MX">Mexico (+52)</option>
+                <option value="+373" data-iso="MD">Moldova (+373)</option>
+                <option value="+377" data-iso="MC">Monaco (+377)</option>
+                <option value="+976" data-iso="MN">Mongolia (+976)</option>
+                <option value="+382" data-iso="ME">Montenegro (+382)</option>
+                <option value="+212" data-iso="MA">Morocco (+212)</option>
+                <option value="+258" data-iso="MZ">Mozambique (+258)</option>
+                <option value="+95" data-iso="MM">Myanmar (+95)</option>
+                <option value="+264" data-iso="NA">Namibia (+264)</option>
+                <option value="+977" data-iso="NP">Nepal (+977)</option>
+                <option value="+31" data-iso="NL">Netherlands (+31)</option>
+                <option value="+64" data-iso="NZ">New Zealand (+64)</option>
+                <option value="+505" data-iso="NI">Nicaragua (+505)</option>
+                <option value="+227" data-iso="NE">Niger (+227)</option>
+                <option value="+234" data-iso="NG">Nigeria (+234)</option>
+                <option value="+850" data-iso="KP">North Korea (+850)</option>
+                <option value="+389" data-iso="MK">North Macedonia (+389)</option>
+                <option value="+47" data-iso="NO">Norway (+47)</option>
+                <option value="+968" data-iso="OM">Oman (+968)</option>
+                <option value="+92" data-iso="PK">Pakistan (+92)</option>
+                <option value="+970" data-iso="PS">Palestine (+970)</option>
+                <option value="+507" data-iso="PA">Panama (+507)</option>
+                <option value="+675" data-iso="PG">Papua New Guinea (+675)</option>
+                <option value="+595" data-iso="PY">Paraguay (+595)</option>
+                <option value="+51" data-iso="PE">Peru (+51)</option>
+                <option value="+63" data-iso="PH">Philippines (+63)</option>
+                <option value="+48" data-iso="PL">Poland (+48)</option>
+                <option value="+1" data-iso="PR">Puerto Rico (+1)</option>
+                <option value="+974" data-iso="QA">Qatar (+974)</option>
+                <option value="+40" data-iso="RO">Romania (+40)</option>
+                <option value="+7" data-iso="RU">Russia (+7)</option>
+                <option value="+250" data-iso="RW">Rwanda (+250)</option>
+                <option value="+1" data-iso="KN">Saint Kitts and Nevis (+1)</option>
+                <option value="+1" data-iso="LC">Saint Lucia (+1)</option>
+                <option value="+1" data-iso="VC">Saint Vincent and the Grenadines (+1)</option>
+                <option value="+378" data-iso="SM">San Marino (+378)</option>
+                <option value="+966" data-iso="SA">Saudi Arabia (+966)</option>
+                <option value="+221" data-iso="SN">Senegal (+221)</option>
+                <option value="+381" data-iso="RS">Serbia (+381)</option>
+                <option value="+248" data-iso="SC">Seychelles (+248)</option>
+                <option value="+232" data-iso="SL">Sierra Leone (+232)</option>
+                <option value="+65" data-iso="SG">Singapore (+65)</option>
+                <option value="+421" data-iso="SK">Slovakia (+421)</option>
+                <option value="+386" data-iso="SI">Slovenia (+386)</option>
+                <option value="+252" data-iso="SO">Somalia (+252)</option>
+                <option value="+27" data-iso="ZA">South Africa (+27)</option>
+                <option value="+82" data-iso="KR">South Korea (+82)</option>
+                <option value="+211" data-iso="SS">South Sudan (+211)</option>
+                <option value="+34" data-iso="ES">Spain (+34)</option>
+                <option value="+94" data-iso="LK">Sri Lanka (+94)</option>
+                <option value="+249" data-iso="SD">Sudan (+249)</option>
+                <option value="+597" data-iso="SR">Suriname (+597)</option>
+                <option value="+46" data-iso="SE">Sweden (+46)</option>
+                <option value="+41" data-iso="CH">Switzerland (+41)</option>
+                <option value="+963" data-iso="SY">Syria (+963)</option>
+                <option value="+239" data-iso="ST">São Tomé and Príncipe (+239)</option>
+                <option value="+886" data-iso="TW">Taiwan (+886)</option>
+                <option value="+992" data-iso="TJ">Tajikistan (+992)</option>
+                <option value="+255" data-iso="TZ">Tanzania (+255)</option>
+                <option value="+66" data-iso="TH">Thailand (+66)</option>
+                <option value="+670" data-iso="TL">Timor-Leste (+670)</option>
+                <option value="+228" data-iso="TG">Togo (+228)</option>
+                <option value="+1" data-iso="TT">Trinidad and Tobago (+1)</option>
+                <option value="+216" data-iso="TN">Tunisia (+216)</option>
+                <option value="+993" data-iso="TM">Turkmenistan (+993)</option>
+                <option value="+90" data-iso="TR">Türkiye (+90)</option>
+                <option value="+256" data-iso="UG">Uganda (+256)</option>
+                <option value="+380" data-iso="UA">Ukraine (+380)</option>
+                <option value="+971" data-iso="AE">United Arab Emirates (+971)</option>
+                <option value="+1" data-iso="US">United States (+1)</option>
+                <option value="+598" data-iso="UY">Uruguay (+598)</option>
+                <option value="+998" data-iso="UZ">Uzbekistan (+998)</option>
+                <option value="+58" data-iso="VE">Venezuela (+58)</option>
+                <option value="+84" data-iso="VN">Vietnam (+84)</option>
+                <option value="+967" data-iso="YE">Yemen (+967)</option>
+                <option value="+260" data-iso="ZM">Zambia (+260)</option>
+                <option value="+263" data-iso="ZW">Zimbabwe (+263)</option>
+              </optgroup>
+              </select>
+            </span>
+            <input id="f-phone" name="phone_number" type="tel" autocomplete="tel-national" inputmode="tel" placeholder="87 123 4567" pattern="[0-9 \(\)\.\-]{4,30}">
+          </div>
+        </div>
+
+        <label class="check">
+          <input type="checkbox" name="consent" required>
+          <span>Concordo que a BRIA armazene meus dados para organizar minha vaga no evento, conforme a <a href="https://www.brazilirelandassociation.org/pt-BR/privacy" target="_blank" rel="noopener">política de&nbsp;privacidade</a>.</span>
+        </label>
+        <label class="check">
+          <input type="checkbox" name="updates">
+          <span>Quero receber novidades e convites para eventos da BRIA. Você pode cancelar quando&nbsp;quiser.</span>
+        </label>
+        <!-- Tracking: filled by the script from the URL (utm_*) -->
+        <input type="hidden" name="lang" value="pt">
+        <input type="hidden" name="utm_source">
+        <input type="hidden" name="utm_medium">
+        <input type="hidden" name="utm_campaign">
+        <input type="hidden" name="utm_content">
+        <input type="hidden" name="utm_term">
+        <input type="hidden" name="landing_url">
+        <input type="hidden" name="referrer">
+        <!-- Honeypot: hidden from people, bots fill it and get dropped -->
+        <div class="hp" aria-hidden="true"><input type="text" name="website" tabindex="-1" autocomplete="off"></div>
+
+        <button class="btn btn--yellow" type="submit">Confirmar presença <i class="ph ph-arrow-right" aria-hidden="true"></i></button>
+        <p class="form-error" role="alert" hidden>Algo deu errado. Verifique sua conexão e tente de novo.</p>
+        <p class="form-note">Mudou de planos? Avise a gente, para que a vaga fique com outra&nbsp;pessoa.</p>
+      </form>
+
+      <div class="form-success" role="status" aria-live="polite">
+        <div class="ok"><i class="ph ph-check" aria-hidden="true"></i></div>
+        <h3>Até&nbsp;lá</h3>
+        <p>Sua vaga está registrada para <b id="sent-to">seu e-mail</b>. Enviaremos local e horário antes do&nbsp;evento.</p>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="site-foot site-foot--dark">
+  <p>2026 &bull; <a href="https://www.brazilirelandassociation.org/pt-BR" aria-label="Ir para o site da BRIA">BRIA</a> &bull; <a href="#cookie-settings">Configurações de cookies</a></p>
+</footer>
+
+<script>
+  // UTM capture: read utm_* from the URL into the form's hidden fields.
+  (function(){
+    var KEYS = ['utm_source','utm_medium','utm_campaign','utm_content','utm_term'];
+    var params = new URLSearchParams(location.search);
+    var form = document.getElementById('lead-form');
+    KEYS.forEach(function(k){ var v = params.get(k); if (v) form.elements[k].value = v.slice(0, 200); });
+    form.elements.landing_url.value = location.href.split('#')[0];
+    form.elements.referrer.value = document.referrer;
+  })();
+
+  // Phone: country code shown next to the number; PT pages get Portuguese country names.
+  (function(){
+    var sel = document.getElementById('f-phone-code');
+    if (!sel) return;
+    var show = sel.parentNode.querySelector('.cc-show');
+    var lang = document.documentElement.lang;
+    if (lang !== 'en' && window.Intl && Intl.DisplayNames){
+      var dn = new Intl.DisplayNames([lang], {type: 'region'});
+      sel.querySelectorAll('option[data-iso]').forEach(function(o){
+        var n = dn.of(o.dataset.iso); if (n && n !== o.dataset.iso) o.textContent = n + ' (' + o.value + ')';
+      });
+      var all = sel.querySelector('optgroup[data-sort]');
+      Array.from(all.children).sort(function(a, b){ return a.textContent.localeCompare(b.textContent, lang); })
+        .forEach(function(o){ all.appendChild(o); });
+    }
+    function sync(){ show.textContent = sel.value; }
+    sel.addEventListener('change', sync); sync();
+  })();
+
+  // Form: validation, then POST to the website's API route, which appends the row to
+  // BRIA's Google Sheet through Apps Script. On file:// it runs in preview mode.
+  (function(){
+    var ENDPOINT = '/api/event-rsvp';
+    var form = document.getElementById('lead-form');
+    var card = document.querySelector('.form-card');
+    var btn = form.querySelector('button[type=submit]');
+    var err = form.querySelector('.form-error');
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      var ok = true;
+      form.querySelectorAll('[required],[pattern]').forEach(function(el){
+        var bad = el.type === 'checkbox' ? !el.checked : !el.checkValidity();
+        var box = el.closest('.field') || el.closest('.check');
+        if (box) box.classList.toggle('has-error', bad);
+        if (bad && ok){ el.focus(); ok = false; }
+      });
+      if (!ok) return;
+
+      function done(){
+        document.getElementById('sent-to').textContent = form.elements.email.value;
+        card.style.minHeight = card.offsetHeight + 'px';
+        card.classList.add('is-sent');
+      }
+      function fail(){ err.hidden = false; btn.disabled = false; }
+
+      var data = Object.fromEntries(new FormData(form));
+      form.querySelectorAll('input[type=checkbox]').forEach(function(el){ data[el.name] = el.checked; });
+      if (location.protocol === 'file:'){ console.warn('Preview mode, not sent:', data); done(); return; }
+
+      btn.disabled = true; err.hidden = true;
+      fetch(ENDPOINT, {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(data)})
+        .then(function(r){ if (r.ok) done(); else fail(); })
+        .catch(fail);
+    });
+    form.addEventListener('input', function(e){
+      var box = e.target.closest('.field') || e.target.closest('.check');
+      if (box) box.classList.remove('has-error');
+    });
+  })();
+</script>
+<script src="/cookie-consent.js" defer></script>
+</body>
+</html>
