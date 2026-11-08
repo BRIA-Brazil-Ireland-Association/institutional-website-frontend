@@ -5,7 +5,7 @@ import { getMediaUrl, getObject, getText } from "@/services/content";
 import Image from "next/image";
 import { SectionReveal } from "../ui/section-reveal";
 
-const KPI_VALUE_COLORS = ["text-[#0C4A17]", "text-[#312e81]", "text-[#F88600]"];
+const KPI_VALUE_COLORS = ["text-[#0C4A17]", "text-[#312e81]", "text-[#A65500]"];
 
 export function HeroBanner({ locale }: { locale: string }) {
   return (
@@ -23,10 +23,18 @@ export function HeroBanner({ locale }: { locale: string }) {
         const kpis: any[] = Array.isArray(content?.kpis) ? content.kpis : [];
 
         return (
-          <div className="relative bg-white text-black">
+          <div className="relative overflow-hidden bg-white text-black">
             <SectionReveal>
+              <div
+                aria-hidden="true"
+                className="pointer-events-none absolute inset-0"
+              >
+                <div className="absolute -left-28 top-16 size-80 rounded-full bg-[#169b62]/10 motion-safe:animate-[home-float-a_14s_ease-in-out_infinite_alternate]" />
+                <div className="absolute bottom-10 left-[38%] size-52 rounded-full border-[28px] border-[#f8e509]/40 motion-safe:animate-[home-float-b_18s_ease-in-out_infinite_alternate]" />
+                <div className="absolute top-40 left-[44%] size-4 rounded-full bg-[#169b62]/50 motion-safe:animate-[home-float-b_9s_ease-in-out_infinite_alternate-reverse]" />
+              </div>
               {imageUrl && (
-                <div className="absolute inset-y-0 right-0 w-full lg:w-1/2">
+                <div className="relative h-56 w-full sm:h-72 lg:absolute lg:inset-y-0 lg:right-0 lg:h-auto lg:w-1/2">
                   <Image
                     alt={imageAlt}
                     className="object-cover"
@@ -36,10 +44,6 @@ export function HeroBanner({ locale }: { locale: string }) {
                     quality={65}
                     sizes="(min-width: 1024px) 50vw, 100vw"
                     src={imageUrl}
-                  />
-                  <div
-                    aria-hidden="true"
-                    className="absolute inset-0 bg-white/90 lg:hidden"
                   />
                   <div
                     aria-hidden="true"

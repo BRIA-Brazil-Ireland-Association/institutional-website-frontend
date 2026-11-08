@@ -22,6 +22,7 @@ export function Navbar() {
   const isHome = pathname === "/";
   const [isPinned, setIsPinned] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("");
 
   const isItemActive = (url: string) => {
     if (!url || url === "#") {
@@ -65,6 +66,39 @@ export function Navbar() {
   }, [menuItems]);
   const hasMenuItems = translatedMenuItems.length > 0;
 
+  useEffect(() => {
+    if (!isHome) {
+      return;
+    }
+
+    const sections = translatedMenuItems
+      .map((item) => document.getElementById(item.url))
+      .filter((section): section is HTMLElement => section !== null);
+
+    if (sections.length === 0) {
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id);
+          } else {
+            setActiveSection((current) =>
+              current === entry.target.id ? "" : current,
+            );
+          }
+        });
+      },
+      { rootMargin: "-40% 0px -55% 0px" },
+    );
+
+    sections.forEach((section) => observer.observe(section));
+
+    return () => observer.disconnect();
+  }, [isHome, translatedMenuItems]);
+
   const navPositionClass = isPinned
     ? "fixed inset-x-0 top-0 shadow-[0_8px_24px_rgba(0,0,0,0.18)]"
     : "relative shadow-[0_5px_18px_rgba(0,0,0,0.14)]";
@@ -97,15 +131,17 @@ export function Navbar() {
               <ul className="flex items-center text-[15px] font-semibold text-[#1a1a1a]">
                 {translatedMenuItems.map((item, itemIndex) => {
                   const itemUrl = isHome ? `#${item.url}` : `/${item.url}`;
-                  const isActive = isItemActive(itemUrl);
+                  const isActive = isHome
+                    ? activeSection === item.url
+                    : isItemActive(itemUrl);
 
                   return (
                     <li className="flex items-center" key={itemIndex}>
                       <Link
                         aria-current={isActive ? "page" : undefined}
                         className={cn(
-                          "relative px-5 py-3 whitespace-nowrap transition-colors hover:text-[#169b62] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#169b62]",
-                          isActive && "text-[#169b62]",
+                          "relative px-5 py-3 whitespace-nowrap transition-colors hover:text-[#0F7A4D] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#169b62]",
+                          isActive && "text-[#0F7A4D]",
                         )}
                         href={itemUrl}
                       >
@@ -154,15 +190,17 @@ export function Navbar() {
           <div className="border-t border-black/10 bg-white px-4 py-3 shadow-[0_12px_24px_rgba(0,0,0,0.12)] lg:hidden">
             <ul className="mx-auto flex max-w-7xl flex-col divide-y divide-black/10 text-base font-semibold text-[#1a1a1a]">
               {translatedMenuItems.map((item, itemIndex) => {
-                const isActive = isItemActive(item.url);
+                const isActive = isHome
+                  ? activeSection === item.url
+                  : isItemActive(item.url);
 
                 return (
                   <li key={itemIndex}>
                     <Link
                       aria-current={isActive ? "page" : undefined}
                       className={cn(
-                        "block py-4 transition-colors hover:text-[#169b62] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#169b62]",
-                        isActive && "text-[#169b62]",
+                        "block py-4 transition-colors hover:text-[#0F7A4D] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#169b62]",
+                        isActive && "text-[#0F7A4D]",
                       )}
                       href={item.url}
                       onClick={() => setIsOpen(false)}

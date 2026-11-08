@@ -32,7 +32,7 @@ type ButtonAsLinkProps = ButtonSharedProps &
 export type ButtonProps = ButtonAsButtonProps | ButtonAsLinkProps;
 
 const baseClasses =
-  "inline-flex items-center justify-center gap-2 rounded-full px-5 py-2 text-sm font-semibold transition-colors disabled:cursor-not-allowed disabled:opacity-50";
+  "inline-flex items-center justify-center gap-2 rounded-full px-5 py-2 text-sm font-semibold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#169b62] disabled:cursor-not-allowed disabled:opacity-50";
 
 const primaryClasses = "text-white";
 const primaryDefaultBackground = "bg-[#104722] hover:bg-[#0b461b]";

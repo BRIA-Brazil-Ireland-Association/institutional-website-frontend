@@ -38,3 +38,15 @@ body {
 * {
   box-sizing: border-box;
 }
+
+@keyframes home-float-a {
+  to {
+    transform: translate(-60px, 70px) scale(1.04);
+  }
+}
+
+@keyframes home-float-b {
+  to {
+    transform: translate(70px, -50px);
+  }
+}
