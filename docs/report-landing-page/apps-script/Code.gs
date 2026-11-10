@@ -43,6 +43,22 @@ const FORMS = {
   },
 };
 
+// Logos shown on the launch event pages (Sponsors) and on the report landing (Supporters).
+// They live in their own Sheet, so whoever
+// updates them never sees the leads, and the logos in a Drive folder. Script properties:
+//   SPONSORS_SHEET_ID   id of the sponsors Sheet (from its URL, between /d/ and /edit)
+//   SPONSORS_FOLDER_ID  id of the logos folder (from its URL, after /folders/)
+// Tab "Sponsors", header row: order | name | logo | website | event | report
+//   logo     the file name in the folder (e.g. H&A.png) or the file's Drive link
+//   event    tick the checkbox (or write yes / sim / x) to show it on the event pages
+//   report   tick it to show it on the report landing
+const SPONSORS = {
+  sheet: "Sponsors",
+  maxBytes: 500 * 1024,
+  yes: ["true", "yes", "sim", "x", "1"],
+  types: ["image/png", "image/jpeg", "image/gif", "image/webp", "image/svg+xml"],
+};
+
 const EMAIL = {
   en: {
     subject: "Your copy of Brazilian Talent in Ireland · BRIA Report 2026",
@@ -79,6 +95,10 @@ function doPost(e) {
   const secret = props.getProperty("SHARED_SECRET");
   if (!secret || !body || body.secret !== secret) {
     return json_({ ok: false, error: "UNAUTHORIZED" });
+  }
+
+  if (body.action === "sponsors") {
+    return json_(listSponsors_(props));
   }
 
   const lead = body.lead || {};
@@ -139,6 +159,83 @@ function saveForm_(form, lead) {
 
 function doGet() {
   return json_({ ok: true, service: "bria-report-leads" });
+}
+
+function listSponsors_(props) {
+  const sheetId = props.getProperty("SPONSORS_SHEET_ID");
+  const folderId = props.getProperty("SPONSORS_FOLDER_ID");
+  if (!sheetId || !folderId) return { ok: false, error: "NOT_CONFIGURED" };
+
+  const sheet = SpreadsheetApp.openById(sheetId).getSheetByName(SPONSORS.sheet);
+  if (!sheet || sheet.getLastRow() < 2) return { ok: true, sponsors: [], skipped: [] };
+
+  const rows = sheet.getDataRange().getValues();
+  const head = rows.shift().map((h) => String(h).trim().toLowerCase());
+  const cell = (row, key) => (head.indexOf(key) < 0 ? "" : row[head.indexOf(key)]);
+
+  const files = {};
+  const it = DriveApp.getFolderById(folderId).getFiles();
+  while (it.hasNext()) {
+    const file = it.next();
+    files[file.getName().trim().toLowerCase()] = file;
+  }
+
+  const skipped = [];
+  const sponsors = rows
+    .map((row, i) => ({
+      line: i + 2,
+      order: Number(cell(row, "order")) || 999,
+      name: String(cell(row, "name")).trim().slice(0, 120),
+      logo: String(cell(row, "logo")).trim(),
+      website: website_(cell(row, "website")),
+      event: yes_(cell(row, "event")),
+      report: yes_(cell(row, "report")),
+    }))
+    .filter((s) => (s.event || s.report) && s.name)
+    .sort((a, b) => a.order - b.order || a.line - b.line)
+    .map((s) => {
+      const file = logoFile_(s.logo, files);
+      const blob = file && file.getBlob();
+      const type = blob && blob.getContentType();
+      if (!blob || SPONSORS.types.indexOf(type) < 0 || blob.getBytes().length > SPONSORS.maxBytes) {
+        skipped.push(`line ${s.line}: ${s.name} (logo "${s.logo}" missing, not an image or over 500 KB)`);
+        return null;
+      }
+      return {
+        name: s.name,
+        url: s.website,
+        logo: `data:${type};base64,${Utilities.base64Encode(blob.getBytes())}`,
+        event: s.event,
+        report: s.report,
+      };
+    })
+    .filter(Boolean);
+
+  return { ok: true, sponsors: sponsors, skipped: skipped };
+}
+
+function yes_(value) {
+  return SPONSORS.yes.indexOf(String(value).trim().toLowerCase()) >= 0;
+}
+
+function logoFile_(logo, files) {
+  if (!logo) return null;
+  const id = logo.match(/[-\w]{25,}/);
+  if (/^https?:\/\//i.test(logo) && id) {
+    try {
+      return DriveApp.getFileById(id[0]);
+    } catch (error) {
+      return null;
+    }
+  }
+  return files[logo.toLowerCase()] || null;
+}
+
+function website_(value) {
+  const text = String(value || "").trim();
+  if (!text) return "";
+  const url = /^https?:\/\//i.test(text) ? text : "https://" + text;
+  return /^https?:\/\/[^\s/]+\.[^\s]+$/i.test(url) ? url.slice(0, 500) : "";
 }
 
 function sendReport_(lead, props) {
@@ -259,4 +356,15 @@ function testEventForms() {
     });
     Logger.log(form + ": " + result.getContent());
   });
+}
+
+// Run once after setting SPONSORS_SHEET_ID and SPONSORS_FOLDER_ID: it asks for the
+// new permissions (read Sheets and Drive) and logs what each page will show.
+function testSponsors() {
+  const result = listSponsors_(PropertiesService.getScriptProperties());
+  if (!result.ok) throw new Error(result.error);
+  const names = (key) => result.sponsors.filter((s) => s[key]).map((s) => s.name).join(", ") || "none";
+  Logger.log("Event pages (Sponsors): %s", names("event"));
+  Logger.log("Report page (Supporters): %s", names("report"));
+  result.skipped.forEach((line) => Logger.log("Skipped %s", line));
 }

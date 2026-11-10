@@ -216,6 +216,41 @@ p,li,h1,h2,h3,.q{text-wrap:pretty}
   *{transition:none!important}
   .hero-deco *{animation:none!important}
 }
+
+/* Sponsors: band under the hero on the event pages, before the footer on this landing.
+   Logos keep their own colours on white cells, so PNGs with a white background blend in. */
+.sponsors{background:var(--paper);padding:64px 0 72px;text-align:center}
+.sponsors-h{margin:0}
+.sp-box{margin-top:32px}
+.sp-grid{--gap:20px;list-style:none;display:flex;flex-wrap:wrap;justify-content:center;gap:var(--gap)}
+.sp-grid li{flex:0 0 calc((100% - 5*var(--gap))/6)}
+.sp-grid--few li{flex-basis:calc((100% - 3*var(--gap))/4)}
+.sp-logo{display:flex;align-items:center;justify-content:center;aspect-ratio:16/9;padding:14px 28px;background:#fff;border:1.5px solid var(--rule);border-radius:14px}
+.sp-logo img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain}
+.sp-marquee{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.sp-track{display:flex;width:max-content;animation:sp-scroll var(--sp-dur,40s) linear infinite}
+.sp-track .sp-grid{flex-wrap:nowrap;justify-content:flex-start;padding-right:var(--gap)}
+.sp-track .sp-grid li{flex:0 0 190px}
+.sp-marquee:hover .sp-track,.sp-marquee:focus-within .sp-track{animation-play-state:paused}
+@keyframes sp-scroll{to{transform:translateX(-50%)}}
+@media (max-width: 960px){.sp-grid li,.sp-grid--few li{flex-basis:calc((100% - 2*var(--gap))/3)}}
+@media (max-width: 560px){
+  .sponsors{padding:48px 0 56px}
+  .sp-grid{--gap:12px}
+  .sp-grid li,.sp-grid--few li{flex-basis:calc((100% - var(--gap))/2)}
+  .sp-track .sp-grid li{flex-basis:150px}
+  .sp-logo{padding:12px 18px}
+}
+@media (prefers-reduced-motion: reduce){
+  .sp-track{animation:none;width:auto}
+  .sp-track .sp-grid{flex-wrap:wrap;justify-content:center;padding-right:0}
+  .sp-track .sp-grid[aria-hidden]{display:none}
+  .sp-track .sp-grid li{flex-basis:calc((100% - 5*var(--gap))/6)}
+  .sp-marquee{-webkit-mask-image:none;mask-image:none}
+}
+/* Landing: after the closing card, on its grey, right above the footer line */
+.sponsors--end{background:var(--page);padding:24px 0 64px}
+@media (max-width: 560px){.sponsors--end{padding:16px 0 48px}}
 </style>
 </head>
 <body>
@@ -324,9 +359,9 @@ p,li,h1,h2,h3,.q{text-wrap:pretty}
         <div class="ok"><i class="ph ph-check" aria-hidden="true"></i></div>
         <h3>Thank&nbsp;you</h3>
         <p>Your download should start automatically. If it doesn’t, <a href="/report-2026/assets/BRIA-Brazilian-Talent-in-Ireland-2026.pdf" download>download the report&nbsp;here</a>.</p>
-        <a class="ev-invite" href="/en/report-2026/event-interest" data-until="2026-11-24T12:00:00Z" hidden>
+        <a class="ev-invite" href="/en/report-2026/event-interest" data-until="2026-11-30T12:00:00Z" hidden>
           <span class="ev-ic"><i class="ph ph-calendar-star" aria-hidden="true"></i></span>
-          <span class="ev-tx"><b>Join us at the launch</b><span>25 November, in Dublin. Register your&nbsp;interest.</span></span>
+          <span class="ev-tx"><b>Join us at the launch</b><span>1 December, in Dublin. Register your&nbsp;interest.</span></span>
           <i class="ph ph-arrow-right ev-go" aria-hidden="true"></i>
         </a>
       </div>
@@ -400,6 +435,13 @@ p,li,h1,h2,h3,.q{text-wrap:pretty}
   </div>
 </section>
 
+<section class="sponsors sponsors--end" data-page="report" aria-labelledby="sponsors-title" hidden>
+  <div class="wrap">
+    <h2 id="sponsors-title" class="pill pill--green sponsors-h">Supporters</h2>
+    <div class="sp-box"></div>
+  </div>
+</section>
+
 </main>
 
 <footer class="site-foot">
@@ -464,6 +506,62 @@ p,li,h1,h2,h3,.q{text-wrap:pretty}
       var box = e.target.closest('.field') || e.target.closest('.check');
       if (box) box.classList.remove('has-error');
     });
+  })();
+</script>
+<script>
+  (function(){
+    var sec = document.querySelector('.sponsors');
+    if (!sec) return;
+    var STATIC_MAX = 6;
+    var SAFE_URL = /^https?:\/\//i, SAFE_LOGO = /^(data:image\/(png|jpe?g|gif|webp|svg\+xml);base64,|https:\/\/|\.\.?\/)/i;
+
+    function list(items, copy){
+      var ul = document.createElement('ul');
+      ul.className = 'sp-grid';
+      if (copy) ul.setAttribute('aria-hidden', 'true');
+      items.forEach(function(s){
+        var li = document.createElement('li');
+        var cell = document.createElement(s.url ? 'a' : 'span');
+        cell.className = 'sp-logo';
+        if (s.url){
+          cell.href = s.url; cell.target = '_blank'; cell.rel = 'noopener';
+          if (copy) cell.tabIndex = -1;
+          else cell.setAttribute('aria-label', s.name);
+        }
+        var img = new Image();
+        img.src = s.logo; img.alt = copy ? '' : s.name; img.decoding = 'async';
+        cell.appendChild(img); li.appendChild(cell); ul.appendChild(li);
+      });
+      return ul;
+    }
+
+    function render(items){
+      items = (items || []).filter(function(s){
+        return s && s.name && SAFE_LOGO.test(s.logo || '') && (!s.url || SAFE_URL.test(s.url));
+      });
+      if (!items.length) return;
+      var box = sec.querySelector('.sp-box');
+      if (items.length <= STATIC_MAX){
+        var grid = list(items, false);
+        if (items.length <= 3) grid.classList.add('sp-grid--few');
+        box.appendChild(grid);
+      } else {
+        // Marquee: the list twice in a row, the track slides by half its width and loops.
+        var marquee = document.createElement('div');
+        var track = document.createElement('div');
+        marquee.className = 'sp-marquee'; track.className = 'sp-track';
+        track.style.setProperty('--sp-dur', (items.length * 4) + 's');
+        track.appendChild(list(items, false)); track.appendChild(list(items, true));
+        marquee.appendChild(track); box.appendChild(marquee);
+      }
+      sec.hidden = false;
+    }
+
+    if (location.protocol === 'file:'){ render(window.SPONSORS_PREVIEW); return; }
+    fetch('/api/event-sponsors?page=' + encodeURIComponent(sec.dataset.page || 'event'))
+      .then(function(r){ return r.ok ? r.json() : null; })
+      .then(function(d){ render(d && d.sponsors); })
+      .catch(function(){});
   })();
 </script>
 <script src="/cookie-consent.js" defer></script>
