@@ -272,6 +272,16 @@ body{background:var(--green)}
 .details a:hover{border-bottom-color:var(--yellow)}
 .details a i{width:auto;height:auto;background:none;font-size:14px;color:inherit;border-radius:0}
 .details li:has(.addr){align-items:flex-start}
+.details li:has(.ag){align-items:flex-start}
+.ag-note{display:block;margin-top:2px;font-size:14px;color:rgba(255,255,255,.75)}
+.ag-list{display:grid;gap:8px;margin-top:12px;position:relative}
+.ag-list::before{content:"";position:absolute;left:4px;top:8px;bottom:8px;width:1.5px;background:rgba(255,255,255,.25)}
+.ag-row{position:relative;display:grid;grid-template-columns:62px 1fr;gap:10px;padding-left:22px;font-size:14.5px;line-height:1.4;color:rgba(255,255,255,.78)}
+.ag-row::before{content:"";position:absolute;left:0;top:5px;width:10px;height:10px;border-radius:50%;background:var(--green);border:1.5px solid rgba(255,255,255,.6);box-sizing:border-box}
+.ag-row b{font-weight:600;color:#fff;font-variant-numeric:tabular-nums}
+.ag-row.is-main{color:#fff;font-weight:600}
+.ag-row.is-main b{color:var(--yellow)}
+.ag-row.is-main::before{background:var(--yellow);border-color:var(--yellow)}
 .site-foot--dark{background:var(--green);color:rgba(255,255,255,.6);padding:16px 0 24px}
 .site-foot--dark a{color:#fff}
 @media (max-width: 760px){
@@ -324,7 +334,7 @@ body{background:var(--green)}
       <p class="hero-lede">BRIA is launching its first report on qualified Brazilians in Ireland with an event. Places are limited, so register your interest and we will let you know if there is a place for&nbsp;you.</p>
       <ul class="details">
         <li><i class="ph ph-calendar-blank" aria-hidden="true"></i><span>Tuesday, 1 December&nbsp;2026</span></li>
-        <li><i class="ph ph-clock" aria-hidden="true"></i><span>5pm to&nbsp;7pm</span></li>
+        <li><i class="ph ph-clock" aria-hidden="true"></i><span><span class="ag"><b>5:30pm to 7:30pm</b><span class="ag-note">Arrive from 5:30pm. The presentation starts at&nbsp;6pm.</span><span class="ag-list"><span class="ag-row"><b>5:30pm</b><span>Welcome and networking</span></span><span class="ag-row is-main"><b>6:00pm</b><span>Report launch</span></span><span class="ag-row"><b>7:00pm</b><span>Networking</span></span></span></span></span></li>
         <li><i class="ph ph-map-pin" aria-hidden="true"></i><span><b>IBAT Dublin</b><br><span class="addr">16-19 Wellington Quay, Temple Bar, Dublin 8, D02 TX49</span><br><a href="https://maps.app.goo.gl/XoJ5z3Ar2cy3xT7X9" target="_blank" rel="noopener">View on Google Maps <i class="ph ph-arrow-up-right" aria-hidden="true"></i></a></span></li>
         <li><i class="ph ph-translate" aria-hidden="true"></i><span>The event is in&nbsp;English</span></li>
       </ul>
