@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<script>document.documentElement.classList.add('report-checking')</script>
 <title>Brazilian Talent in Ireland · BRIA Report 2026</title>
 <meta name="description" content="1,897 Brazilian professionals in Ireland answered the BRIA 2026 survey. Get the report and see the gap between their qualifications and the jobs they hold.">
 <link rel="canonical" href="https://www.brazilirelandassociation.org/en/report-2026">
@@ -121,16 +122,12 @@ p,li,h1,h2,h3,.q{text-wrap:pretty}
 .form-success h3{margin-top:22px;font-size:24px;color:var(--ink)}
 .form-success p{margin-top:10px;font-size:15px;color:var(--muted)}
 .form-success p a{color:var(--green);font-weight:600;text-decoration:underline;text-underline-offset:3px}
-.ev-invite{display:flex;align-items:center;gap:14px;margin-top:24px;padding:14px 16px;border:1.5px solid var(--rule);border-radius:14px;background:var(--page);text-align:left;text-decoration:none;transition:border-color .15s ease, background .15s ease}
-.ev-invite[hidden]{display:none}
-.ev-invite:hover{border-color:var(--green-mid);background:#fff}
-.ev-invite .ev-ic{flex:none;display:grid;place-items:center;width:44px;height:44px;border-radius:50%;background:var(--green);color:var(--yellow);font-size:22px}
-.ev-invite .ev-tx{flex:1;min-width:0;display:grid;gap:2px}
-.ev-invite b{font-size:15px;color:var(--ink)}
-.ev-invite .ev-tx span{font-size:14px;line-height:1.4;color:var(--muted)}
-.ev-invite .ev-go{flex:none;color:var(--green);font-size:18px}
 .form-card.is-sent form{display:none}
 .form-card.is-sent .form-success{display:block}
+.report-checking #lead-form{visibility:hidden}
+.report-soon #lead-form,.report-soon .cta-card p,.report-soon .cta-card .btn{display:none}
+.report-soon .form-soon{display:block}
+.form-card.is-sent .form-soon{display:none}
 
 /* Data source */
 .source{padding:120px 0 110px;background:var(--paper)}
@@ -358,12 +355,13 @@ p,li,h1,h2,h3,.q{text-wrap:pretty}
       <div class="form-success" role="status" aria-live="polite">
         <div class="ok"><i class="ph ph-check" aria-hidden="true"></i></div>
         <h3>Thank&nbsp;you</h3>
-        <p>Your download should start automatically. If it doesn’t, <a href="/report-2026/assets/BRIA-Brazilian-Talent-in-Ireland-2026.pdf" download>download the report&nbsp;here</a>.</p>
-        <a class="ev-invite" href="/en/report-2026/event-interest" data-until="2026-11-30T12:00:00Z" hidden>
-          <span class="ev-ic"><i class="ph ph-calendar-star" aria-hidden="true"></i></span>
-          <span class="ev-tx"><b>Join us at the launch</b><span>1 December, in Dublin. Register your&nbsp;interest.</span></span>
-          <i class="ph ph-arrow-right ev-go" aria-hidden="true"></i>
-        </a>
+        <p>Your download should start automatically. If it doesn’t, <a href="/api/report-download?lang=en" download>download the report&nbsp;here</a>.</p>
+      </div>
+
+      <div class="form-success form-soon" role="status">
+        <div class="ok"><i class="ph ph-hourglass-medium" aria-hidden="true"></i></div>
+        <h3>Coming&nbsp;soon</h3>
+        <p>The report has not been released yet. Come back soon to download&nbsp;it.</p>
       </div>
     </div>
   </div>
@@ -463,12 +461,14 @@ p,li,h1,h2,h3,.q{text-wrap:pretty}
   // to BRIA's Google Sheet through Apps Script. On file:// it runs in preview mode.
   (function(){
     var ENDPOINT = '/api/report-lead';
-    var REPORT_PDF = '/report-2026/assets/BRIA-Brazilian-Talent-in-Ireland-2026.pdf';
-    var invite = document.querySelector('.ev-invite');
-    if (invite && Date.now() < Date.parse(invite.dataset.until)){
-      if (location.search) invite.href = invite.getAttribute('href').split('?')[0] + location.search;
-      invite.hidden = false;
-    }
+    var REPORT_PDF = '/api/report-download?lang=en';
+    var root = document.documentElement;
+    if (location.protocol === 'file:') root.classList.remove('report-checking');
+    else fetch('/api/report-release', {cache:'no-store'})
+      .then(function(r){ return r.json(); })
+      .then(function(d){ if (d && d.released === false) root.classList.add('report-soon'); })
+      .catch(function(){})
+      .then(function(){ root.classList.remove('report-checking'); });
     var form = document.getElementById('lead-form');
     var card = document.querySelector('.form-card');
     var btn = form.querySelector('button[type=submit]');

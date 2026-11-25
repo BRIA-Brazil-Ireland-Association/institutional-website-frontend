@@ -121,16 +121,12 @@ p,li,h1,h2,h3,.q{text-wrap:pretty}
 .form-success h3{margin-top:22px;font-size:24px;color:var(--ink)}
 .form-success p{margin-top:10px;font-size:15px;color:var(--muted)}
 .form-success p a{color:var(--green);font-weight:600;text-decoration:underline;text-underline-offset:3px}
-.ev-invite{display:flex;align-items:center;gap:14px;margin-top:24px;padding:14px 16px;border:1.5px solid var(--rule);border-radius:14px;background:var(--page);text-align:left;text-decoration:none;transition:border-color .15s ease, background .15s ease}
-.ev-invite[hidden]{display:none}
-.ev-invite:hover{border-color:var(--green-mid);background:#fff}
-.ev-invite .ev-ic{flex:none;display:grid;place-items:center;width:44px;height:44px;border-radius:50%;background:var(--green);color:var(--yellow);font-size:22px}
-.ev-invite .ev-tx{flex:1;min-width:0;display:grid;gap:2px}
-.ev-invite b{font-size:15px;color:var(--ink)}
-.ev-invite .ev-tx span{font-size:14px;line-height:1.4;color:var(--muted)}
-.ev-invite .ev-go{flex:none;color:var(--green);font-size:18px}
 .form-card.is-sent form{display:none}
 .form-card.is-sent .form-success{display:block}
+.report-checking #lead-form{visibility:hidden}
+.report-soon #lead-form,.report-soon .cta-card p,.report-soon .cta-card .btn{display:none}
+.report-soon .form-soon{display:block}
+.form-card.is-sent .form-soon{display:none}
 
 /* Data source */
 .source{padding:120px 0 110px;background:var(--paper)}
@@ -331,7 +327,7 @@ body{background:var(--green)}
     <div class="hero-copy">
       <span class="pill pill--light">BRIA · Evento de lançamento</span>
       <h1 id="hero-title"><span class="lb">Brazilian Talent in Ireland:</span> <span class="bd">quer ir ao&nbsp;lançamento?</span></h1>
-      <p class="hero-lede">A BRIA lança seu primeiro relatório sobre os brasileiros qualificados na Irlanda com um evento. As vagas são limitadas: registre seu interesse e avisamos se houver vaga para&nbsp;você.</p>
+      <p class="hero-lede">A BRIA lança seu primeiro relatório sobre os brasileiros qualificados na Irlanda com um evento. Todas as vagas foram&nbsp;preenchidas.</p>
       <ul class="details">
         <li><i class="ph ph-calendar-blank" aria-hidden="true"></i><span>Terça-feira, 1º de dezembro de&nbsp;2026</span></li>
         <li><i class="ph ph-clock" aria-hidden="true"></i><span><span class="ag"><b>Das 17h30 às 19h30</b><span class="ag-note">Chegue a partir das 17h30. A apresentação começa às&nbsp;18h.</span><span class="ag-list"><span class="ag-row"><b>17h30</b><span>Recepção e networking</span></span><span class="ag-row is-main"><b>18h</b><span>Lançamento do relatório</span></span><span class="ag-row"><b>19h</b><span>Networking</span></span></span></span></span></li>
@@ -340,7 +336,7 @@ body{background:var(--green)}
       </ul>
     </div>
 
-    <div class="form-card">
+    <div class="form-card is-sent">
       <form id="lead-form" novalidate>
         <h2><span class="lb">Registre</span> <span class="bd">seu&nbsp;interesse</span></h2>
         <p class="form-sub">Só seu nome e seu&nbsp;e-mail.</p>
@@ -584,9 +580,9 @@ body{background:var(--green)}
       </form>
 
       <div class="form-success" role="status" aria-live="polite">
-        <div class="ok"><i class="ph ph-check" aria-hidden="true"></i></div>
-        <h3>Obrigado</h3>
-        <p>Vamos escrever para <b id="sent-to">seu e-mail</b> sobre as vagas do&nbsp;evento.</p>
+        <div class="ok"><i class="ph ph-lock-simple" aria-hidden="true"></i></div>
+        <h3>Inscrições&nbsp;encerradas</h3>
+        <p>Todas as vagas do evento de lançamento foram preenchidas. Obrigado pelo&nbsp;interesse.</p>
       </div>
     </div>
   </div>

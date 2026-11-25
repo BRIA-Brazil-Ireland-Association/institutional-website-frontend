@@ -121,16 +121,12 @@ p,li,h1,h2,h3,.q{text-wrap:pretty}
 .form-success h3{margin-top:22px;font-size:24px;color:var(--ink)}
 .form-success p{margin-top:10px;font-size:15px;color:var(--muted)}
 .form-success p a{color:var(--green);font-weight:600;text-decoration:underline;text-underline-offset:3px}
-.ev-invite{display:flex;align-items:center;gap:14px;margin-top:24px;padding:14px 16px;border:1.5px solid var(--rule);border-radius:14px;background:var(--page);text-align:left;text-decoration:none;transition:border-color .15s ease, background .15s ease}
-.ev-invite[hidden]{display:none}
-.ev-invite:hover{border-color:var(--green-mid);background:#fff}
-.ev-invite .ev-ic{flex:none;display:grid;place-items:center;width:44px;height:44px;border-radius:50%;background:var(--green);color:var(--yellow);font-size:22px}
-.ev-invite .ev-tx{flex:1;min-width:0;display:grid;gap:2px}
-.ev-invite b{font-size:15px;color:var(--ink)}
-.ev-invite .ev-tx span{font-size:14px;line-height:1.4;color:var(--muted)}
-.ev-invite .ev-go{flex:none;color:var(--green);font-size:18px}
 .form-card.is-sent form{display:none}
 .form-card.is-sent .form-success{display:block}
+.report-checking #lead-form{visibility:hidden}
+.report-soon #lead-form,.report-soon .cta-card p,.report-soon .cta-card .btn{display:none}
+.report-soon .form-soon{display:block}
+.form-card.is-sent .form-soon{display:none}
 
 /* Data source */
 .source{padding:120px 0 110px;background:var(--paper)}

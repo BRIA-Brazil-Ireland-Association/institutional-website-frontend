@@ -121,16 +121,12 @@ p,li,h1,h2,h3,.q{text-wrap:pretty}
 .form-success h3{margin-top:22px;font-size:24px;color:var(--ink)}
 .form-success p{margin-top:10px;font-size:15px;color:var(--muted)}
 .form-success p a{color:var(--green);font-weight:600;text-decoration:underline;text-underline-offset:3px}
-.ev-invite{display:flex;align-items:center;gap:14px;margin-top:24px;padding:14px 16px;border:1.5px solid var(--rule);border-radius:14px;background:var(--page);text-align:left;text-decoration:none;transition:border-color .15s ease, background .15s ease}
-.ev-invite[hidden]{display:none}
-.ev-invite:hover{border-color:var(--green-mid);background:#fff}
-.ev-invite .ev-ic{flex:none;display:grid;place-items:center;width:44px;height:44px;border-radius:50%;background:var(--green);color:var(--yellow);font-size:22px}
-.ev-invite .ev-tx{flex:1;min-width:0;display:grid;gap:2px}
-.ev-invite b{font-size:15px;color:var(--ink)}
-.ev-invite .ev-tx span{font-size:14px;line-height:1.4;color:var(--muted)}
-.ev-invite .ev-go{flex:none;color:var(--green);font-size:18px}
 .form-card.is-sent form{display:none}
 .form-card.is-sent .form-success{display:block}
+.report-checking #lead-form{visibility:hidden}
+.report-soon #lead-form,.report-soon .cta-card p,.report-soon .cta-card .btn{display:none}
+.report-soon .form-soon{display:block}
+.form-card.is-sent .form-soon{display:none}
 
 /* Data source */
 .source{padding:120px 0 110px;background:var(--paper)}
@@ -331,7 +327,7 @@ body{background:var(--green)}
     <div class="hero-copy">
       <span class="pill pill--light">BRIA · Launch event</span>
       <h1 id="hero-title"><span class="lb">Brazilian Talent in Ireland:</span> <span class="bd">want to join the&nbsp;launch?</span></h1>
-      <p class="hero-lede">BRIA is launching its first report on qualified Brazilians in Ireland with an event. Places are limited, so register your interest and we will let you know if there is a place for&nbsp;you.</p>
+      <p class="hero-lede">BRIA is launching its first report on qualified Brazilians in Ireland with an event. All places have been&nbsp;taken.</p>
       <ul class="details">
         <li><i class="ph ph-calendar-blank" aria-hidden="true"></i><span>Tuesday, 1 December&nbsp;2026</span></li>
         <li><i class="ph ph-clock" aria-hidden="true"></i><span><span class="ag"><b>5:30pm to 7:30pm</b><span class="ag-note">Arrive from 5:30pm. The presentation starts at&nbsp;6pm.</span><span class="ag-list"><span class="ag-row"><b>5:30pm</b><span>Welcome and networking</span></span><span class="ag-row is-main"><b>6:00pm</b><span>Report launch</span></span><span class="ag-row"><b>7:00pm</b><span>Networking</span></span></span></span></span></li>
@@ -340,7 +336,7 @@ body{background:var(--green)}
       </ul>
     </div>
 
-    <div class="form-card">
+    <div class="form-card is-sent">
       <form id="lead-form" novalidate>
         <h2><span class="lb">Register</span> <span class="bd">your&nbsp;interest</span></h2>
         <p class="form-sub">Just your name and&nbsp;email.</p>
@@ -584,9 +580,9 @@ body{background:var(--green)}
       </form>
 
       <div class="form-success" role="status" aria-live="polite">
-        <div class="ok"><i class="ph ph-check" aria-hidden="true"></i></div>
-        <h3>Thank&nbsp;you</h3>
-        <p>We will write to <b id="sent-to">your email</b> about places at the&nbsp;event.</p>
+        <div class="ok"><i class="ph ph-lock-simple" aria-hidden="true"></i></div>
+        <h3>Registrations&nbsp;closed</h3>
+        <p>All places for the launch event have been taken. Thank you for your&nbsp;interest.</p>
       </div>
     </div>
   </div>
