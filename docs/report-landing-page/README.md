@@ -86,7 +86,7 @@ curl -i -X POST http://localhost:3002/api/report-lead \
 
 - [ ] `REPORT_LEADS_SCRIPT_URL` and `REPORT_LEADS_SECRET` set on Vercel.
 - [ ] Final report PDF saved as `Previews-HTML/06-Landing-Page/assets/BRIA-Brazilian-Talent-in-Ireland-2026.pdf` in the report project and `build-landing.py` rerun, so it lands in `public/report-2026/assets/`. Without it the download is a 404.
-- [ ] Home announcement bar: `announcementBar.startsAt` in `content/en/global.json` and `content/pt-BR/global.json` matches the launch (now `2026-11-25T00:00:00Z`). The bar turns on by itself at that moment, checked in the visitor's browser, with no redeploy. Remove `startsAt` to show it right away; `enabled: false` hides it regardless of the date.
+- [ ] Home announcement bar: `announcementBar.startsAt` in `content/en/global.json` and `content/pt-BR/global.json` matches the launch (now `2026-12-01T00:00:00Z`). The bar turns on by itself at that moment, checked in the visitor's browser, with no redeploy. Remove `startsAt` to show it right away; `enabled: false` hides it regardless of the date.
 - [ ] Share image (`og:image`, 1200×630) when there is one.
 
 ## Cookies and analytics
