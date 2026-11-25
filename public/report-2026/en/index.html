@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<script>document.documentElement.classList.add('report-checking')</script>
 <title>Brazilian Talent in Ireland · BRIA Report 2026</title>
 <meta name="description" content="1,897 Brazilian professionals in Ireland answered the BRIA 2026 survey. Get the report and see the gap between their qualifications and the jobs they hold.">
 <link rel="canonical" href="https://www.brazilirelandassociation.org/en/report-2026">
@@ -123,6 +124,10 @@ p,li,h1,h2,h3,.q{text-wrap:pretty}
 .form-success p a{color:var(--green);font-weight:600;text-decoration:underline;text-underline-offset:3px}
 .form-card.is-sent form{display:none}
 .form-card.is-sent .form-success{display:block}
+.report-checking #lead-form{visibility:hidden}
+.report-soon #lead-form,.report-soon .cta-card p,.report-soon .cta-card .btn{display:none}
+.report-soon .form-soon{display:block}
+.form-card.is-sent .form-soon{display:none}
 
 /* Data source */
 .source{padding:120px 0 110px;background:var(--paper)}
@@ -350,8 +355,13 @@ p,li,h1,h2,h3,.q{text-wrap:pretty}
       <div class="form-success" role="status" aria-live="polite">
         <div class="ok"><i class="ph ph-check" aria-hidden="true"></i></div>
         <h3>Thank&nbsp;you</h3>
-        <p class="ok-now">Your download should start automatically. If it doesn’t, <a href="/api/report-download?lang=en" download>download the report&nbsp;here</a>.</p>
-        <p class="ok-soon" hidden>The report will be available on this page on 1 December, at 5:30pm (Irish time). Come back then to download&nbsp;it.</p>
+        <p>Your download should start automatically. If it doesn’t, <a href="/api/report-download?lang=en" download>download the report&nbsp;here</a>.</p>
+      </div>
+
+      <div class="form-success form-soon" role="status">
+        <div class="ok"><i class="ph ph-hourglass-medium" aria-hidden="true"></i></div>
+        <h3>Coming&nbsp;soon</h3>
+        <p>The report has not been released yet. Come back soon to download&nbsp;it.</p>
       </div>
     </div>
   </div>
@@ -452,7 +462,13 @@ p,li,h1,h2,h3,.q{text-wrap:pretty}
   (function(){
     var ENDPOINT = '/api/report-lead';
     var REPORT_PDF = '/api/report-download?lang=en';
-    var RELEASE_AT = Date.parse('2026-12-01T17:30:00Z');
+    var root = document.documentElement;
+    if (location.protocol === 'file:') root.classList.remove('report-checking');
+    else fetch('/api/report-release', {cache:'no-store'})
+      .then(function(r){ return r.json(); })
+      .then(function(d){ if (d && d.released === false) root.classList.add('report-soon'); })
+      .catch(function(){})
+      .then(function(){ root.classList.remove('report-checking'); });
     var form = document.getElementById('lead-form');
     var card = document.querySelector('.form-card');
     var btn = form.querySelector('button[type=submit]');
@@ -470,11 +486,6 @@ p,li,h1,h2,h3,.q{text-wrap:pretty}
 
       function done(){
         card.classList.add('is-sent');
-        if (Date.now() < RELEASE_AT){
-          card.querySelector('.ok-now').hidden = true;
-          card.querySelector('.ok-soon').hidden = false;
-          return;
-        }
         var a = document.createElement('a');
         a.href = REPORT_PDF; a.download = '';
         document.body.appendChild(a); a.click(); a.remove();

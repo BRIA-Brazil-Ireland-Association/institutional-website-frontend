@@ -101,6 +101,10 @@ function doPost(e) {
     return json_(listSponsors_(props));
   }
 
+  if (body.action === "report_pdf") {
+    return json_({ ok: true, url: props.getProperty("REPORT_PDF_URL") || "" });
+  }
+
   const lead = body.lead || {};
   if (FORMS[body.form]) {
     return saveForm_(FORMS[body.form], lead);
@@ -367,4 +371,12 @@ function testSponsors() {
   Logger.log("Event pages (Sponsors): %s", names("event"));
   Logger.log("Report page (Supporters): %s", names("report"));
   result.skipped.forEach((line) => Logger.log("Skipped %s", line));
+}
+
+// Run once after setting REPORT_PDF_URL: logs the link the website will send people to.
+// The website only asks for it from the launch moment (announcementBar.startsAt).
+function testReportPdf() {
+  const url = PropertiesService.getScriptProperties().getProperty("REPORT_PDF_URL");
+  if (!url) throw new Error("REPORT_PDF_URL is empty");
+  Logger.log("Report PDF: %s", url);
 }

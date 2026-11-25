@@ -1,13 +1,17 @@
-export const dynamic = "force-dynamic";
+import { isReportReleased } from "@/libs/report-release";
+import { z } from "@/libs/validation";
 
-const REPORT_RELEASE_AT = Date.parse("2026-12-01T17:30:00Z");
+export const dynamic = "force-dynamic";
 
 const LANDING_PAGES = {
   en: "/en/report-2026",
   pt: "/pt-BR/relatorio-2026",
 } as const;
 
-const NO_STORE = { "Cache-Control": "no-store" };
+const payloadSchema = z.object({
+  ok: z.literal(true),
+  url: z.string().trim().max(2000).url().startsWith("https://"),
+});
 
 const toDownloadUrl = (value: string) => {
   const driveId = value.match(
@@ -19,23 +23,48 @@ const toDownloadUrl = (value: string) => {
     : value;
 };
 
-export function GET(request: Request) {
+const getReportPdfUrl = async () => {
+  const scriptUrl = process.env.REPORT_LEADS_SCRIPT_URL;
+  const secret = process.env.REPORT_LEADS_SECRET;
+
+  if (!scriptUrl || !secret) {
+    console.error("Report download is not configured.");
+    return null;
+  }
+
+  try {
+    const response = await fetch(scriptUrl, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ secret, action: "report_pdf" }),
+      cache: "no-store",
+      redirect: "follow",
+      signal: AbortSignal.timeout(20000),
+    });
+    const payload = payloadSchema.safeParse(
+      await response.json().catch(() => null),
+    );
+
+    if (!response.ok || !payload.success) {
+      console.error("Report download script error:", response.status);
+      return null;
+    }
+
+    return toDownloadUrl(payload.data.url);
+  } catch (error) {
+    console.error("Report download script exception:", error);
+    return null;
+  }
+};
+
+export async function GET(request: Request) {
   const url = new URL(request.url);
   const lang = url.searchParams.get("lang") === "pt" ? "pt" : "en";
-  const landingPage = new URL(LANDING_PAGES[lang], url.origin);
-  const pdfUrl = process.env.REPORT_PDF_URL?.trim();
-
-  if (Date.now() < REPORT_RELEASE_AT) {
-    return Response.redirect(landingPage, 307);
-  }
-
-  if (!pdfUrl) {
-    console.error("Report download is not configured (REPORT_PDF_URL).");
-    return Response.redirect(landingPage, 307);
-  }
+  const landingPage = new URL(LANDING_PAGES[lang], url.origin).toString();
+  const pdfUrl = isReportReleased() ? await getReportPdfUrl() : null;
 
   return new Response(null, {
     status: 307,
-    headers: { ...NO_STORE, Location: toDownloadUrl(pdfUrl) },
+    headers: { "Cache-Control": "no-store", Location: pdfUrl ?? landingPage },
   });
 }
